@@ -1,4 +1,4 @@
-# HUST_20192_QuanLyKyTucXa 
+# Quản lý ký túc xá
 
 ## Thông tin đề tài 
 
@@ -9,6 +9,14 @@
 **Thành viên** : 
 - Trần Đình Vũ
 - Phan Phú Thành
+
+**Ngôn ngữ sử dụng** :
+- [Golang](https://golang.org/)
+- VueJS :-?
+
+**Tài liệu khác** :
+- [Google Drive](https://drive.google.com/open?id=1mdFRZLyr1xLBjlqofsPvLP6bdbBcQS_B)
+- [Tham khảo về VueJS](https://viblo.asia/p/thuc-hanh-vuejs-cho-nguoi-moi-bat-dau-p1-QpmledMVZrd)
 
 ## Biểu đồ UML
 
