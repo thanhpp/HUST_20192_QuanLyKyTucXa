@@ -4,4 +4,4 @@ _ Phần mềm sử dụng : Astah UML
 
 ## 1. Usecase
 
-![ALTTEXT](UseCaseDiagrams.jpg)
+![ALTTEXT](UseCaseDiagram.jpg)
