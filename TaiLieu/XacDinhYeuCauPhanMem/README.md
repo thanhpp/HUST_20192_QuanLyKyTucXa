@@ -1,7 +1,5 @@
-# Diagram
+# Xác định yêu cầu phần mềm
 
-_ Phần mềm sử dụng : Astah UML
-
-## 1. Usecase
+## 1. Biểu đồ Usecase
 
 ![ALTTEXT](UseCaseDiagram.jpg)

@@ -18,8 +18,7 @@
 - [Google Drive](https://drive.google.com/open?id=1mdFRZLyr1xLBjlqofsPvLP6bdbBcQS_B)
 - [Tham khảo về VueJS](https://viblo.asia/p/thuc-hanh-vuejs-cho-nguoi-moi-bat-dau-p1-QpmledMVZrd)
 
-## Biểu đồ UML
+## [Các tài liệu tham khảo](https://github.com/ThanhPP/HUST_20192_QuanLyKyTucXa/tree/master/TaiLieu)
 
-### 1. Usecase (Update at 24/03/2020)
+### 1. [Xác định yêu cầu phần mềm](https://github.com/ThanhPP/HUST_20192_QuanLyKyTucXa/tree/master/TaiLieu/XacDinhYeuCauPhanMem)
 
-![alttext](Diagram/UseCaseDiagram.jpg)
