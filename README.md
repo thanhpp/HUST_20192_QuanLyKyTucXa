@@ -15,10 +15,14 @@
 - VueJS :-?
 
 **Tài liệu khác** :
-- [Google Drive](https://drive.google.com/open?id=1mdFRZLyr1xLBjlqofsPvLP6bdbBcQS_B)
+- [Google Drive Folder](https://drive.google.com/open?id=1mdFRZLyr1xLBjlqofsPvLP6bdbBcQS_B)
+
+  -  [Sprint Planning](https://docs.google.com/spreadsheets/d/1EoV6SjYCSxJXXKl3eWgFJAMr5WD1BUkhHbn7Jj3Wa5A/edit?usp=sharing)
+  -  [Q&A](https://docs.google.com/spreadsheets/d/1qhD5vAsDTaZFDzS6ogCaKI8Yk6_AQ2E665HbKgXV0JI/edit?usp=sharing)
+
 - [Tham khảo về VueJS](https://viblo.asia/p/thuc-hanh-vuejs-cho-nguoi-moi-bat-dau-p1-QpmledMVZrd)
 
-## [Các tài liệu tham khảo](https://github.com/ThanhPP/HUST_20192_QuanLyKyTucXa/tree/master/TaiLieu)
+## [Tài liệu về phát triển phần mềm](https://github.com/ThanhPP/HUST_20192_QuanLyKyTucXa/tree/master/TaiLieu)
 
 ### 1. [Xác định yêu cầu phần mềm](https://github.com/ThanhPP/HUST_20192_QuanLyKyTucXa/tree/master/TaiLieu/XacDinhYeuCauPhanMem)
 
