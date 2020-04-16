@@ -26,3 +26,6 @@
 
 ### 1. [Xác định yêu cầu phần mềm](https://github.com/ThanhPP/HUST_20192_QuanLyKyTucXa/tree/master/TaiLieu/XacDinhYeuCauPhanMem)
 
+### 2. [Phân tích và thiết kế](https://github.com/ThanhPP/HUST_20192_QuanLyKyTucXa/tree/master/TaiLieu/PhanTich%26ThietKe)
+
+#### 2.1. [Biểu đồ trình tự](https://github.com/ThanhPP/HUST_20192_QuanLyKyTucXa/tree/master/TaiLieu/PhanTich%26ThietKe/Bieu%20do%20trinh%20tu)
