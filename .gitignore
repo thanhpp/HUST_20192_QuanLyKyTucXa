@@ -12,7 +12,10 @@
 *.out
 
 # Dependency directories (remove the comment below to include it)
-# astah file
-**\Diagram\QuanLyKyTucXa.asta.lock
 go.mod
 go.sum
+
+# astah file
+**\Diagram\QuanLyKyTucXa.asta.lock
+**\*.bak
+**\*.lock

@@ -26,17 +26,20 @@
 
 ### 2.3. Quản lý yêu cầu hỗ trợ :
 
+![alttext](sdQuanLyYeuCauHoTro.png)
 
 ### 2.4. Quản lý gửi xe : 
 
+![alttext](sdQuanLyGuiXe.png)
 
 ### 2.5. Tổng hợp, báo cáo : 
 
+![alttext](sdTongHopBaoCao.png)
 
 - [x] Đăng nhập
 - [x] Gửi yêu cầu hỗ trợ
 - [x] Quản lý sinh viên
 - [x] Quản lý phòng trọ 
-- [ ] Quản lý yêu cầu hỗ trợ
-- [ ] Quản lý gửi xe
-- [ ] Tổng hợp, báo cáo
+- [x] Quản lý yêu cầu hỗ trợ
+- [x] Quản lý gửi xe
+- [x] Tổng hợp, báo cáo
