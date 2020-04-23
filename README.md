@@ -32,4 +32,4 @@
 
 #### 2.2. [Biểu đồ hoạt động](https://github.com/ThanhPP/HUST_20192_QuanLyKyTucXa/tree/master/TaiLieu/PhanTich%26ThietKe/Bieu%20do%20trinh%20tu)
 
-#### 2.3. [Biểu đồ lớp](https://github.com/ThanhPP/HUST_20192_QuanLyKyTucXa/tree/master/TaiLieu/PhanTich%26ThietKe/Bieu%20do%lop)
+#### 2.3. [Biểu đồ lớp](https://github.com/ThanhPP/HUST_20192_QuanLyKyTucXa/tree/master/TaiLieu/PhanTich%26ThietKe/Bieu%20do%20lop)
