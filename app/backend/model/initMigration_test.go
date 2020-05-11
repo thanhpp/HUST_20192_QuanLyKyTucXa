@@ -3,8 +3,8 @@ package model
 import (
 	"testing"
 
-	"github.com/THANHPP/HUST_20192_QuanLyKyTucXa/config"
-	"github.com/THANHPP/HUST_20192_QuanLyKyTucXa/db"
+	"DormAppBackend/config"
+	"DormAppBackend/db"
 )
 
 func TestInitMigration(t *testing.T) {

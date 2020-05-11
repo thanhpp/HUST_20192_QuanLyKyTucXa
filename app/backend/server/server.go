@@ -1,7 +1,7 @@
 package server
 
 import (
-	"github.com/THANHPP/HUST_20192_QuanLyKyTucXa/app/backend/router"
+	"DormAppBackend/router"
 )
 
 // Init create a server

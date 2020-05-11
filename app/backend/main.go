@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/THANHPP/HUST_20192_QuanLyKyTucXa/app/backend/config"
-	"github.com/THANHPP/HUST_20192_QuanLyKyTucXa/app/backend/db"
-	"github.com/THANHPP/HUST_20192_QuanLyKyTucXa/app/backend/server"
+	"DormAppBackend/config"
+	"DormAppBackend/db"
+	"DormAppBackend/server"
 )
 
 func main() {

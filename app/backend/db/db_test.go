@@ -3,7 +3,7 @@ package db
 import (
 	"testing"
 
-	"github.com/THANHPP/HUST_20192_QuanLyKyTucXa/app/backend/config"
+	"DormAppBackend/config"
 
 	//Import the driver for mysql
 	_ "github.com/go-sql-driver/mysql"

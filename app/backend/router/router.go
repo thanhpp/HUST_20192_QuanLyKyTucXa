@@ -1,7 +1,8 @@
 package router
 
 import (
-	"github.com/THANHPP/HUST_20192_QuanLyKyTucXa/app/backend/controller"
+	"DormAppBackend/controller"
+
 	"github.com/gin-gonic/gin"
 )
 

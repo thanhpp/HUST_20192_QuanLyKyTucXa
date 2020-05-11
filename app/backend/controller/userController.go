@@ -3,7 +3,8 @@ package controller
 import (
 	"net/http"
 
-	"github.com/THANHPP/HUST_20192_QuanLyKyTucXa/app/backend/model"
+	"DormAppBackend/model"
+
 	"github.com/gin-gonic/gin"
 )
 

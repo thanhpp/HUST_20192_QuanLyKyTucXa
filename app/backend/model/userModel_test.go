@@ -3,8 +3,9 @@ package model
 import (
 	"testing"
 
-	"github.com/THANHPP/HUST_20192_QuanLyKyTucXa/app/backend/config"
-	"github.com/THANHPP/HUST_20192_QuanLyKyTucXa/app/backend/db"
+	"DormAppBackend/config"
+	"DormAppBackend/db"
+
 	"golang.org/x/crypto/bcrypt"
 )
 

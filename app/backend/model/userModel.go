@@ -4,7 +4,8 @@ import (
 	"errors"
 	"log"
 
-	"github.com/THANHPP/HUST_20192_QuanLyKyTucXa/app/backend/db"
+	"DormAppBackend/db"
+
 	"github.com/jinzhu/gorm"
 	"golang.org/x/crypto/bcrypt"
 )

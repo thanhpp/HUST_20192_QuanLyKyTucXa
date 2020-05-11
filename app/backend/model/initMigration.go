@@ -1,6 +1,8 @@
 package model
 
-import "github.com/THANHPP/HUST_20192_QuanLyKyTucXa/app/backend/db"
+import (
+	"DormAppBackend/db"
+)
 
 // InitMigration create the database, base on the model
 func InitMigration() {
