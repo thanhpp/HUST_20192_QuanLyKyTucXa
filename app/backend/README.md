@@ -44,8 +44,8 @@
 
     ```JSON
     {
-        username : "text",
-        password : "text",
+        "username" : "text",
+        "password" : "text",
     }
     ```
 
@@ -90,12 +90,12 @@
 
     ```JSON
     {
-        ID:,
-        CreatedAt:,
-        UpdatedAt,
-        DeletedAt,
-        username:,
-        password:,
+        "ID":,
+        "CreatedAt":,
+        "UpdatedAt",
+        "DeletedAt",
+        "username":,
+        "password":,
     }
     ```
 
