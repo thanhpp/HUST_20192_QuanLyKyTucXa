@@ -1,10 +1,13 @@
 TEST = "TEST"
 
 # Database
-
 DBDriver = "mysql"
 DBUser = "tpp"
 DBPass = "123"
 DBHost="127.0.0.1"
 DBPort="3306"
 DBName = "dormapp"
+
+# Redis
+RedisHost = "a"
+RedisPassword = "123"

@@ -7,8 +7,10 @@ import (
 )
 
 var (
-	config   *viper.Viper
+	config *viper.Viper
+
 	dbConfig *DBConfig
+	rdConfig *RDConfig
 )
 
 //Init takes the environment starts the viper
@@ -61,4 +63,23 @@ func dbConfigInit() {
 //GetDBConfig return object contains config for the database
 func GetDBConfig() *DBConfig {
 	return dbConfig
+}
+
+//RDConfig for redis
+type RDConfig struct {
+	Host     string
+	Password string
+}
+
+func redisConfigInit() {
+	c := getConfig()
+	rdConfig = &RDConfig{
+		Host:     c.GetString("RedisHost"),
+		Password: c.GetString("RedisPassword"),
+	}
+}
+
+//GetRedisConfig config object for redis
+func GetRedisConfig() *RDConfig {
+	return rdConfig
 }

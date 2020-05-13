@@ -3,10 +3,13 @@ package controller
 import (
 	"net/http"
 
+	"DormAppBackend/forms"
 	"DormAppBackend/model"
 
 	"github.com/gin-gonic/gin"
 )
+
+var userModel = new(model.User)
 
 // UserController controller for user
 type UserController struct{}
@@ -38,4 +41,30 @@ func (u UserController) GetUserByUsername(c *gin.Context) {
 	c.JSON(http.StatusBadRequest, gin.H{
 		"message": "bad request",
 	})
+}
+
+//Login validate user and return token
+func (u UserController) Login(c *gin.Context) {
+	var loginForm forms.LoginForm
+
+	if c.ShouldBindJSON(&loginForm) != nil {
+		c.JSON(http.StatusNotAcceptable, gin.H{
+			"message": "Invalid form",
+		})
+		c.Abort()
+		return
+	}
+
+	user, token, err := userModel.Login(loginForm)
+	if err != nil {
+		c.JSON(http.StatusNotAcceptable, gin.H{
+			"message": "Invalid login details",
+		})
+	} else {
+		c.JSON(http.StatusOK, gin.H{
+			"message": "login success",
+			"user":    user,
+			"token":   token,
+		})
+	}
 }
