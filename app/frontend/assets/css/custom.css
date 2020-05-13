@@ -1,0 +1,12 @@
+/* Page Dang Nhap */
+#login-background{
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-image: url("../img/DangNhap/login_bg.png")
+}
+@media only screen and (max-width: 769px) {
+  #login-background {
+      display: none;
+  }
+}
