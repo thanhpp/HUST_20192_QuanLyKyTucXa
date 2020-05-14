@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no"
+      name="viewport"
+    />
+    <title>Thông tin &mdash; KTX</title>
+
+    <!-- General CSS Files -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+      crossorigin="anonymous"
+    />
+
+    <!-- CSS Libraries -->
+   
+    <link href='../assets/js/page/fullcalendar/core/main.css' rel='stylesheet' />
+    <link href='../assets/js/page/fullcalendar/daygrid/main.css' rel='stylesheet' />
+    
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/components.css" />
+    <link rel="stylesheet" href="../assets/css/custom.css" />
+    <link rel="stylesheet" href="../assets/css/customCalendar.css" />
+
+    <script src='../assets/js/page/fullcalendar/core/main.js'></script>
+    <script src='../assets/js/page/fullcalendar/daygrid/main.js'></script>
+    
+
+  </head>
+
+  <body>
+    <div id="app">
+      <div class="main-wrapper">
+        <div class="navbar-bg"></div>
+        <nav class="navbar navbar-expand-lg main-navbar">
+          <form class="form-inline mr-auto">
+            <ul class="navbar-nav mr-3">
+              <li>
+                <a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"
+                  ><i class="fas fa-bars"></i
+                ></a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  data-toggle="search"
+                  class="nav-link nav-link-lg d-sm-none"
+                  ><i class="fas fa-search"></i
+                ></a>
+              </li>
+            </ul>
+            <div class="search-element"></div>
+          </form>
+          <ul class="navbar-nav navbar-right">
+            <li class="dropdown">
+              <a
+                href="#"
+                data-toggle="dropdown"
+                class="nav-link dropdown-toggle nav-link-lg nav-link-user"
+              >
+                <img
+                  alt="image"
+                  src="../assets/img/avatar/avatar-1.png"
+                  class="rounded-circle mr-1"
+                />
+                <div class="d-sm-none d-lg-inline-block">
+                  Chào, <span id="student-name">Vũ</span>
+                </div>
+              <div class="dropdown-menu dropdown-menu-right">
+                <div class="dropdown-title">Hành động</div>
+                <a href="#" class="dropdown-item has-icon text-danger">
+                  <i class="fas fa-sign-out-alt"></i> Đăng xuất
+                </a>
+              </div>
+            </li>
+          </ul>
+        </nav>
+        <div class="main-sidebar">
+          <aside id="sidebar-wrapper">
+            <div class="sidebar-brand">
+              <a href="index.html">Ký túc xá</a>
+            </div>
+            <div class="sidebar-brand sidebar-brand-sm">
+              <a href="index.html">KTX</a>
+            </div>
+            <ul class="sidebar-menu">
+              <li class="menu-header">Tổng quan</li>
+              <li class="nav-item dropdown active">
+                <a href="#" class="nav-link"
+                  ><i class="fas fa-info"></i><span>Thông tin</span></a
+                >
+              </li>
+              <li class="nav-item dropdown ">
+                <a href="#" class="nav-link"
+                  ><i class="fas fa-file-alt"></i><span>Thông báo<span class="badge badge-primary" id="notification-count" >1</span></span></a
+                >
+              </li>
+              <li class="menu-header">Thông tin phòng trọ</li>
+              <li class="nav-item dropdown">
+                <a href="#" class="nav-link" data-toggle="dropdown"
+                  ><i class="fas fa-user-friends"></i> <span>Bạn cùng trọ</span></a
+                >
+              </li>
+              <li class="nav-item dropdown">
+                <a href="#" class="nav-link" data-toggle="dropdown"
+                  ><i class="fas fa-couch"></i> <span>Cơ sở vật chất</span></a
+                >
+              </li>
+              <li class="nav-item dropdown">
+                <a href="#" class="nav-link"
+                  ><i class="fas fa-dollar-sign"></i> <span>Theo dõi tiền trọ</span></a
+                >
+              </li>
+              <li class="menu-header">Hỗ trợ</li>
+              <li class="nav-item dropdown">
+                <a href="#" class="nav-link"
+                  ><i class="fas fa-paper-plane"></i> <span>Gửi yêu cầu</span></a
+                >
+              </li>
+              <li class="nav-item dropdown">
+                <a href="#" class="nav-link"
+                  ><i class="far fa-file-alt"></i> <span>Yêu cầu đã gửi</span></a
+                >
+              </li>
+              <li class="menu-header">Khác</li>
+              <li class="nav-item dropdown">
+                <a href="#" class="nav-link"
+                  ><i class="far fa-user"></i> <span>Thông tin cán vụ</span></a
+                >
+              </li>
+          </aside>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+          <section class="section">
+            <div class="section-header">
+              <h1>Thông tin</h1>
+            </div>
+            <div class="section-body">
+              <div class="row">
+                <div class="col-12 col-md-12 col-lg-7">
+                  <div class="card">
+                    <div class="card-header">
+                      <h4>Thông tin sinh viên</h4>
+                      <div class="card-header-action">
+                        <a href="#" class="btn btn-primary btn-round">Chỉnh sửa...</a>
+                    </div>
+                    </div>
+                  <div class="card-body">
+                    <div class="card author-box card-primary">
+                      <div class="card-body">
+                        <div class="author-box-left">
+                          <img alt="image" src="../assets/img/avatar/avatar-1.png" class="rounded-circle author-box-picture">
+                          <div class="clearfix"></div>
+                        </div>
+                        <div class="author-box-details">
+                          <div class="author-box-name">
+                            <p><strong>Họ và tên: </strong><span id="student-name">Trần Đình Vũ</span></p>
+                            <p><strong>Mã số sinh viên: </strong><span id="student-id">20176126</span></p>
+                            <p><strong>Ngày sinh: </strong><span id="student-birth">13/12/1999</span></p>
+                            <p><strong>Địa chỉ: </strong><span id="student-address">Số 8 ngách 42 ngõ Vạn Ứng, Khâm Thiên, Hà Nội</span></p>
+                            <p><strong>Thông tin liên lạc: </strong><span id="student-contact">0382212381</span></p>
+                            <p><strong>Ngày đăng ký:</strong> </strong><span id="student-register-date">3/8/2018</span></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-header">
+                      <h4>Phòng trọ</h4>
+                    </div>
+                  <div class="card-body">
+                    <div class="card author-box card-primary">
+                      <div class="card-body">
+                        <div class="author-box-details" id="info-description">
+                          <div class="author-box-name">
+                            <p><strong>Phòng trọ: </strong><span id="student-room">309 B3</span></p>
+                            <p><strong>Tiền trọ: </strong><span id="room-fee">1,000,000</span>đ</p>
+                            <p><strong>Hạn đóng tiền: </strong><span id="due-date">05/06/2020</span></p>
+                            <p><strong>Trạng thái: </strong><span id="fee-status">Chưa đóng</span></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-12 col-lg-5">
+                  <div class="card">
+                    <div class="card-header">
+                      <h4>Lịch</h4>
+                    </div>
+                    <div class="card-body">
+                      <div class="fc-overflow">
+                        <div id="calendar" class="fc-overflow"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                  
+              </div>
+            </div>
+          </section>
+        </div>
+        <footer class="main-footer">
+          <div class="footer-left">
+            Copyright &copy; 2018
+            <div class="bullet"></div>
+            Design By <a href="https://nauval.in/">Muhamad Nauval Azhar</a>
+          </div>
+          <div class="footer-right">
+            2.3.0
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <!-- General JS Scripts -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="../assets/js/stisla.js"></script>
+
+    <!-- JS Libraies -->
+
+    <!-- Template JS File -->
+    <script src="../assets/js/scripts.js"></script>
+    <script src="../assets/js/custom.js"></script>
+
+    <!-- Page Specific JS File -->
+  </body>
+</html>
