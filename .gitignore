@@ -12,7 +12,6 @@
 *.out
 
 # Dependency directories (remove the comment below to include it)
-go.mod
 go.sum
 
 # astah file
