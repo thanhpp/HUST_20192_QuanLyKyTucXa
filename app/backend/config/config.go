@@ -10,13 +10,14 @@ var (
 	config *viper.Viper
 
 	dbConfig *DBConfig
-	rdConfig *RDConfig
+	rdConfig = new(RDConfig)
 )
 
 //Init takes the environment starts the viper
 func Init() {
 	configInit()
 	dbConfigInit()
+	redisConfigInit()
 }
 
 //GetConfig return the Viper to read config from file

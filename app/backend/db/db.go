@@ -22,6 +22,7 @@ func Init() {
 	if err != nil {
 		log.Printf("Can not connect to the database : %+v", err)
 	}
+
 }
 
 //GetDB return a handler with the db

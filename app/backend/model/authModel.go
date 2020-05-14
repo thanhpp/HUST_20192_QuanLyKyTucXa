@@ -2,7 +2,10 @@ package model
 
 import (
 	"DormAppBackend/db"
+	"fmt"
+	"net/http"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/dgrijalva/jwt-go"
@@ -95,4 +98,97 @@ func (authM AuthModel) CreateAuth(userID uint, tokenDetails *TokenDetails) error
 		return errRefresh
 	}
 	return nil
+}
+
+//ExtractToken get token from request header
+func (authM AuthModel) ExtractToken(r *http.Request) string {
+	bearToken := r.Header.Get("Authorization")
+	strArr := strings.Split(bearToken, " ")
+	if len(strArr) == 2 {
+		return strArr[1]
+	}
+	return ""
+}
+
+//VerifyToken validation token
+func (authM AuthModel) VerifyToken(r *http.Request) (*jwt.Token, error) {
+	tokenString := authM.ExtractToken(r)
+
+	token, err := jwt.Parse(tokenString,
+		func(token *jwt.Token) (interface{}, error) {
+			if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
+				return nil, fmt.Errorf("unexpected signing method : %+v", token.Header["alg"])
+			}
+			return []byte("Access_token_secret"), nil
+		})
+
+	if err != nil {
+		return nil, err
+	}
+
+	return token, nil
+}
+
+//TokenValid valid token of a http request
+func (authM AuthModel) TokenValid(r *http.Request) error {
+	token, err := authModel.VerifyToken(r)
+	if err != nil {
+		return err
+	}
+
+	if _, ok := token.Claims.(jwt.Claims); !ok && token.Valid {
+		return err
+	}
+
+	return nil
+}
+
+//ExtractTokenMetadata get UUID from token
+func (authM AuthModel) ExtractTokenMetadata(r *http.Request) (*AccessDetails, error) {
+	token, err := authM.VerifyToken(r)
+
+	if err != nil {
+		return nil, err
+	}
+
+	claims, ok := token.Claims.(jwt.MapClaims)
+	if ok && token.Valid {
+		accessUUID, ok := claims["access_uuid"].(string)
+		if !ok {
+			return nil, err
+		}
+
+		userID, err := strconv.ParseInt(fmt.Sprintf("%.f", claims["user_id"]), 10, 64)
+		if err != nil {
+			return nil, err
+		}
+
+		return &AccessDetails{
+			AccessUUID: accessUUID,
+			UserID:     userID,
+		}, nil
+	}
+
+	return nil, err
+}
+
+//FetchAuth get userID from UUID
+func (authM AuthModel) FetchAuth(authD *AccessDetails) (int64, error) {
+	userid, err := db.GetRedisClient().Get(authD.AccessUUID).Result()
+	if err != nil {
+		return 0, err
+	}
+	userID, _ := strconv.ParseInt(userid, 10, 64)
+
+	return userID, nil
+}
+
+//DeleteAuth rermove auth from redis
+func (authM AuthModel) DeleteAuth(givenUUID string) (int64, error) {
+	deleted, err := db.GetRedisClient().Del(givenUUID).Result()
+	if err != nil {
+		return 0, err
+	}
+
+	return deleted, nil
 }

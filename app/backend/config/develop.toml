@@ -9,5 +9,5 @@ DBPort="3306"
 DBName = "dormapp"
 
 # Redis
-RedisHost = "a"
-RedisPassword = "123"
+RedisHost = "127.0.0.1:6379"
+RedisPassword = ""

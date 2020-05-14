@@ -26,9 +26,9 @@
 
 - Thư viện dùng cho việc mã hóa, hash trong Go.
 
-5.[uuid](github.com/twinj/uuid)
+5.[uuid](https://github.com/twinj/uuid)
 
-6.[Jwt-go](github.com/dgrijalva/jwt-go)
+6.[Jwt-go](https://github.com/dgrijalva/jwt-go)
 
 ## Danh sách các API đang cung cấp
 
@@ -72,8 +72,8 @@
     ```JSON
     {
         "message": "login success",
-        "user":    user,
-        "token":   token,
+        "user":    "user",
+        "token":   "token",
     }
     ```
 
@@ -81,8 +81,8 @@
 
     ```JSON
     {
-        "access_token": ,
-        "refresh_token":,
+        "access_token": "",
+        "refresh_token": "",
     }
     ```
 
@@ -90,12 +90,12 @@
 
     ```JSON
     {
-        "ID":,
-        "CreatedAt":,
-        "UpdatedAt",
-        "DeletedAt",
-        "username":,
-        "password":,
+        "ID": "",
+        "CreatedAt":"",
+        "UpdatedAt":"",
+        "DeletedAt":"",
+        "username":"",
+        "password":"",
     }
     ```
 

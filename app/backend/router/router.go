@@ -20,13 +20,11 @@ func NewRouter() *gin.Engine {
 
 	//TODO: Auth middlewares
 
-	v1 := router.Group("v1")
+	userGroup := router.Group("user")
+	userGroup.Use()
 	{
-		userGroup := v1.Group("user")
-		{
-			userCtrl := new(controller.UserController)
-			userGroup.GET("/:usr", userCtrl.GetUserByUsername)
-		}
+		userCtrl := new(controller.UserController)
+		userGroup.POST("/login", userCtrl.Login)
 	}
 
 	return router

@@ -9,5 +9,6 @@ import (
 func main() {
 	config.Init()
 	db.Init()
+	db.RedisClientInit("1")
 	server.Init()
 }
