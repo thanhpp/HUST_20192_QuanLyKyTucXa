@@ -2,6 +2,22 @@
 
 ## MỤC LỤC
 
+### [I. Thiết kế hệ thống](#thiết-kế-hế-thống)
+
+### [II. Các thư viện ngoài sử dụng](#các-thư-viện-ngoài-sử-dụng)
+
+### [III. Danh sách các API đang cung cấp](#danh-sách-các-api-đang-cung-cấp)
+
+#### [health](#health)
+
+#### [user](#user)
+
+##### [1. login](#1-login(POST))
+
+##### [2. logout](#2-logout(GET))
+
+### [TODO LIST](#todo-list)
+
 ## Thiết kế hệ thống
 
 ![BackEndDesign](img/DormAppBackendDesign.png)
@@ -34,70 +50,77 @@
 
 ### health
 
-1. check: kiểm tra hoạt động của server
+#### 1. check: kiểm tra hoạt động của server
 
 ### user
 
-1. POST - login: đăng nhập:
+#### 1. login(POST)
 
-    1.1 Login form:
+1.1 Login form:
 
-    ```JSON
-    {
-        "username" : "text",
-        "password" : "text",
-    }
-    ```
+```JSON
+{
+    "username" : "text",
+    "password" : "text",
+}
+```
 
-    1.2 Chi tiết:
+1.2 Chi tiết:
 
-    - Token Expire time : 15 phút
+- Token Expire time : 15 phút
 
-    - Refresh Token Expire time :  1 tuần
+- Refresh Token Expire time :  1 tuần
 
-    1.3 Reply JSON:
+1.3 Reply JSON:
 
-    ```JSON
-    {
-        "message": "Invalid form",
-    }
-    ```
+```JSON
+{
+    "message": "Invalid form",
+}
+```
 
-    ```JSON
-    {
-        "message": "Invalid login details",
-    }
-    ```
+```JSON
+{
+    "message": "Invalid login details",
+}
+```
 
-    ```JSON
-    {
-        "message": "login success",
-        "user":    "user",
-        "token":   "token",
-    }
-    ```
+```JSON
+{
+    "message": "login success",
+    "user":    "user",
+    "token":   "token",
+}
+```
 
-    1.4. Token:
+1.4. Token:
 
-    ```JSON
-    {
-        "access_token": "",
-        "refresh_token": "",
-    }
-    ```
+```JSON
+{
+    "access_token": "",
+    "refresh_token": "",
+}
+```
 
-    1.5. User:
+1.5. User:
 
-    ```JSON
-    {
-        "ID": "",
-        "CreatedAt":"",
-        "UpdatedAt":"",
-        "DeletedAt":"",
-        "username":"",
-        "password":"",
-    }
-    ```
+```JSON
+{
+    "ID": "",
+    "CreatedAt":"",
+    "UpdatedAt":"",
+    "DeletedAt":"",
+    "username":"",
+    "password":"",
+}
+```
+
+1.6. Hình ảnh :
+![LoginRequest](img/UserLoginRequest.png)
+
+##### 2. logout(GET)
+
+- [ ] Authorize Header
 
 ## TODO LIST
 

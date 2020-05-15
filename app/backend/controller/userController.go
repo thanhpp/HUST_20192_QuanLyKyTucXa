@@ -15,7 +15,7 @@ var userModel = new(model.User)
 type UserController struct{}
 
 //GetUserByUsername return an user by username
-func (u UserController) GetUserByUsername(c *gin.Context) {
+func (u UserController) getUserByUsername(c *gin.Context) {
 	if c.Param("usr") != "" {
 		user := new(model.User)
 
@@ -68,3 +68,28 @@ func (u UserController) Login(c *gin.Context) {
 		})
 	}
 }
+
+//Logout remove user accessToken
+func (u UserController) Logout(c *gin.Context) {
+	au, err := authModel.ExtractTokenMetadata(c.Request)
+	if err != nil {
+		c.JSON(http.StatusUnauthorized, gin.H{
+			"message": "User not logged in",
+		})
+		return
+	}
+
+	deleted, delErr := authModel.DeleteAuth(au.AccessUUID)
+	if delErr != nil || deleted == 0 {
+		c.JSON(http.StatusUnauthorized, gin.H{
+			"message": "Invalid request",
+		})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"message": "Logout successfully",
+	})
+}
+
+//TODO: Register
