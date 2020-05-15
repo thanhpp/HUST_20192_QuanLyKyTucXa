@@ -10,11 +10,13 @@
 
 #### [health](#health)
 
+##### [1. check](#1-check-kiểm-tra-hoạt-động-của-server)
+
 #### [user](#user)
 
-##### [1. login](#1-login(POST))
+##### [1. login](#1-loginpost)
 
-##### [2. logout](#2-logout(GET))
+##### [2. logout](#2-logoutget)
 
 ### [TODO LIST](#todo-list)
 
