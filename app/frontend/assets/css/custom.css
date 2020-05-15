@@ -21,6 +21,18 @@
   margin-left: 0px;
 }
 
+.article-general{
+  display:block;
+  overflow:hidden;
+  white-space: nowrap;
+  text-overflow:ellipsis;
+  width: 100%;
+}
+
+/* .article-container{
+  
+} */
+
 @media only screen and (max-width: 769px) {
   #login-background {
     display: none;

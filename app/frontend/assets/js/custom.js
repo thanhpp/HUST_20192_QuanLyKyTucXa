@@ -15,3 +15,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
   calendar.render();
 });
+
+$('#xemthem').fireModal({
+  size: "modal-xl",
+  animation: true,
+  center: true,
+  title: 'Thông báo tu sửa một số khu vực của Ký túc xá',
+  body: $("#modal-content-part"),
+});
