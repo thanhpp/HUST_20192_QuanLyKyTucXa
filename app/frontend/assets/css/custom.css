@@ -29,6 +29,17 @@
   width: 100%;
 }
 
+.invisible-button {
+  background: transparent;
+  border: none !important;
+  font-size:0;
+}
+
+#noi-dung-yeu-cau {
+  width: 100%;
+  height: 150px;
+}
+
 /* .article-container{
   
 } */

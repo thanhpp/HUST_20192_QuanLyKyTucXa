@@ -23,3 +23,8 @@ $('#xemthem').fireModal({
   title: 'Thông báo tu sửa một số khu vực của Ký túc xá',
   body: $("#modal-content-part"),
 });
+
+// $('#submit-yeu-cau').fireModal({
+//   title: 'Thông báo',
+//   body: 'Đơn yêu cầu của bạn đã được gửi!'
+// });
