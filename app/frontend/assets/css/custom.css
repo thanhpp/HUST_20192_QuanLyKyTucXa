@@ -21,6 +21,29 @@
   margin-left: 0px;
 }
 
+.article-general{
+  display:block;
+  overflow:hidden;
+  white-space: nowrap;
+  text-overflow:ellipsis;
+  width: 100%;
+}
+
+.invisible-button {
+  background: transparent;
+  border: none !important;
+  font-size:0;
+}
+
+#noi-dung-yeu-cau {
+  width: 100%;
+  height: 150px;
+}
+
+/* .article-container{
+  
+} */
+
 @media only screen and (max-width: 769px) {
   #login-background {
     display: none;
