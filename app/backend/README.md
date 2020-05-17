@@ -20,6 +20,8 @@
 
 ##### [2. logout](#2-logoutget)
 
+##### [3. register](#3-registerpost)
+
 ### [TODO LIST](#todo-list)
 
 ## Thiết kế hệ thống
@@ -133,9 +135,34 @@
 ##### 2. logout(GET)
 
 2.1. Hình ảnh :
-![LogoutRequest](img/UserLogout)
+![LogoutRequest](img/UserLogout.png)
 
-2.2. Reply JSON :
+2.2. Reply JSON:
+
+```JSON
+{
+    "message": "Logout successfully"
+}
+```
+
+```JSON
+{
+    "message": "User not logged in"
+}
+```
+
+##### 3. register(POST)
+
+3.1. Register form :
+
+```JSON
+{
+    "username" : " ",
+    "password" : " "
+}
+```
+
+3.2. Reply JSON :
 
 ```JSON
 {
@@ -162,6 +189,9 @@
     }
 }
 ```
+
+3.1. Hình ảnh :
+![RegisterRequest](img/UserRegister.png)
 
 - [x] Authorize Header
 

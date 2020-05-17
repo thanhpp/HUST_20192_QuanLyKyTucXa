@@ -85,7 +85,7 @@ func (u *User) Register(form forms.RegisterForm) (*User, error) {
 		return nil, errors.New("User existed")
 	}
 
-	newUser.Password, err = hashPassword(u.Password)
+	newUser.Password, err = hashPassword(newUser.Password)
 	if err != nil {
 		return nil, err
 	}
