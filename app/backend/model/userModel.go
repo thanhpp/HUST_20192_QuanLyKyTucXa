@@ -4,6 +4,7 @@ import (
 	"DormAppBackend/forms"
 	"errors"
 	"log"
+	"strings"
 
 	"DormAppBackend/db"
 
@@ -64,24 +65,49 @@ func (u User) Login(form forms.LoginForm) (user User, token Token, err error) {
 }
 
 //Register receive data and create new user in db
-func (u *User) Register() error {
+func (u *User) Register(form forms.RegisterForm) (*User, error) {
 	var err error
 	db := db.GetDB()
 	// defer db.Close()
 
-	u.Password, err = hashPassword(u.Password)
+	//check space in form
+	if checkInputFormat(form.Username) || strings.Contains(form.Password, " ") {
+		return nil, errors.New("Invalid format")
+	}
+
+	newUser := &User{
+		Username: form.Username,
+		Password: form.Password,
+	}
+
+	var checkUser = new(User)
+	if !db.Where("username = ?", form.Username).Find(&checkUser).RecordNotFound() {
+		return nil, errors.New("User existed")
+	}
+
+	newUser.Password, err = hashPassword(u.Password)
 	if err != nil {
-		return err
+		return nil, err
 	}
 
-	check := db.NewRecord(u)
+	check := db.NewRecord(newUser)
 	if check != true {
-		return errors.New("User existed")
+		return nil, errors.New("User existed")
 	}
 
-	db.Create(u)
+	db.Create(newUser)
 
-	return err
+	return newUser, err
+}
+
+func checkInputFormat(inputString string) bool {
+	checkList := []string{" ", "*", "#", "/", "\\"}
+	for _, check := range checkList {
+		if strings.Contains(inputString, check) {
+			return true
+		}
+	}
+	return false
 }
 
 //CheckPass check if input password is in the db

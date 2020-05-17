@@ -22,6 +22,7 @@ func NewRouter() *gin.Engine {
 	userGroup.Use()
 	{
 		userCtrl := new(controller.UserController)
+		userGroup.POST("/register", userCtrl.Register)
 		userGroup.POST("/login", userCtrl.Login)
 		userGroup.GET("/logout", userCtrl.Logout)
 	}

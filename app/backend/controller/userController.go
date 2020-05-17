@@ -93,3 +93,30 @@ func (u UserController) Logout(c *gin.Context) {
 }
 
 //TODO: Register
+
+//Register create new user
+func (u UserController) Register(c *gin.Context) {
+	var registerForm forms.RegisterForm
+	if c.ShouldBindJSON(&registerForm) != nil {
+		c.JSON(http.StatusNotAcceptable, gin.H{
+			"message": "Invalid form",
+		})
+		c.Abort()
+		return
+	}
+
+	user, err := userModel.Register(registerForm)
+	if err != nil {
+		c.JSON(http.StatusNotAcceptable, gin.H{
+			"message": err.Error(),
+		})
+		c.Abort()
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"message": "Register successfully",
+		"user":    user,
+	})
+
+}
