@@ -1,6 +1,7 @@
 package model
 
 import (
+	"DormAppBackend/forms"
 	"testing"
 
 	"DormAppBackend/config"
@@ -22,15 +23,19 @@ func TestHashPassword(t *testing.T) {
 	}
 }
 
-func TestRegister(t *testing.T) {
+func TestRegister1(t *testing.T) {
 	config.Init()
 	db.Init()
 
 	newUser := &User{
-		Username: "test 1",
+		Username: "test /",
 		Password: "test abc",
 	}
-	err := newUser.Register()
+
+	_, err := newUser.Register(forms.RegisterForm{
+		Username: newUser.Username,
+		Password: newUser.Password,
+	})
 	if err != nil {
 		t.Error(err)
 	}

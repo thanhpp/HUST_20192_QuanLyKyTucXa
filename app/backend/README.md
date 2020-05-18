@@ -8,6 +8,8 @@
 
 ### [III. Danh sách các API đang cung cấp](#danh-sách-các-api-đang-cung-cấp)
 
+#### [POSTMAN](#POSTMAN)
+
 #### [health](#health)
 
 ##### [1. check](#1-check-kiểm-tra-hoạt-động-của-server)
@@ -17,6 +19,8 @@
 ##### [1. login](#1-loginpost)
 
 ##### [2. logout](#2-logoutget)
+
+##### [3. register](#3-registerpost)
 
 ### [TODO LIST](#todo-list)
 
@@ -49,6 +53,8 @@
 6.[Jwt-go](https://github.com/dgrijalva/jwt-go)
 
 ## Danh sách các API đang cung cấp
+
+### [POSTMAN](https://www.getpostman.com/collections/8894497461d3adc2ec1e)
 
 ### health
 
@@ -120,9 +126,74 @@
 1.6. Hình ảnh :
 ![LoginRequest](img/UserLoginRequest.png)
 
+1.7. Cách xác thực :
+
+- [Bearer Token](https://learning.postman.com/docs/postman/sending-api-requests/authorization/#bearer-token)
+
+- [Mẫu postman Request](https://www.postman.com/collections/7f941b400a88ddd9c137)
+
 ##### 2. logout(GET)
 
-- [ ] Authorize Header
+2.1. Hình ảnh :
+![LogoutRequest](img/UserLogout.png)
+
+2.2. Reply JSON:
+
+```JSON
+{
+    "message": "Logout successfully"
+}
+```
+
+```JSON
+{
+    "message": "User not logged in"
+}
+```
+
+##### 3. register(POST)
+
+3.1. Register form :
+
+```JSON
+{
+    "username" : " ",
+    "password" : " "
+}
+```
+
+3.2. Reply JSON :
+
+```JSON
+{
+    "message": "Invalid format"
+}
+```
+
+```JSON
+{
+    "message": "Username existed"
+}
+```
+
+```JSON
+{
+    "message": " ",
+    "user": {
+        "ID": 0,
+        "CreatedAt": " ",
+        "UpdatedAt": " ",
+        "DeletedAt": null,
+        "username": " ",
+        "password": " "
+    }
+}
+```
+
+3.1. Hình ảnh :
+![RegisterRequest](img/UserRegister.png)
+
+- [x] Authorize Header
 
 ## TODO LIST
 

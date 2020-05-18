@@ -18,13 +18,16 @@ func NewRouter() *gin.Engine {
 		healthGroup.GET("check", healthCtrl.Check)
 	}
 
+	// authMiddleware := new(middleware.AuthMiddleware)
 	userGroup := router.Group("user")
 	userGroup.Use()
 	{
 		userCtrl := new(controller.UserController)
+		userGroup.POST("/register", userCtrl.Register)
 		userGroup.POST("/login", userCtrl.Login)
 		userGroup.GET("/logout", userCtrl.Logout)
 	}
 
+	router.NoRoute()
 	return router
 }
