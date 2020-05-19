@@ -29,6 +29,18 @@ func (authCtrl AuthController) TokenValid(c *gin.Context) {
 	}
 }
 
+//CheckRoleLevel check if role is level 1 access
+func (authCtrl AuthController) CheckRoleLevel(c *gin.Context, level int64) {
+	role, err := authModel.GetRoleFromToken(c.Request)
+	if err != nil || role != level {
+		c.JSON(http.StatusUnauthorized, gin.H{
+			"message": "Invalid role",
+		})
+		c.Abort()
+		return
+	}
+}
+
 //Refresh renew the token
 func (authCtrl AuthController) Refresh(c *gin.Context) {
 	var tokenForm forms.Token
@@ -86,6 +98,14 @@ func (authCtrl AuthController) Refresh(c *gin.Context) {
 			return
 		}
 
+		role, err := strconv.ParseInt((fmt.Sprintf("%f", claims["role"])), 10, 64)
+		if err != nil {
+			c.JSON(http.StatusUnauthorized, gin.H{
+				"message": "Invalid authorization, please login",
+			})
+			return
+		}
+
 		//Remove the previous Refresh Token
 		deleted, delErr := authModel.DeleteAuth(refreshUUID)
 		if delErr != nil || deleted == 0 {
@@ -96,7 +116,7 @@ func (authCtrl AuthController) Refresh(c *gin.Context) {
 		}
 
 		//Create new refresh Token and Access Token
-		ts, createErr := authModel.CreateToken(uint(userID))
+		ts, createErr := authModel.CreateToken(uint(userID), uint(role))
 		if createErr != nil {
 			c.JSON(http.StatusUnauthorized, gin.H{
 				"message": "Invalid authorization, please login",

@@ -19,6 +19,7 @@ var (
 // User user type
 type User struct {
 	gorm.Model
+	Role     int    `gorm:"not null; default:0" json:"role"`
 	Username string `gorm:"not null;unique" json:"username"`
 	Password string `gorm:"type:text;not null" json:"password"`
 }
@@ -49,7 +50,7 @@ func (u User) Login(form forms.LoginForm) (user User, token Token, err error) {
 	}
 
 	//Generate JWT token
-	tokenDetails, err := authModel.CreateToken(user.ID)
+	tokenDetails, err := authModel.CreateToken(user.ID, uint(user.Role))
 	if err != nil {
 		return user, token, errors.New("Can not create token")
 	}

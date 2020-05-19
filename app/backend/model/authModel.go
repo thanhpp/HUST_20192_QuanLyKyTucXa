@@ -23,11 +23,13 @@ type TokenDetails struct {
 	RefreshUUID  string
 	AtExpires    int64
 	RtExpires    int64
+	Role         int64
 }
 
 //AccessDetails ...
 type AccessDetails struct {
 	AccessUUID string
+	Role       int64
 	UserID     int64
 }
 
@@ -38,7 +40,7 @@ type Token struct {
 }
 
 //CreateToken use user ID to create a token
-func (authM *AuthModel) CreateToken(userID uint) (*TokenDetails, error) {
+func (authM *AuthModel) CreateToken(userID uint, role uint) (*TokenDetails, error) {
 
 	tokenDetails := &TokenDetails{}
 	tokenDetails.AtExpires = time.Now().Add(time.Minute * 15).Unix()
@@ -54,6 +56,7 @@ func (authM *AuthModel) CreateToken(userID uint) (*TokenDetails, error) {
 	atClaims["access_uuid"] = tokenDetails.AccessUUID
 	atClaims["user_id"] = userID
 	atClaims["exp"] = tokenDetails.AtExpires
+	atClaims["role"] = role
 
 	at := jwt.NewWithClaims(jwt.SigningMethodHS256, atClaims)
 	//FIXME: Get access token config
@@ -65,9 +68,11 @@ func (authM *AuthModel) CreateToken(userID uint) (*TokenDetails, error) {
 
 	//Create refresh token
 	rtClaims := jwt.MapClaims{}
+	atClaims["authorized"] = true
 	rtClaims["refresh_uuid"] = tokenDetails.RefreshUUID
 	rtClaims["user_id"] = userID
 	rtClaims["exp"] = tokenDetails.RtExpires
+	rtClaims["role"] = role
 	rt := jwt.NewWithClaims(jwt.SigningMethodHS256, rtClaims)
 	//FIXME: Get refresh token config
 	//FIXME: log format
@@ -146,7 +151,6 @@ func (authM AuthModel) TokenValid(r *http.Request) error {
 //ExtractTokenMetadata get UUID from token
 func (authM AuthModel) ExtractTokenMetadata(r *http.Request) (*AccessDetails, error) {
 	token, err := authM.VerifyToken(r)
-
 	if err != nil {
 		return nil, err
 	}
@@ -163,13 +167,39 @@ func (authM AuthModel) ExtractTokenMetadata(r *http.Request) (*AccessDetails, er
 			return nil, err
 		}
 
+		role, err := strconv.ParseInt(fmt.Sprintf("%.f", claims["role"]), 10, 64)
+		if err != nil {
+			return nil, err
+		}
+
 		return &AccessDetails{
 			AccessUUID: accessUUID,
 			UserID:     userID,
+			Role:       role,
 		}, nil
 	}
 
 	return nil, err
+}
+
+//GetRoleFromToken get role comes with token
+func (authM AuthModel) GetRoleFromToken(r *http.Request) (int64, error) {
+	token, err := authM.VerifyToken(r)
+	if err != nil {
+		return -1, err
+	}
+
+	claims, ok := token.Claims.(jwt.MapClaims)
+	if ok && token.Valid {
+		role, err := strconv.ParseInt(fmt.Sprintf("%.f", claims["role"]), 10, 64)
+		if err != nil {
+			return 0, err
+		}
+
+		return role, nil
+	}
+
+	return -1, err
 }
 
 //FetchAuth get userID from UUID

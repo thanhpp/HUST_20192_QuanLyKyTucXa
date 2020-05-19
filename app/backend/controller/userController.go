@@ -15,7 +15,7 @@ var userModel = new(model.User)
 type UserController struct{}
 
 //GetUserByUsername return an user by username
-func (u UserController) getUserByUsername(c *gin.Context) {
+func (u UserController) GetUserByUsername(c *gin.Context) {
 	if c.Param("usr") != "" {
 		user := new(model.User)
 
@@ -63,8 +63,9 @@ func (u UserController) Login(c *gin.Context) {
 	} else {
 		c.JSON(http.StatusOK, gin.H{
 			"message": "login success",
-			"user":    user,
-			"token":   token,
+			"role":    user.Role,
+			// "user":    user,
+			"token": token,
 		})
 	}
 }
@@ -91,8 +92,6 @@ func (u UserController) Logout(c *gin.Context) {
 		"message": "Logout successfully",
 	})
 }
-
-//TODO: Register
 
 //Register create new user
 func (u UserController) Register(c *gin.Context) {

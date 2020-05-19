@@ -96,7 +96,7 @@
 ```JSON
 {
     "message": "login success",
-    "user":    "user",
+    "role":    "role",
     "token":   "token",
 }
 ```
@@ -194,6 +194,9 @@
 ![RegisterRequest](img/UserRegister.png)
 
 - [x] Authorize Header
+
+### lv0(level 0 - sinh viên)
+
 
 ## TODO LIST
 

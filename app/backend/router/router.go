@@ -2,6 +2,7 @@ package router
 
 import (
 	"DormAppBackend/controller"
+	"DormAppBackend/middleware"
 
 	"github.com/gin-gonic/gin"
 )
@@ -20,12 +21,19 @@ func NewRouter() *gin.Engine {
 
 	// authMiddleware := new(middleware.AuthMiddleware)
 	userGroup := router.Group("user")
-	userGroup.Use()
 	{
 		userCtrl := new(controller.UserController)
 		userGroup.POST("/register", userCtrl.Register)
 		userGroup.POST("/login", userCtrl.Login)
 		userGroup.GET("/logout", userCtrl.Logout)
+	}
+
+	level1 := router.Group("/lv1")
+	var authMid = new(middleware.AuthMiddleware)
+	{
+		userCtrl := new(controller.UserController)
+		level1.Use(authMid.CheckRoleLevelMid(1))
+		level1.GET("/check/:usr", userCtrl.GetUserByUsername)
 	}
 
 	router.NoRoute()

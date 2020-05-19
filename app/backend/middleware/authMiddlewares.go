@@ -20,3 +20,11 @@ func (auMid AuthMiddleware) TokenAuth() gin.HandlerFunc {
 		c.Next()
 	}
 }
+
+//CheckRoleLevelMid allow user with given role level to access
+func (auMid AuthMiddleware) CheckRoleLevelMid(level int64) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		auCtrl.CheckRoleLevel(c, level)
+		c.Next()
+	}
+}
