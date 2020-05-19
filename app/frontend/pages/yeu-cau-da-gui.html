@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no"
+      name="viewport"
+    />
+    <title>Yêu cầu đã gửi &mdash; KTX</title>
+
+    <!-- General CSS Files -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+      crossorigin="anonymous"
+    />
+
+    <!-- CSS Libraries -->
+   
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/components.css" />
+    <link rel="stylesheet" href="../assets/css/custom.css" />
+    <link rel="stylesheet" href="../assets/css/customCalendar.css" />
+
+
+  </head>
+
+  <body>
+    <div id="app">
+      <div class="main-wrapper">
+        <div class="navbar-bg"></div>
+        <nav class="navbar navbar-expand-lg main-navbar">
+          <form class="form-inline mr-auto">
+            <ul class="navbar-nav mr-3">
+              <li>
+                <a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"
+                  ><i class="fas fa-bars"></i
+                ></a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  data-toggle="search"
+                  class="nav-link nav-link-lg d-sm-none"
+                  ><i class="fas fa-search"></i
+                ></a>
+              </li>
+            </ul>
+            <div class="search-element"></div>
+          </form>
+          <ul class="navbar-nav navbar-right">
+            <li class="dropdown">
+              <a
+                href="#"
+                data-toggle="dropdown"
+                class="nav-link dropdown-toggle nav-link-lg nav-link-user"
+              >
+                <img
+                  alt="image"
+                  src="../assets/img/avatar/avatar-1.png"
+                  class="rounded-circle mr-1"
+                />
+                <div class="d-sm-none d-lg-inline-block">
+                  Chào, <span id="student-name">Vũ</span>
+                </div>
+              <div class="dropdown-menu dropdown-menu-right">
+                <div class="dropdown-title">Hành động</div>
+                <a href="#" class="dropdown-item has-icon text-danger">
+                  <i class="fas fa-sign-out-alt"></i> Đăng xuất
+                </a>
+              </div>
+            </li>
+          </ul>
+        </nav>
+        <div class="main-sidebar">
+          <aside id="sidebar-wrapper">
+            <div class="sidebar-brand">
+              <a href="index.html">Ký túc xá</a>
+            </div>
+            <div class="sidebar-brand sidebar-brand-sm">
+              <a href="index.html">KTX</a>
+            </div>
+            <ul class="sidebar-menu">
+              <li class="menu-header">Tổng quan</li>
+              <li class="nav-item dropdown">
+                <a href="/app/frontend/pages/index.html" class="nav-link"
+                  ><i class="fas fa-info"></i><span>Thông tin</span></a
+                >
+              </li>
+              <li class="nav-item dropdown">
+                <a href="/app/frontend/pages/thong-bao.html" class="nav-link"
+                  ><i class="fas fa-file-alt"></i><span>Thông báo</span></a
+                >
+              </li>
+              <li class="menu-header">Thông tin phòng trọ</li>
+              <li class="nav-item dropdown">
+                <a href="/app/frontend/pages/ban-cung-tro.html" class="nav-link"
+                  ><i class="fas fa-user-friends"></i> <span>Bạn cùng trọ</span></a
+                >
+              </li>
+              <li class="nav-item dropdown">
+                <a href="/app/frontend/pages/co-so-vat-chat.html" class="nav-link"
+                  ><i class="fas fa-couch"></i> <span>Cơ sở vật chất</span></a
+                >
+              </li>
+              <li class="nav-item dropdown">
+                <a href="/app/frontend/pages/theo-doi-tien-tro.html" class="nav-link"
+                  ><i class="fas fa-dollar-sign"></i> <span>Theo dõi tiền trọ</span></a
+                >
+              </li>
+              <li class="menu-header">Hỗ trợ</li>
+              <li class="nav-item dropdown">
+                <a href="/app/frontend/pages/gui-yeu-cau.html" class="nav-link"
+                  ><i class="fas fa-paper-plane"></i> <span>Gửi yêu cầu</span></a
+                >
+              </li>
+              <li class="nav-item dropdown active">
+                <a href="/app/frontend/pages/yeu-cau-da-gui.html" class="nav-link"
+                  ><i class="far fa-file-alt"></i> <span>Yêu cầu đã gửi</span></a
+                >
+              </li>
+              <li class="menu-header">Khác</li>
+              <li class="nav-item dropdown">
+                <a href="/app/frontend/pages/thong-tin-can-vu.html" class="nav-link"
+                  ><i class="far fa-user"></i> <span>Thông tin cán vụ</span></a
+                >
+              </li>
+          </aside>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+          <section class="section">
+            <div class="section-header">
+              <h1>Yêu cầu đã gửi</h1>
+            </div>
+            <div class="section-body">
+              <div class="row">
+                <div class="col-12 ">
+                  <div class="card">
+                    <div class="card-header">
+                      <h4>Thắc mắc về tiền trọ trong đợt dịch Covid-19</h4>
+                    </div>
+                    <div class="card-body">
+                      <div class="media">
+                        <div class="media-body">
+                          <h5 class="mt-0">Trần Đình Vũ</h5>
+                          <p>
+                            <small><span>15/5/2020</span> | <span>20:00</span> </small>
+                          </p>
+                          <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+                          <hr>
+                          <div class="media mt-3">
+                            <a class="pr-3" href="#">
+                            </a>
+                            <div class="media-body">
+                              <h5 class="mt-0">Nguyễn Trọng Hiếu</h5>
+                              <p>
+                                <small><span>15/5/2020</span> | <span>20:30</span> </small>
+                              </p>
+                              <p class="mb-0">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 ">
+                  <div class="card">
+                    <div class="card-header">
+                      <h4>Phản ánh tình trạng muỗi ở phòng KTX</h4>
+                    </div>
+                    <div class="card-body">
+                      <div class="media">
+                        <div class="media-body">
+                          <h5 class="mt-0">Trần Đình Vũ</h5>
+                          <p>
+                            <small><span>13/5/2020</span> | <span>20:00</span> </small>
+                          </p>
+                          <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <footer class="main-footer">
+          <div class="footer-left">
+            Copyright &copy; 2018
+            <div class="bullet"></div>
+            Design By <a href="https://nauval.in/">Muhamad Nauval Azhar</a>
+          </div>
+          <div class="footer-right">
+            2.3.0
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <!-- General JS Scripts -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="../assets/js/stisla.js"></script>
+
+    <!-- JS Libraies -->
+
+    <!-- Template JS File -->
+    <script src="../assets/js/scripts.js"></script>
+    <script src="../assets/js/custom.js"></script>
+
+    <!-- Page Specific JS File -->
+  </body>
+</html>
