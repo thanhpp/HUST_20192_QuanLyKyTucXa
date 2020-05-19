@@ -1,6 +1,5 @@
 # SQL TABLES
 
-
 ## Student table
 
 | Field         | Type             	| Null 	| Key 	| Default  | Extra           |
@@ -28,6 +27,7 @@
 | role       	| int(11)          	| NO   	|     	| 0       	|                	|
 | username   	| varchar(255)     	| NO   	| UNI 	| NULL    	|                	|
 | password   	| text             	| NO   	|     	| NULL    	|                	|
+| user_id   	| int(11)           | NO   	|     	| 0     	|                	|
 
 ## Facilities manage table
 

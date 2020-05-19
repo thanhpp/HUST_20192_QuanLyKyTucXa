@@ -19,6 +19,7 @@ var (
 // User user type
 type User struct {
 	gorm.Model
+	UserID   int    `gorm:"type:int;size:10 ;not null; default:0"`
 	Role     int    `gorm:"not null; default:0" json:"role"`
 	Username string `gorm:"not null;unique" json:"username"`
 	Password string `gorm:"type:text;not null" json:"password"`

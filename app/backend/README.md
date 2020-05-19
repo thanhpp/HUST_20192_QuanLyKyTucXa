@@ -52,6 +52,8 @@
 
 6.[Jwt-go](https://github.com/dgrijalva/jwt-go)
 
+## [SQL TABLES](https://github.com/ThanhPP/HUST_20192_QuanLyKyTucXa/blob/master/app/backend/SQL.md)
+
 ## Danh sách các API đang cung cấp
 
 ### [POSTMAN](https://www.getpostman.com/collections/8894497461d3adc2ec1e)
