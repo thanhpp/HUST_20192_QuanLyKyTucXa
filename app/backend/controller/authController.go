@@ -66,7 +66,7 @@ func (authCtrl AuthController) Refresh(c *gin.Context) {
 	// Token exipred
 	if err != nil {
 		c.JSON(http.StatusUnauthorized, gin.H{
-			"message": "Invalid authorization, please login",
+			"message": "Token exipred, please login again",
 		})
 		return
 	}
@@ -85,23 +85,25 @@ func (authCtrl AuthController) Refresh(c *gin.Context) {
 		refreshUUID, ok := claims["refresh_uuid"].(string)
 		if !ok {
 			c.JSON(http.StatusUnauthorized, gin.H{
-				"message": "Invalid authorization, please login",
+				"message": "Invalid authorization, please login - 1",
 			})
 			return
 		}
 
-		userID, err := strconv.ParseInt((fmt.Sprintf("%f", claims["user_id"])), 10, 64)
+		userID, err := strconv.ParseInt((fmt.Sprintf("%.f", claims["userID"])), 10, 64)
 		if err != nil {
 			c.JSON(http.StatusUnauthorized, gin.H{
-				"message": "Invalid authorization, please login",
+				"message": "Invalid authorization, please login - 2",
+				// "error":   err,
+				// "userID":  userID,
 			})
 			return
 		}
 
-		role, err := strconv.ParseInt((fmt.Sprintf("%f", claims["role"])), 10, 64)
+		role, err := strconv.ParseInt((fmt.Sprintf("%.f", claims["role"])), 10, 64)
 		if err != nil {
 			c.JSON(http.StatusUnauthorized, gin.H{
-				"message": "Invalid authorization, please login",
+				"message": "Invalid authorization, please login - 3",
 			})
 			return
 		}
@@ -110,7 +112,7 @@ func (authCtrl AuthController) Refresh(c *gin.Context) {
 		deleted, delErr := authModel.DeleteAuth(refreshUUID)
 		if delErr != nil || deleted == 0 {
 			c.JSON(http.StatusUnauthorized, gin.H{
-				"message": "Invalid authorization, please login",
+				"message": "Invalid authorization, please login - 4",
 			})
 			return
 		}
@@ -119,7 +121,7 @@ func (authCtrl AuthController) Refresh(c *gin.Context) {
 		ts, createErr := authModel.CreateToken(uint(userID), uint(role))
 		if createErr != nil {
 			c.JSON(http.StatusUnauthorized, gin.H{
-				"message": "Invalid authorization, please login",
+				"message": "Invalid authorization, please login - 5",
 			})
 			return
 		}
@@ -128,7 +130,7 @@ func (authCtrl AuthController) Refresh(c *gin.Context) {
 		saveErr := authModel.CreateAuth(uint(userID), ts)
 		if saveErr != nil {
 			c.JSON(http.StatusUnauthorized, gin.H{
-				"message": "Invalid authorization, please login",
+				"message": "Invalid authorization, please login - 6",
 			})
 			return
 		}
@@ -141,7 +143,7 @@ func (authCtrl AuthController) Refresh(c *gin.Context) {
 
 	} else {
 		c.JSON(http.StatusUnauthorized, gin.H{
-			"message": "Invalid authorization, please login",
+			"message": "Invalid authorization, please login - 7",
 		})
 	}
 

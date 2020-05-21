@@ -23,6 +23,8 @@ func Init() {
 		log.Printf("Can not connect to the database : %+v", err)
 	}
 
+	db.SingularTable(true)
+
 }
 
 //GetDB return a handler with the db

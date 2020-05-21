@@ -8,7 +8,6 @@ import (
 
 	"DormAppBackend/db"
 
-	"github.com/jinzhu/gorm"
 	"golang.org/x/crypto/bcrypt"
 )
 
@@ -18,8 +17,8 @@ var (
 
 // User user type
 type User struct {
-	gorm.Model
-	UserID   int    `gorm:"type:int;size:10 ;not null; default:0"`
+	DefaultModel
+	UserID   int    `gorm:"type:int;size:10 ;not null; default:0; primary_key"`
 	Role     int    `gorm:"not null; default:0" json:"role"`
 	Username string `gorm:"not null;unique" json:"username"`
 	Password string `gorm:"type:text;not null" json:"password"`
@@ -51,13 +50,13 @@ func (u User) Login(form forms.LoginForm) (user User, token Token, err error) {
 	}
 
 	//Generate JWT token
-	tokenDetails, err := authModel.CreateToken(user.ID, uint(user.Role))
+	tokenDetails, err := authModel.CreateToken(uint(user.UserID), uint(user.Role))
 	if err != nil {
 		return user, token, errors.New("Can not create token")
 	}
 
 	//If save to redis success return token to the user
-	saveErr := authModel.CreateAuth(user.ID, tokenDetails)
+	saveErr := authModel.CreateAuth(uint(user.UserID), tokenDetails)
 	if saveErr == nil {
 		token.AccessToken = tokenDetails.AccessToken
 		token.RefreshToken = tokenDetails.RefreshToken
@@ -80,10 +79,10 @@ func (u *User) Register(form forms.RegisterForm) (*User, error) {
 	newUser := &User{
 		Username: form.Username,
 		Password: form.Password,
+		UserID:   form.UserID,
 	}
 
-	var checkUser = new(User)
-	if !db.Where("username = ?", form.Username).Find(&checkUser).RecordNotFound() {
+	if db.Table("user").Where("username LIKE ?", form.Username).Or("user_id = ?", form.UserID).RecordNotFound() {
 		return nil, errors.New("User existed")
 	}
 
@@ -92,8 +91,7 @@ func (u *User) Register(form forms.RegisterForm) (*User, error) {
 		return nil, err
 	}
 
-	check := db.NewRecord(newUser)
-	if check != true {
+	if db.NewRecord(newUser) {
 		return nil, errors.New("User existed")
 	}
 

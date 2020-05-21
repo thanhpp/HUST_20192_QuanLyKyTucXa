@@ -54,7 +54,7 @@ func (authM *AuthModel) CreateToken(userID uint, role uint) (*TokenDetails, erro
 	atClaims := jwt.MapClaims{}
 	atClaims["authorized"] = true
 	atClaims["access_uuid"] = tokenDetails.AccessUUID
-	atClaims["user_id"] = userID
+	atClaims["userID"] = userID
 	atClaims["exp"] = tokenDetails.AtExpires
 	atClaims["role"] = role
 
@@ -70,7 +70,7 @@ func (authM *AuthModel) CreateToken(userID uint, role uint) (*TokenDetails, erro
 	rtClaims := jwt.MapClaims{}
 	atClaims["authorized"] = true
 	rtClaims["refresh_uuid"] = tokenDetails.RefreshUUID
-	rtClaims["user_id"] = userID
+	rtClaims["userID"] = userID
 	rtClaims["exp"] = tokenDetails.RtExpires
 	rtClaims["role"] = role
 	rt := jwt.NewWithClaims(jwt.SigningMethodHS256, rtClaims)
@@ -162,7 +162,7 @@ func (authM AuthModel) ExtractTokenMetadata(r *http.Request) (*AccessDetails, er
 			return nil, err
 		}
 
-		userID, err := strconv.ParseInt(fmt.Sprintf("%.f", claims["user_id"]), 10, 64)
+		userID, err := strconv.ParseInt(fmt.Sprintf("%.f", claims["userID"]), 10, 64)
 		if err != nil {
 			return nil, err
 		}

@@ -64,8 +64,8 @@ func (u UserController) Login(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
 			"message": "login success",
 			"role":    user.Role,
-			// "user":    user,
-			"token": token,
+			"userID":  user.UserID,
+			"token":   token,
 		})
 	}
 }

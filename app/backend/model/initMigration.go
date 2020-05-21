@@ -10,9 +10,8 @@ func InitMigration() {
 	// if db.HasTable(&User{}) {
 	// 	db.DropTable(&User{})
 	// }
-	db.SingularTable(false)
-	db.AutoMigrate(&User{}, &Student{})
 	db.SingularTable(true)
-	db.AutoMigrate(&Facility{}, &FacilitiesManage{})
+	db.AutoMigrate(&User{}, &Student{}, &MoneyManage{}, &Facility{}, &FacilitiesManage{}, &Room{})
+	db.AutoMigrate()
 	// defer db.Close()
 }

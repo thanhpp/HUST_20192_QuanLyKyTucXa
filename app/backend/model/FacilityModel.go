@@ -1,6 +1,10 @@
 package model
 
-import "github.com/jinzhu/gorm"
+import (
+	"DormAppBackend/db"
+
+	"github.com/jinzhu/gorm"
+)
 
 //Facility Facilities
 type Facility struct {
@@ -12,8 +16,31 @@ type Facility struct {
 //FacilitiesManage ...
 type FacilitiesManage struct {
 	gorm.Model
-	FacilityName string `json:"facility name" gorm:"type:text; not null"`
-	Room         int    `json:"room" gorm:"type:int; not null"`
-	Quantity     int    `json:"quantity" gorm:"type:int; not null; default:0"`
-	Logs         string `json:"logs" gorm:"type:text"`
+	RoomID     int    `json:"room" gorm:"type:int; not null"`
+	FacilityID int    `json:"facility_name" gorm:"type:int; not null"`
+	Quantity   int    `json:"quantity" gorm:"type:int; not null; default:0"`
+	Default    int    `json:"default" gorm:"type:int; not null; default:0"`
+	Logs       string `json:"logs" gorm:"type:text"`
+}
+
+//GetFacListByRoom Get facilities list by room id
+func (facManage FacilitiesManage) GetFacListByRoom(roomID int) (*FacilitiesManage, error) {
+	var returnFacManage = new(FacilitiesManage)
+	var err error
+	err = db.GetDB().Where("room_id = ?", roomID).Find(&returnFacManage).Error
+	if err != nil {
+		return nil, err
+	}
+	return returnFacManage, err
+}
+
+//GetFacInfo ...
+func (fac Facility) GetFacInfo(FacID int) (*Facility, error) {
+	var returnFacility = new(Facility)
+	var err error
+	err = db.GetDB().Where("id = ?", FacID).Find(&returnFacility).Error
+	if err != nil {
+		return nil, err
+	}
+	return returnFacility, err
 }
