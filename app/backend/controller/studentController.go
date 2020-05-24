@@ -2,6 +2,7 @@ package controller
 
 import (
 	"DormAppBackend/model"
+	"DormAppBackend/tlog"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -61,5 +62,32 @@ func (sCtrl StudentController) GetFriends(c *gin.Context) {
 		"message":     "Get list friends",
 		"friend_list": returnFrList,
 	})
+}
 
+func (sCtrl StudentController) GetDormMoney(c *gin.Context) {
+	accessDes, err := authModel.ExtractTokenMetadata(c.Request)
+	if err != nil {
+		tlog.Info(tlog.Itf{
+			"message": "Can not extract metadata from token",
+			"error":   err,
+		})
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"message": "Can not get dorm money",
+		})
+		c.Abort()
+		return
+	}
+
+	returnMoneyList, err := studenMod.GetDormMoney(int(accessDes.UserID))
+	if err != nil {
+		tlog.Info(tlog.Itf{
+			"message": "Can not get money list from db",
+			"error":   err,
+		})
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"message":    "Dorm money history",
+		"money_list": returnMoneyList,
+	})
 }

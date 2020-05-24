@@ -2,6 +2,7 @@ package model
 
 import (
 	"DormAppBackend/db"
+	"DormAppBackend/tlog"
 )
 
 //Room ...
@@ -20,6 +21,7 @@ func (r Room) GetRoomInfo(roomID int) (*Room, error) {
 	var err error
 	err = db.GetDB().Where("room_id = ?", roomID).Find(&returnRoom).Error
 	if err != nil {
+		tlog.Error("Can't get room from db", err)
 		return nil, err
 	}
 

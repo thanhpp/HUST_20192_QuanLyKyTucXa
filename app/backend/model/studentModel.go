@@ -2,8 +2,10 @@ package model
 
 import (
 	"DormAppBackend/db"
+	"DormAppBackend/tlog"
 	"errors"
-	"fmt"
+
+	"github.com/jinzhu/gorm"
 )
 
 //Student ...
@@ -20,10 +22,12 @@ type Student struct {
 
 //MoneyManage ...
 type MoneyManage struct {
-	StudentID   int ``
-	Month       int
-	Status      string
-	Description string
+	gorm.Model
+	StudentID   int    `json:"studentid" gorm:"type:int;not null; index"`
+	Month       int    `json:"month" gorm:"type:int; not null"`
+	Year        int    `json:"year" gorm:"type:int; not null"`
+	Status      string `json:"status" gorm:"type:text; not null"`
+	Description string `json:"description" gorm:"type:text"`
 }
 
 //GetStudentInfo based on student id
@@ -43,15 +47,49 @@ func (s Student) GetFriends(studentid int) ([]Student, error) {
 	var roomID int
 	db.GetDB().Table("student").Select("room_id").Where("student_id = ?", studentid).Row().Scan(&roomID)
 
-	rows, err := db.GetDB().Table("student").Where("room_id = ?", &roomID).Not("student_id", studentid).Rows()
+	rows, err := db.GetDB().Model(&Student{}).Where("room_id = ?", roomID).Not("student_id = ?", studentid).Rows()
+	defer rows.Close()
 	if err != nil {
 		return nil, err
 	}
 	for rows.Next() {
 		var std Student
-		rows.Scan(&std)
+		db.GetDB().ScanRows(rows, &std)
+		// fmt.Printf("%+v", std)
 		listStd = append(listStd, std)
 	}
-	fmt.Printf("%+v", listStd)
+
 	return listStd, err
+}
+
+//GetRoomID by student id
+func (s Student) GetRoomID(studentid int) (roomid int, err error) {
+	db.GetDB().Table("student").Select("room_id").Where("student_id = ?", studentid).Row().Scan(&roomid)
+	if roomid == 0 {
+		err = errors.New("Can not find room in DB")
+		tlog.Error("Room ID not available", err)
+		return -1, err
+	}
+	return roomid, nil
+}
+
+//GetDormMoney get dorm money based on student id
+func (s Student) GetDormMoney(studentid int) ([]MoneyManage, error) {
+	var listMoney []MoneyManage
+
+	rows, err := db.GetDB().Table("money_manage").Where("student_id = ?", studentid).Rows()
+	defer rows.Close()
+	if err != nil {
+		tlog.Error("Can not query money_manage from db", err)
+		return nil, err
+	}
+
+	for rows.Next() {
+		var monMng MoneyManage
+		db.GetDB().ScanRows(rows, &monMng)
+
+		listMoney = append(listMoney, monMng)
+	}
+
+	return listMoney, nil
 }

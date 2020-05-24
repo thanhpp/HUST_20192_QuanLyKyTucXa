@@ -3,6 +3,7 @@ package model
 import (
 	"DormAppBackend/config"
 	"DormAppBackend/db"
+	"DormAppBackend/tlog"
 	"testing"
 )
 
@@ -18,7 +19,7 @@ func TestGetStudentInfo(t *testing.T) {
 		RoomID:    1,
 		Priority:  1,
 	}
-	if db.GetDB().NewRecord(testStd) {
+	if err := db.GetDB().Table("student").Select("student_id").Where("student_id = ?", testStd.StudentID).Error; err != nil {
 		if err := db.GetDB().Create(testStd).Error; err != nil {
 			t.Errorf("Can not create user %+v", err)
 		}
@@ -36,5 +37,16 @@ func TestGetFriends(t *testing.T) {
 	testList, err := std.GetFriends(00000003)
 	if err != nil || (len(testList) != 2) {
 		t.Errorf("Err : %+v\nList : %+v", err, testList)
+	}
+}
+
+func TestGetRoomID(t *testing.T) {
+	config.Init()
+	db.Init()
+	tlog.Init()
+	var std = new(Student)
+	roomID, err := std.GetRoomID(1)
+	if err != nil || roomID == -1 {
+		t.Errorf("%+v", err)
 	}
 }

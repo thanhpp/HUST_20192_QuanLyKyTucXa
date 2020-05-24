@@ -5,6 +5,7 @@ import (
 	"DormAppBackend/db"
 	"DormAppBackend/model"
 	"DormAppBackend/server"
+	"DormAppBackend/tlog"
 )
 
 func main() {
@@ -12,5 +13,6 @@ func main() {
 	db.Init()
 	db.RedisClientInit("1")
 	model.InitMigration()
+	tlog.Init()
 	server.Init()
 }
