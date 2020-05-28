@@ -48,6 +48,9 @@
   padding: 5px 20px;
 }
 
+.tabulator-row.tabulator-selectable.tabulator-row-even{
+  background-color: #f2f2f2;
+}
 /* .article-container{
   
 } */

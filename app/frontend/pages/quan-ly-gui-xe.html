@@ -4,8 +4,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport" />
-  <title>Quản lý sinh viên &mdash; KTX</title>
+  <title>Quản lý gửi xe &mdash; KTX</title>
 
+  <!-- <script src='/app/frontend/assets/js/login-validation.js'></script> -->
   <!-- General CSS Files -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
@@ -17,14 +18,12 @@
   <link href="/app/frontend/assets/js/tabulator-master/dist/css/bootstrap/tabulator_bootstrap4.min.css"
     rel="stylesheet">
   <script type="text/javascript" src="/app/frontend/assets/js/tabulator-master/dist/js/tabulator.min.js"></script>
-  <link href='/app/frontend/assets/js/page/fullcalendar/core/main.css' rel='stylesheet' />
-  <link href='/app/frontend/assets/js/page/fullcalendar/daygrid/main.css' rel='stylesheet' />
+  
 
 
   <!-- Template CSS -->
   <link rel="stylesheet" href="/app/frontend/assets/css/style.css" />
   <link rel="stylesheet" href="/app/frontend/assets/css/components.css" />
-  <link rel="stylesheet" href="/app/frontend/assets/css/customCalendar.css" />
   <link rel="stylesheet" href="/app/frontend/assets/css/custom.css" />
 
   <script src='/app/frontend/assets/js/page/fullcalendar/core/main.js'></script>
@@ -77,7 +76,7 @@
                   quan</span></a>
             </li>
             <li class="menu-header">Quản lý</li>
-            <li class="nav-item dropdown active">
+            <li class="nav-item dropdown">
               <a href="/app/frontend/pages/quan-ly-sinh-vien.html" class="nav-link"><i class="fas fa-user-friends"></i>
                 <span>Quản lý sinh viên</span></a>
             </li>
@@ -85,7 +84,7 @@
               <a href="/app/frontend/pages/quan-ly-phong.html" class="nav-link"><i class="fas fa-couch"></i> <span>Quản
                   lý phòng</span></a>
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown active">
               <a href="/app/frontend/pages/quan-ly-gui-xe.html" class="nav-link"><i class="fas fa-bicycle"></i>
                 <span>Quản lý gửi xe</span></a>
             </li>
@@ -105,97 +104,14 @@
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Quản lý sinh viên</h1>
+            <h1>Quản lý gửi xe</h1>
           </div>
           <div class="section-body">
             <div class="row">
-              <div class="col-12 col-lg-12 col-xl-4">
+              <div class="col-sm-12 col-md-12 col-xl-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Sinh viên</h4>
-                  </div>
-                  <div class="card-body">
-                    <div class="card card-statistic-2">
-                      <div class="card-stats">
-                        <div class="card-stats-items">
-                          <div class="card-stats-item card-stats-2">
-                            <div class="card-stats-item-count">82</div>
-                            <div class="card-stats-item-label">Đã thanh toán</div>
-                          </div>
-                          <div class="card-stats-item card-stats-2">
-                            <div class="card-stats-item-count">30</div>
-                            <div class="card-stats-item-label">Chưa thanh toán</div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="card-icon shadow-primary bg-primary">
-                        <i class="fas fa-users"></i>
-                      </div>
-                      <div class="card-wrap">
-                        <div class="card-header">
-                          <h4>Tổng số sinh viên</h4>
-                        </div>
-                        <div class="card-body">
-                          112
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="card-header">
-                    <h4>Lịch</h4>
-                  </div>
-                  <div class="card-body">
-                    <div class="fc-overflow">
-                      <div id="calendar" class="fc-overflow"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-12 col-md-12 col-xl-8">
-                <div class="card">
-                  <div class="card-header">
-                    <h4>Danh sách sinh viên ở KTX</h4>
-                  </div>
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-8">
-                        <span><h6>Tìm kiếm dữ liệu theo cột</h6></span>
-                        <select id="filter-field">
-                          <option></option>
-                          <option value="student_id">MSSV</option>
-                          <option value="id">STT</option>
-                          <option value="name">Họ và tên</option>
-                          <option value="gender">Gender</option>
-                          <option value="room">Phòng</option>
-                          <option value="fee_status">Tình trạng nộp phí</option>
-                        </select>
-
-                        <select id="filter-type">
-                          <option value="=">=</option>
-                          <option value="<"><</option>
-                          <option value="<="><=</option>
-                          <option value=">">></option>
-                          <option value=">=">>=</option>
-                          <option value="!=">!=</option>
-                          <option value="like">like</option>
-                        </select>
-
-                        <input id="filter-value" type="text" placeholder="điền dữ liệu cần tìm">
-                      </div>
-                      <div class="col-4">
-                        <a href="#" id="download-xlsx" style="float: right" class="btn btn-lg btn-primary">Xuất Excel</a>
-                      </div>
-
-                    </div>
-                    <br>
-                    <div id="student-table"></div>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="card-header">
-                    <h4>Danh sách sinh viên yêu cầu vào KTX</h4>
+                    <h4>Danh sách gửi xe ở Ký túc xá</h4>
                   </div>
                   <div class="card-body">
                     <div class="row">
@@ -203,20 +119,20 @@
                         <span><h6>Tìm kiếm dữ liệu theo cột</h6></span>
                         <select id="filter-field2">
                           <option></option>
-                          <option value="student_id">MSSV</option>
                           <option value="id">STT</option>
                           <option value="name">Họ và tên</option>
+                          <option value="student_id">MSSV</option>
                           <option value="register_date">Ngày nộp đơn</option>
                         </select>
 
                         <select id="filter-type2">
+                          <option value="like">like</option>
                           <option value="=">=</option>
                           <option value="<"><</option>
                           <option value="<="><=</option>
                           <option value=">">></option>
                           <option value=">=">>=</option>
                           <option value="!=">!=</option>
-                          <option value="like">like</option>
                         </select>
 
                         <input id="filter-value2" type="text" placeholder="điền dữ liệu cần tìm">
@@ -227,7 +143,7 @@
 
                     </div>
                     <br>
-                    <div id="student-appending-table"></div>
+                    <div id="student-parking-table"></div>
                   </div>
                 </div>
               </div>
@@ -338,8 +254,7 @@
   <script src="/app/frontend/assets/js/scripts.js"></script>
   <script type="text/javascript" src="https://oss.sheetjs.com/sheetjs/xlsx.full.min.js"></script>
   <script src="/app/frontend/assets/js/custom.js"></script>
-  <script src="/app/frontend/assets/js/calendar.js"></script>
-  <script src="/app/frontend/assets/js/quan-ly-sinh-vien.js"></script>
+  <script src="/app/frontend/assets/js/quan-ly-gui-xe.js"></script>
 
   <!-- Page Specific JS File -->
 

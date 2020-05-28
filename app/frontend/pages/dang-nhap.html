@@ -31,13 +31,15 @@
     <!-- Template CSS -->
     <link rel="stylesheet" href="../assets/css/style.css" />
     <link rel="stylesheet" href="../assets/css/components.css" />
-    <link rel="stylesheet" href="../assets/css/custom.css">
+    <link rel="stylesheet" href="../assets/css/custom.css" />
   </head>
 
   <body>
     <div id="app">
       <section class="section">
-        <div class="d-flex flex-wrap justify-content-center align-items-stretch">
+        <div
+          class="d-flex flex-wrap justify-content-center align-items-stretch"
+        >
           <div
             class="col-lg-4 col-md-6 col-12 order-lg-1 min-vh-100 order-2 bg-white"
           >
@@ -57,17 +59,17 @@
               </p>
               <form
                 method="POST"
-                action="#"
+                action=""
                 class="needs-validation"
                 novalidate=""
               >
                 <div class="form-group">
-                  <label for="student-id">Mã số Sinh viên</label>
+                  <label for="username">Mã số Sinh viên</label>
                   <input
-                    id="student-id"
+                    id="username"
                     type="text"
                     class="form-control"
-                    name="student-id"
+                    name="username"
                     tabindex="1"
                     required
                     autofocus
@@ -94,7 +96,7 @@
                   </div>
                 </div>
 
-                <div class="form-group">
+                <!-- <div class="form-group">
                   <div class="custom-control custom-checkbox">
                     <input
                       type="checkbox"
@@ -107,22 +109,21 @@
                       >Remember Me</label
                     >
                   </div>
-                </div>
-
+                </div> -->
+                
                 <div class="form-group text-right">
-                  <button
-                    type="submit"
+                  <div class="button">
+                    <a id="loginButton" href="#" class="btn btn-primary btn-lg btn-icon icon-right" tabindex="4">Login</a>
+                  </div>
+                  <!-- <button
+                    id="loginButton"
                     class="btn btn-primary btn-lg btn-icon icon-right"
                     tabindex="4"
                   >
                     Login
-                  </button>
+                  </button> -->
                 </div>
               </form>
-
-              <div class="text-center mt-5 text-small">
-                Made with 💙 by Stisla
-              </div>
             </div>
           </div>
           <div
@@ -136,7 +137,9 @@
                     Trường Đại học Bách Khoa Hà Nội
                   </h1>
                   <h5 class="font-weight-normal text-muted-transparent">
-                    13:00 <span class="font-weight-bold">|</span> 13/5/2020
+                    <span id="time"></span
+                    ><span class="font-weight-bold">|</span
+                    ><span id="date"> </span>
                   </h5>
                 </div>
               </div>
@@ -164,13 +167,14 @@
     ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="../assets/js/stisla.js"></script>
+    <script src="/app/frontend/assets/js/stisla.js"></script>
 
     <!-- JS Libraies -->
 
     <!-- Template JS File -->
-    <script src="../assets/js/scripts.js"></script>
-    <script src="../assets/js/custom.js"></script>
+    <script src="/app/frontend/assets/js/scripts.js"></script>
+    <script src="/app/frontend/assets/js/custom.js"></script>
+    <script src="/app/frontend/assets/js/login.js"></script>
 
     <!-- Page Specific JS File -->
   </body>

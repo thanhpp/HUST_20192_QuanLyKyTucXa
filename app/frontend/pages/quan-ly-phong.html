@@ -4,8 +4,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport" />
-  <title>Quản lý sinh viên &mdash; KTX</title>
+  <title>Quản lý phòng &mdash; KTX</title>
 
+  <!-- <script src='/app/frontend/assets/js/login-validation.js'></script> -->
   <!-- General CSS Files -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
@@ -17,14 +18,12 @@
   <link href="/app/frontend/assets/js/tabulator-master/dist/css/bootstrap/tabulator_bootstrap4.min.css"
     rel="stylesheet">
   <script type="text/javascript" src="/app/frontend/assets/js/tabulator-master/dist/js/tabulator.min.js"></script>
-  <link href='/app/frontend/assets/js/page/fullcalendar/core/main.css' rel='stylesheet' />
-  <link href='/app/frontend/assets/js/page/fullcalendar/daygrid/main.css' rel='stylesheet' />
+  
 
 
   <!-- Template CSS -->
   <link rel="stylesheet" href="/app/frontend/assets/css/style.css" />
   <link rel="stylesheet" href="/app/frontend/assets/css/components.css" />
-  <link rel="stylesheet" href="/app/frontend/assets/css/customCalendar.css" />
   <link rel="stylesheet" href="/app/frontend/assets/css/custom.css" />
 
   <script src='/app/frontend/assets/js/page/fullcalendar/core/main.js'></script>
@@ -77,11 +76,11 @@
                   quan</span></a>
             </li>
             <li class="menu-header">Quản lý</li>
-            <li class="nav-item dropdown active">
+            <li class="nav-item dropdown">
               <a href="/app/frontend/pages/quan-ly-sinh-vien.html" class="nav-link"><i class="fas fa-user-friends"></i>
                 <span>Quản lý sinh viên</span></a>
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown active">
               <a href="/app/frontend/pages/quan-ly-phong.html" class="nav-link"><i class="fas fa-couch"></i> <span>Quản
                   lý phòng</span></a>
             </li>
@@ -109,107 +108,103 @@
           </div>
           <div class="section-body">
             <div class="row">
-              <div class="col-12 col-lg-12 col-xl-4">
+              <div class="col-12 col-lg-12 col-xl-6">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Sinh viên</h4>
+                    <h4>Phòng ký túc xá</h4>
+                    <div class="card-header-action">
+                      
+                    </div>
                   </div>
                   <div class="card-body">
                     <div class="card card-statistic-2">
                       <div class="card-stats">
                         <div class="card-stats-items">
-                          <div class="card-stats-item card-stats-2">
-                            <div class="card-stats-item-count">82</div>
-                            <div class="card-stats-item-label">Đã thanh toán</div>
+                          <div class="card-stats-item">
+                            <div class="card-stats-item-count">52</div>
+                            <div class="card-stats-item-label">Đang sử dụng</div>
                           </div>
-                          <div class="card-stats-item card-stats-2">
-                            <div class="card-stats-item-count">30</div>
-                            <div class="card-stats-item-label">Chưa thanh toán</div>
+                          <div class="card-stats-item">
+                            <div class="card-stats-item-count">12</div>
+                            <div class="card-stats-item-label">Trống</div>
+                          </div>
+                          <div class="card-stats-item">
+                            <div class="card-stats-item-count">3</div>
+                            <div class="card-stats-item-label">Không dùng được</div>
                           </div>
                         </div>
                       </div>
                       <div class="card-icon shadow-primary bg-primary">
-                        <i class="fas fa-users"></i>
+                        <i class="fas fa-home"></i>
                       </div>
                       <div class="card-wrap">
                         <div class="card-header">
-                          <h4>Tổng số sinh viên</h4>
+                          <h4>Tổng số phòng</h4>
                         </div>
                         <div class="card-body">
-                          112
+                          67
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="card">
-                  <div class="card-header">
-                    <h4>Lịch</h4>
-                  </div>
-                  <div class="card-body">
-                    <div class="fc-overflow">
-                      <div id="calendar" class="fc-overflow"></div>
+                  <div class="card">
+                    <div class="card-header">
+                      <h4>Danh sách phòng</h4>
+                    </div>
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-8">
+                          <span><h6>Tìm kiếm dữ liệu theo cột</h6></span>
+                          <select id="filter_field">
+                            <option></option>
+                            <option value="room">Số phòng</option>
+                            <option value="id">STT</option>
+                            <option value="limit">Giới hạn</option>
+                            <option value="empty_bed">Trống</option>
+                            <option value="price">Giá</option>
+                          </select>
+                          <select id="filter_type">
+                            <option value="=">=</option>
+                            <option value="<"><</option>
+                            <option value="<="><=</option>
+                            <option value=">">></option>
+                            <option value=">=">>=</option>
+                            <option value="!=">!=</option>
+                            <option value="like">like</option>
+                          </select>
+  
+                          <input id="filter_value" type="text" placeholder="điền dữ liệu cần tìm">
+                        </div>
+                        <div class="col-4">
+                          <a href="#" id="download-xlsx" style="float: right" class="btn btn-lg btn-primary">Xuất Excel</a>
+                        </div>
+  
+                      </div>
+                      <br>
+                      <div id="room-table"></div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-sm-12 col-md-12 col-xl-8">
+              <div class="col-sm-12 col-md-12 col-xl-6">
+                
                 <div class="card">
                   <div class="card-header">
-                    <h4>Danh sách sinh viên ở KTX</h4>
+                    <h4>Danh sách cơ sở vật chất</h4>
                   </div>
                   <div class="card-body">
                     <div class="row">
                       <div class="col-8">
                         <span><h6>Tìm kiếm dữ liệu theo cột</h6></span>
-                        <select id="filter-field">
+                        <select id="filter_field2">
                           <option></option>
-                          <option value="student_id">MSSV</option>
                           <option value="id">STT</option>
                           <option value="name">Họ và tên</option>
-                          <option value="gender">Gender</option>
-                          <option value="room">Phòng</option>
-                          <option value="fee_status">Tình trạng nộp phí</option>
-                        </select>
-
-                        <select id="filter-type">
-                          <option value="=">=</option>
-                          <option value="<"><</option>
-                          <option value="<="><=</option>
-                          <option value=">">></option>
-                          <option value=">=">>=</option>
-                          <option value="!=">!=</option>
-                          <option value="like">like</option>
-                        </select>
-
-                        <input id="filter-value" type="text" placeholder="điền dữ liệu cần tìm">
-                      </div>
-                      <div class="col-4">
-                        <a href="#" id="download-xlsx" style="float: right" class="btn btn-lg btn-primary">Xuất Excel</a>
-                      </div>
-
-                    </div>
-                    <br>
-                    <div id="student-table"></div>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="card-header">
-                    <h4>Danh sách sinh viên yêu cầu vào KTX</h4>
-                  </div>
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-8">
-                        <span><h6>Tìm kiếm dữ liệu theo cột</h6></span>
-                        <select id="filter-field2">
-                          <option></option>
                           <option value="student_id">MSSV</option>
-                          <option value="id">STT</option>
-                          <option value="name">Họ và tên</option>
                           <option value="register_date">Ngày nộp đơn</option>
                         </select>
 
-                        <select id="filter-type2">
+                        <select id="filter_type2">
                           <option value="=">=</option>
                           <option value="<"><</option>
                           <option value="<="><=</option>
@@ -219,7 +214,7 @@
                           <option value="like">like</option>
                         </select>
 
-                        <input id="filter-value2" type="text" placeholder="điền dữ liệu cần tìm">
+                        <input id="filter_value2" type="text" placeholder="điền dữ liệu cần tìm">
                       </div>
                       <div class="col-4">
                         <a href="" id="xuat-excel2" style="float: right" class="btn btn-lg btn-primary">Xuất Excel</a>
@@ -249,7 +244,7 @@
   </div>
   </div>
 
-  <div class="modal fade" id="student-table-modal" tabindex="-1" role="dialog" aria-labelledby="studentModal" aria-hidden="true">
+  <div class="modal fade" id="room-table-modal" tabindex="-1" role="dialog" aria-labelledby="studentModal" aria-hidden="true">
     <div class="modal-dialog  modal-lg modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -260,45 +255,26 @@
         </div>
         <div class="modal-body">
           <div class="card">
-            <div class="card author-box card-primary">
+            <div class="card card-primary">
               <div class="card-body">
-                <div class="author-box-left">
-                  <img alt="image" src="../assets/img/avatar/avatar-1.png" class="rounded-circle author-box-picture">
-                  <div class="clearfix"></div>
-                </div>
                 <div class="author-box-details">
                   <div class="author-box-name">
                     <form action="">
                       <div class="form-group">
-                        <p><strong>Họ và tên: </strong></p>
-                        <input type="text" class="form-control" value="" id="student-name">
+                        <p><strong>Số phòng: </strong></p>
+                        <input type="text" class="form-control" value="" id="room">
                       </div>
                       <div class="form-group">
-                        <p><strong>Phòng: </strong></p>
-                        <input type="text" class="form-control" value="" id="student-room">
+                        <p><strong>Giá: </strong></p>
+                        <input type="text" class="form-control" value="" id="price">
                       </div>
                       <div class="form-group">
-                        <p><strong>Mã số sinh viên: </strong></p>
-                        <input type="text" class="form-control" value="" id="student-id">
+                        <p><strong>Số sinh viên tối đa: </strong></p>
+                        <input type="text" class="form-control" value="" id="limit">
                       </div>
                       <div class="form-group">
-                        <p><strong>Ngày sinh: </strong></p>
-                        <input type="text" class="form-control" value="" id="dob">
-                      </div>
-                      <div class="form-group">
-                        <p><strong>Địa chỉ: </strong></p>
-                        <input type="text" class="form-control" value="" id="student-address">
-                      </div>
-                      <div class="form-group">
-                        <p><strong>Thông tin liên lạc: </strong></p>
-                        <input type="text" class="form-control" value="" id="student-contact">
-                      </div>
-                      <div class="form-group">
-                        <p><strong>Trạng thái: </strong></p>
-                        <select class="form-control">
-                          <option>Chưa thanh toán</option>
-                          <option>Đã thanh toán</option>
-                        </select>
+                        <p><strong>Số giường trống: </strong></p>
+                        <input type="text" class="form-control" value="" id="empty_bed">
                       </div>
                       <div class="form-group">
                         <p><strong>Ngày đăng ký: </strong> </strong><span id="register_date">3/8/2018</span></p>
@@ -338,8 +314,7 @@
   <script src="/app/frontend/assets/js/scripts.js"></script>
   <script type="text/javascript" src="https://oss.sheetjs.com/sheetjs/xlsx.full.min.js"></script>
   <script src="/app/frontend/assets/js/custom.js"></script>
-  <script src="/app/frontend/assets/js/calendar.js"></script>
-  <script src="/app/frontend/assets/js/quan-ly-sinh-vien.js"></script>
+  <script src="/app/frontend/assets/js/quan-ly-phong.js"></script>
 
   <!-- Page Specific JS File -->
 
