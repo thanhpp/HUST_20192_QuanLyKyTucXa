@@ -20,7 +20,7 @@ func Init() {
 	if err != nil {
 		log.Println("Can not create log")
 	}
-	logger.Info("Constructed logger success")
+	//logger.Info("Constructed logger success")
 }
 
 //GetLogger ...

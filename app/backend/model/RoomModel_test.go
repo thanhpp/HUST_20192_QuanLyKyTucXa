@@ -20,7 +20,7 @@ func TestGetRoomInfo(t *testing.T) {
 		Max:         8,
 		Description: "",
 	}
-	if err := db.GetDB().Table("room").Select("room_id").Where("room_id = ?", newRoom.RoomID).Error; err != nil {
+	if check := db.GetDB().Table("room").Select("room_id").Where("room_id = ?", newRoom.RoomID).RecordNotFound(); check != true {
 		if err := db.GetDB().Create(newRoom).Error; err != nil {
 			t.Errorf("Can not create room %+v", err)
 		}
