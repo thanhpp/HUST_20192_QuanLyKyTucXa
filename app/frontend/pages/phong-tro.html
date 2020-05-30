@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport" />
-  <title>Tiền trọ &mdash; KTX</title>
-  <!-- General CSS Files -->
+  <title>Phòng trọ &mdash; KTX</title>
+
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
@@ -16,18 +16,11 @@
   <link href="/app/frontend/assets/js/tabulator-master/dist/css/bootstrap/tabulator_bootstrap4.min.css"
     rel="stylesheet">
   <script type="text/javascript" src="/app/frontend/assets/js/tabulator-master/dist/js/tabulator.min.js"></script>
-  <link href='/app/frontend/assets/js/page/fullcalendar/core/main.css' rel='stylesheet' />
-  <link href='/app/frontend/assets/js/page/fullcalendar/daygrid/main.css' rel='stylesheet' />
-
 
   <!-- Template CSS -->
   <link rel="stylesheet" href="/app/frontend/assets/css/style.css" />
   <link rel="stylesheet" href="/app/frontend/assets/css/components.css" />
-  <link rel="stylesheet" href="/app/frontend/assets/css/customCalendar.css" />
   <link rel="stylesheet" href="/app/frontend/assets/css/custom.css" />
-
-  <script src='/app/frontend/assets/js/page/fullcalendar/core/main.js'></script>
-  <script src='/app/frontend/assets/js/page/fullcalendar/daygrid/main.js'></script>
 
 
 </head>
@@ -83,7 +76,7 @@
                   báo</span></a>
             </li>
             <li class="menu-header">Thông tin phòng trọ</li>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown active">
               <a href="/app/frontend/pages/phong-tro.html" class="nav-link"><i class="fas fa-user-friends"></i>
                 <span>Phòng trọ</span></a>
             </li>
@@ -91,7 +84,7 @@
               <a href="/app/frontend/pages/co-so-vat-chat.html" class="nav-link"><i class="fas fa-couch"></i> <span>Cơ
                   sở vật chất</span></a>
             </li>
-            <li class="nav-item dropdown active">
+            <li class="nav-item dropdown">
               <a href="/app/frontend/pages/theo-doi-tien-tro.html" class="nav-link"><i class="fas fa-dollar-sign"></i>
                 <span>Theo dõi tiền trọ</span></a>
             </li>
@@ -116,7 +109,7 @@
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Theo dõi tiền trọ</h1>
+            <h1>Phòng trọ</h1>
           </div>
           <div class="section-body">
             <div class="row">
@@ -131,23 +124,11 @@
                         <div class="author-box-details" id="info-description">
                           <div class="author-box-name">
                             <p><strong>Phòng trọ: </strong><span id="student-room"></span></p>
-                            <p><strong>Tiền trọ: </strong><span id="room-fee">2</span>đ</p>
-                            <p><strong>Hạn đóng tiền: </strong><span id="due-date"></span></p>
-                            <p><strong>Trạng thái: </strong><span id="fee-status"></span></p>
+                            <p><strong>Số người hiện tại: </strong><span id="current-number"></span></>
+                            <p><strong>Số người tối đa: </strong><span id="max-number"></span></p>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="card">
-                  <div class="card-header">
-                    <h4>Lịch</h4>
-                  </div>
-                  <div class="card-body">
-                    <div class="fc-overflow">
-                      <div id="calendar" class="fc-overflow"></div>
                     </div>
                   </div>
                 </div>
@@ -155,76 +136,16 @@
               <div class="col-12 col-lg-12 col-xl-7">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Các khoản phí trong tháng</h4>
+                    <h4>Danh sách bạn cùng phòng</h4>
                   </div>
                   <div class="card-body">
-                    <div class="card">
-                      <div class="card-body">
-                        <div class="author-box-details" id="info-description">
-                          <div class="author-box-name">
-                            <h5>1. Phí lưu trú</h5>
-                            <p><strong>- Phí lưu trú theo quy định Hà Nội: </strong><span
-                                id="phi-luu-tru-qd">85,000</span>đ</p>
-                            <p><strong>- Phí tiền nước: </strong><span id="phi-tien-nuoc">25,000</span>đ</p>
-                            <p><strong>- Phí tiền điện: </strong><span id="phi-tien-dien">100,000</span>đ</p>
-                            <p><strong>- Phí tiền internet: </strong><span id="phi-internet">50,000</span>đ</p>
-                            <br>
-                            <h5>2. Phí giữ xe</h5>
-                            <p><strong>- Xe máy: </strong><span id="phi-giu-xe-may">30,000</span>đ</p>
-                            <p><strong>- Xe đạp: </strong><span id="phi-giu-xe-dap">30,000</span>đ</p>
-                            <br>
-                            <hr>
-                            <h5>TỔNG: <span id="tong-phi-luu-tru">290,000</span>đ</h5>
-                          </div>
-                        </div>
-                      </div>
+                    <div class="row">
+                      <div id="roomate-table"></div>
                     </div>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="card-header">
-                    <h4>Lịch sử thanh toán tiền trọ</h4>
-                  </div>
-                  <div class="card-body">
-                      <div class="row">
-                        <div class="col-8">
-                          <span>
-                            <h6>Tìm kiếm dữ liệu theo cột</h6>
-                          </span>
-                          <select id="filter-field">
-                            <option></option>
-                            <option value="student_id">MSSV</option>
-                            <option value="id">STT</option>
-                            <option value="name">Họ và tên</option>
-                            <option value="gender">Gender</option>
-                            <option value="room">Phòng</option>
-                            <option value="fee_status">Tình trạng nộp phí</option>
-                          </select>
-
-                          <select id="filter-type">
-                            <option value="=">=</option>
-                          <option value="<"><</option>
-                          <option value="<="><=</option>
-                          <option value=">">></option>
-                          <option value=">=">>=</option>
-                          <option value="!=">!=</option>
-                          <option value="like">like</option>>
-                          </select>
-
-                          <input id="filter-value" type="text" placeholder="điền dữ liệu cần tìm">
-                        </div>
-                        <div class="col-4">
-                          <a href="#" id="download-xlsx" style="float: right" class="btn btn-lg btn-primary">Xuất
-                            Excel</a>
-                        </div>
-                      </div>
-                      <br>
-                    <div id="fee-history-table"></div>
                   </div>
                 </div>
               </div>
             </div>
-
           </div>
       </div>
       </section>
@@ -260,9 +181,9 @@
   <!-- Template JS File -->
   <script src="/app/frontend/assets/js/scripts.js"></script>
   <script type="text/javascript" src="https://oss.sheetjs.com/sheetjs/xlsx.full.min.js"></script>
-  <script src="/app/frontend/assets/js/custom.js"></script>
-  <script src="/app/frontend/assets/js/calendar.js"></script>
-  <script src="/app/frontend/assets/js/theo-doi-tien-tro.js"></script>
+  <script src="../assets/js/custom.js"></script>
+  <script src="/app/frontend/assets/js/phong-tro.js"></script>
+
   <!-- Page Specific JS File -->
 </body>
 

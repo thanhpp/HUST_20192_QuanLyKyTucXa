@@ -27,43 +27,6 @@ $(document).ready(function () {
 
   //Login request
   function loginRequest(user, pass) {
-    // $.ajax({
-    //   method: "POST",
-    //   url: "http://52.15.50.37:9090/user/login",
-    //   headers: {},
-    //   data:
-    //     '{\n  "username" : "' +
-    //     user +
-    //     '",\n  "password" : "' +
-    //     pass +
-    //     '"\n   \n}',
-    //   dataType: "json",
-    //   success: function (data) {
-    //     console.log(data);
-    //     if (data.message == "login success") {
-    //       var role = data.role;
-    //       var token = data.token.access_token;
-    //       localStorage.setItem("token", token);
-    //       localStorage.setItem("role", role);
-    //       if (role == "0") {
-    //         window.location.href = "/app/frontend/pages/index.html";
-    //       } else if (role == "1") {
-    //         window.location.href = "/app/frontend/pages/index0.html";
-    //       }
-    //     } else if (data.message == "Invalid login details") {
-    //       alert("Thông tin đăng nhập chưa đúng");
-    //     } else if (data.message == "Invalid form") {
-    //       alert("Thông tin điền chưa hợp lệ!");
-    //     } else {
-    //       return;
-    //     }
-    //   },
-
-    //   error: function () {
-    //     alert("Thông tin đăng nhập chưa đúng");
-    //   },
-    // });
-
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "text/plain");
 
@@ -87,8 +50,8 @@ $(document).ready(function () {
         if (result.message == "login success") {
           var role = result.role;
           var token = result.token.access_token;
-          localStorage.setItem("token", token);
-          localStorage.setItem("role", role);
+          sessionStorage.setItem("token", token);
+          sessionStorage.setItem("role", role);
           if (role == "0") {
             window.location.href = "/app/frontend/pages/index.html";
           } else if (role == "1") {
@@ -102,7 +65,10 @@ $(document).ready(function () {
           return;
         }
       })
-      .catch((error) => console.log("Không kết nối được tới máy chủ", error));
+      .catch((error) => {
+        console.log("Không kết nối được tới máy chủ", error);
+        alert("Không kết nối được tới máy chủ");
+      });
   }
 
   $("#loginButton").on("click", function () {

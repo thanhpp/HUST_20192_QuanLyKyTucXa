@@ -7,7 +7,7 @@
       name="viewport"
     />
     <title>Thông tin &mdash; KTX</title>
-
+    <!-- <script src="/app/frontend/assets/js/role-sinh-vien-validation.js" defer></script> -->
     <!-- General CSS Files -->
     <link
       rel="stylesheet"
@@ -108,8 +108,8 @@
               </li>
               <li class="menu-header">Thông tin phòng trọ</li>
               <li class="nav-item dropdown">
-                <a href="/app/frontend/pages/ban-cung-tro.html" class="nav-link"
-                  ><i class="fas fa-user-friends"></i> <span>Bạn cùng trọ</span></a
+                <a href="/app/frontend/pages/phong-tro.html" class="nav-link"
+                  ><i class="fas fa-user-friends"></i> <span>Phòng trọ</span></a
                 >
               </li>
               <li class="nav-item dropdown">
@@ -166,13 +166,13 @@
                           <div class="clearfix"></div>
                         </div>
                         <div class="author-box-details">
-                          <div class="author-box-name">
-                            <p><strong>Họ và tên: </strong><span id="student-name">Trần Đình Vũ</span></p>
-                            <p><strong>Mã số sinh viên: </strong><span id="student-id">20176126</span></p>
-                            <p><strong>Ngày sinh: </strong><span id="student-birth">13/12/1999</span></p>
-                            <p><strong>Địa chỉ: </strong><span id="student-address">Số 8 ngách 42 ngõ Vạn Ứng, Khâm Thiên, Hà Nội</span></p>
-                            <p><strong>Thông tin liên lạc: </strong><span id="student-contact">0382212381</span></p>
-                            <p><strong>Ngày đăng ký:</strong> </strong><span id="student-register-date">3/8/2018</span></p>
+                          <div class="">
+                            <p><strong>Họ và tên: </strong><span id="student-name"></span></p>
+                            <p><strong>Mã số sinh viên: </strong><span id="student-id"></span></p>
+                            <p><strong>Ngày sinh: </strong><span id="student-birth"></span></p>
+                            <p><strong>Địa chỉ: </strong><span id="student-address"></span></p>
+                            <p><strong>Thông tin liên lạc: </strong><span id="student-contact"></span></p>
+                            <p><strong>Ngày đăng ký:</strong> </strong><span id="student-register-date"></span></p>
                           </div>
                         </div>
                       </div>
@@ -183,18 +183,18 @@
                     <div class="card-header">
                       <h4>Phòng trọ</h4>
                       <div class="card-header-action">
-                        <a href="/app/frontend/pages/theo-doi-tien-tro.html" class="btn btn-primary btn-round">Chi tiết...</a>
+                        <a href="/app/frontend/pages/phong-tro.html" class="btn btn-primary btn-round">Chi tiết...</a>
                     </div>
                     </div>
                   <div class="card-body">
-                    <div class="card author-box card-primary">
+                    <div class="card author-box">
                       <div class="card-body">
-                        <div class="author-box-details" id="info-description">
-                          <div class="author-box-name">
-                            <p><strong>Phòng trọ: </strong><span id="student-room">309 B3</span></p>
-                            <p><strong>Tiền trọ: </strong><span id="room-fee">290,000</span>đ</p>
-                            <p><strong>Hạn đóng tiền: </strong><span id="due-date">05/06/2020</span></p>
-                            <p><strong>Trạng thái: </strong><span id="fee-status">Chưa đóng</span></p>
+                        <div class="" id="info-description">
+                          <div class="">
+                            <p><strong>Phòng trọ: </strong><span id="student-room"></span></p>
+                            <p><strong>Tiền trọ: </strong><span id="room-fee"></span>đ</p>
+                            <p><strong>Hạn đóng tiền: </strong><span id="due-date"></span></p>
+                            <p><strong>Trạng thái: </strong><span id="fee-status"></span></p>
                           </div>
                         </div>
                       </div>
@@ -256,6 +256,7 @@
     <!-- JS Libraies -->
 
     <!-- Template JS File -->
+    
     <script src="/app/frontend/assets/js/scripts.js"></script>
     <script src="/app/frontend/assets/js/calendar.js"></script>
     <script src="/app/frontend/assets/js/custom.js"></script>

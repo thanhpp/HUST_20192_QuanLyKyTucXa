@@ -8,7 +8,7 @@
 "use strict";
 
 $("#logout").click(function () {
-  let token = localStorage.getItem("token");
+  var token = sessionStorage.getItem("token");
   console.log(token);
   var myHeaders = new Headers();
     //myHeaders.append("Content-Type", "text/plain", bearer);
@@ -27,8 +27,8 @@ $("#logout").click(function () {
       .then((response) => response.json())
       .then((result) => {
         if(result.message == "Logout successfully"){
-          localStorage.removeItem('token');
-          localStorage.removeItem('role');
+          sessionStorage.removeItem('token');
+          sessionStorage.removeItem('role');
           alert("Đăng xuất thành công!")
         }else if(result.message == "User not logged in"){
           alert("Người dùng chưa đăng nhập")
