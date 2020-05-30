@@ -8,7 +8,7 @@
 * [Giao diện](#giao-diện)
   * [Đăng nhập](#đăng-nhập)
   * [Sinh viên](#sinh-viên)
-    * [Trang thông tin](#trang-thông-tin)
+    * [Trang chính](#trang-chính)
   * [Quản lý](#quản-lý)
 
 ## Giới thiệu 
@@ -30,4 +30,24 @@
 ## Giao diện
 ### Đăng nhập
 - Màn hình đăng nhập:
+
 ![Màn hình đăng nhập](img/dangnhap.png)
+
+### Sinh viên
+#### Trang chính
+- Giao diện:
+
+![Màn hình trang chính](img/sinhvien_trangchinh.png)
+
+  + Card Lịch sẽ cho người dùng xem lịch theo tháng và highlight Ngày hiện tại
+  + Chọn "Chi tiết..." sẽ chuyển sang trang [Phòng trọ](#phòng-trọ)
+
+#### Trang Thông báo
+- Giao diện:
+
+![Màn hình thông báo](img/sinhvien_thongbao1.png)
+
+  + Chọn "Xem thêm" sẽ hiện toàn bộ thông báo.
+
+  ![Màn hình Xem thêm](img/sinhvien_thongbao1.png)
+
