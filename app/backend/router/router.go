@@ -50,15 +50,18 @@ func NewRouter() *gin.Engine {
 	level0 := router.Group("/lv0")
 	{
 		level0.Use(authMid.CheckRoleLevelMid(0))
+
 		stdCtrl := new(controller.StudentController)
 		roomCtrl := new(controller.RoomController)
 		facCtrl := new(controller.FacilityController)
+		rqCtrl := new(controller.RequestController)
+
 		level0.GET("/usrinfo", stdCtrl.GetStudentInfo)
 		level0.GET("/friends", stdCtrl.GetFriends)
 		level0.GET("/roominfo", roomCtrl.GetRoomInfo)
 		level0.GET("/dormmoney", stdCtrl.GetDormMoney)
 		level0.GET("/fac/:id", facCtrl.GetFacilityByFacID)
-		level0.GET("/listreq")
+		level0.GET("/listreq", rqCtrl.NewRequest)
 		level0.POST("/sendreq")
 	}
 	router.NoRoute()

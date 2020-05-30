@@ -11,7 +11,7 @@ func InitMigration() {
 	// 	db.DropTable(&User{})
 	// }
 	db.SingularTable(true)
-	db.AutoMigrate(&User{}, &Student{}, &MoneyManage{}, &Facility{}, &FacilitiesManage{}, &Room{})
+	db.AutoMigrate(&User{}, &Student{}, &MoneyManage{}, &Facility{}, &FacilitiesManage{}, &Room{}, &Request{})
 	db.AutoMigrate()
 	// defer db.Close()
 }
