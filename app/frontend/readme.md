@@ -20,7 +20,7 @@
 
 ## Giới thiệu 
 - Đây là giao diện cho Project Trang web Ký túc xá cho trường Đại học. 
-- Trang được làm theo template của [Stisla](https://github.com/stisla/stisla).
+- Giao diện được làm theo template của [Stisla](https://github.com/stisla/stisla).
 - Các trang được chia ra dành cho hai loại người dùng là Sinh viên và Quản lý ký túc xá.
 - Người dùng phải đăng nhập để được truy cập vào các trang.
 
@@ -44,25 +44,25 @@
 
 ![Đăng xuất](img/dangxuat.png)
 
-  + Sau khi đăng xuất sẽ có hộp thoại thông báo đăng xuất thành công.
+  - Sau khi đăng xuất sẽ có hộp thoại thông báo đăng xuất thành công.
 
 - Thanh Navigation dọc
 
 ![Navbar dọc](img/navbar1.png)
 
-  + Thanh Navigation dọc này có thể ấn nút Hamburger trên cùng để thu gọn lại.
+  - Thanh Navigation dọc này có thể ấn nút Hamburger trên cùng để thu gọn lại.
   ![Navbar dọc thu gọn](img/navbar2.png)
 
 - Các trang đều được code responsive với nhiều kích cỡ màn hình, bao gồm trên điện thoại:
-  + Giao diện trên màn hình to
+  - Giao diện trên màn hình to
 
   ![Màn hình to](img/manhinhto.png)
 
-  + Giao diện trên màn hình vừa
+  - Giao diện trên màn hình vừa
 
   ![Màn hình vừa](img/manhinhvua.png)
 
-  + Giao diện trên màn hình điện thoại
+  - Giao diện trên màn hình điện thoại
 
   ![Màn hình điện thoại 1](img/manhinhdienthoai1.png) ![Màn hình điện thoại 2](img/manhinhdienthoai2.png)
 
@@ -72,15 +72,15 @@
 
 ![Màn hình trang chính](img/sinhvien_trangchinh.png)
 
-  + Card Lịch sẽ cho người dùng xem lịch theo tháng và highlight Ngày hiện tại
-  + Chọn "Chi tiết..." sẽ chuyển sang trang [Phòng trọ](#phòng-trọ)
+  - Card Lịch sẽ cho người dùng xem lịch theo tháng và highlight Ngày hiện tại
+  - Chọn "Chi tiết..." sẽ chuyển sang trang [Phòng trọ](#trang-Phòng-trọ)
 
 #### Trang Thông báo
 - Giao diện:
 
 ![Màn hình thông báo](img/sinhvien_thongbao1.png)
 
-  + Chọn "Xem thêm" sẽ hiện toàn bộ thông báo.
+  - Chọn "Xem thêm" sẽ hiện toàn bộ thông báo.
 
   ![Màn hình Xem thêm](img/sinhvien_thongbao2.png)
 
@@ -89,7 +89,7 @@
 
  ![Màn hình Phòng trọ](img/sinhvien_phongtro.png)
 
- + Người dùng có thẻ xem thông tin về phòng trọ và các sinh viên cùng phòng trọ
+ - Người dùng có thẻ xem thông tin về phòng trọ và các sinh viên cùng phòng trọ
 
 #### Trang Theo dõi tiền trọ
 - Giao diện:
