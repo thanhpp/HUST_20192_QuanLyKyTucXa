@@ -42,6 +42,8 @@
 
 - Nút Đăng xuất:
 
+  *Chọn biểu tượng bên góc phải trên cùng để hiển thị bảng đăng xuất.*
+
 ![Đăng xuất](img/dangxuat.png)
 
   *Sau khi đăng xuất sẽ có hộp thoại thông báo đăng xuất thành công.*
