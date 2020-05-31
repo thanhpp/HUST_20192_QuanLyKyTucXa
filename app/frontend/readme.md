@@ -51,6 +51,7 @@
 ![Navbar dọc](img/navbar1.png)
 
   *Thanh Navigation dọc này có thể ấn nút Hamburger trên cùng để thu gọn lại.*
+
   ![Navbar dọc thu gọn](img/navbar2.png)
 
 - Các trang đều được code responsive với nhiều kích cỡ màn hình, bao gồm trên điện thoại:
@@ -65,7 +66,7 @@
 
   *Giao diện trên màn hình điện thoại*
 
-  ![Màn hình điện thoại 1](img/manhinhdienthoai1.png) ![Màn hình điện thoại 2](img/manhinhdienthoai2.png)
+  ![Màn hình điện thoại 1](img/manhinhdienthoai1.png)      ![Màn hình điện thoại 2](img/manhinhdienthoai2.png)
 
 ### Sinh viên
 #### Trang chính
