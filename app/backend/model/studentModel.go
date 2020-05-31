@@ -62,6 +62,23 @@ func (s Student) GetFriends(studentid int) ([]Student, error) {
 	return listStd, err
 }
 
+func (s Student) GetAllStudentsByRoom(roomID int) ([]Student, error) {
+	var listStd []Student
+	rows, err := db.GetDB().Model(&Student{}).Where("room_id = ?", roomID).Rows()
+	defer rows.Close()
+	if err != nil {
+		return nil, err
+	}
+	for rows.Next() {
+		var std Student
+		db.GetDB().ScanRows(rows, &std)
+		// fmt.Printf("%+v", std)
+		listStd = append(listStd, std)
+	}
+
+	return listStd, err
+}
+
 //GetRoomID by student id
 func (s Student) GetRoomID(studentid int) (roomid int, err error) {
 	db.GetDB().Table("student").Select("room_id").Where("student_id = ?", studentid).Row().Scan(&roomid)

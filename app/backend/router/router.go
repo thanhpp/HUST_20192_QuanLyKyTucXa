@@ -40,29 +40,35 @@ func NewRouter() *gin.Engine {
 	}
 
 	var authMid = new(middleware.AuthMiddleware)
+	stdCtrl := new(controller.StudentController)
+	roomCtrl := new(controller.RoomController)
+	facCtrl := new(controller.FacilityController)
+	rqCtrl := new(controller.RequestController)
+	userCtrl := new(controller.UserController)
+
 	level1 := router.Group("/lv1")
 	{
-		userCtrl := new(controller.UserController)
+		level1.Use(authMid.TokenAuth())
 		level1.Use(authMid.CheckRoleLevelMid(1))
+
 		level1.GET("/check/:usr", userCtrl.GetUserByUsername)
+		level1.GET("/studentinfo", stdCtrl.GetStudentInfoLV1)
+		level1.GET("/studentbyroom", stdCtrl.GetStudentByRoomID)
+
 	}
 
 	level0 := router.Group("/lv0")
 	{
+		level0.Use(authMid.TokenAuth())
 		level0.Use(authMid.CheckRoleLevelMid(0))
-
-		stdCtrl := new(controller.StudentController)
-		roomCtrl := new(controller.RoomController)
-		facCtrl := new(controller.FacilityController)
-		rqCtrl := new(controller.RequestController)
 
 		level0.GET("/usrinfo", stdCtrl.GetStudentInfo)
 		level0.GET("/friends", stdCtrl.GetFriends)
 		level0.GET("/roominfo", roomCtrl.GetRoomInfo)
 		level0.GET("/dormmoney", stdCtrl.GetDormMoney)
 		level0.GET("/fac/:id", facCtrl.GetFacilityByFacID)
-		level0.GET("/listreq", rqCtrl.NewRequest)
-		level0.POST("/sendreq")
+		level0.GET("/listreq", rqCtrl.ListRequestByStudentID)
+		level0.POST("/sendreq", rqCtrl.NewRequest)
 	}
 	router.NoRoute()
 	return router

@@ -3,6 +3,7 @@ package controller
 import (
 	"DormAppBackend/forms"
 	"DormAppBackend/model"
+	"DormAppBackend/tlog"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -17,14 +18,21 @@ func (rCtrl RequestController) NewRequest(c *gin.Context) {
 
 	accessDes, err := authModel.ExtractTokenMetadata(c.Request)
 	if err != nil {
+		tlog.Info(tlog.Itf{
+			"msg": "ExtractTokenMetadata",
+			"err": err,
+		})
 		c.JSON(http.StatusInternalServerError, gin.H{
-			"message": "Can create request",
+			"message": "Can not create request",
 		})
 		c.Abort()
 		return
 	}
 
 	if c.ShouldBindJSON(&requestForm) != nil {
+		tlog.Info(tlog.Itf{
+			"msg": "BindJSON",
+		})
 		c.JSON(http.StatusNotAcceptable, gin.H{
 			"message": "Invalid form",
 		})
@@ -34,8 +42,12 @@ func (rCtrl RequestController) NewRequest(c *gin.Context) {
 
 	err, request := rqModel.NewRequest(requestForm, int(accessDes.UserID))
 	if err != nil {
+		tlog.Info(tlog.Itf{
+			"msg":   "NewRequest",
+			"error": err,
+		})
 		c.JSON(http.StatusInternalServerError, gin.H{
-			"message": "Can create request",
+			"message": "Can not create request",
 		})
 		c.Abort()
 		return
@@ -45,5 +57,29 @@ func (rCtrl RequestController) NewRequest(c *gin.Context) {
 		"message": "New request created",
 		"request": request,
 	})
+}
 
+func (rCtrl RequestController) ListRequestByStudentID(c *gin.Context) {
+	accessDes, err := authModel.ExtractTokenMetadata(c.Request)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"message": "Can not get list request",
+		})
+		c.Abort()
+		return
+	}
+
+	listReq, err := rqModel.GetListRequestStudentID(int(accessDes.UserID))
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"message": "Can not get list request",
+		})
+		c.Abort()
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"message":      "Get list request successfully",
+		"list_request": listReq,
+	})
 }

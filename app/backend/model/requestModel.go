@@ -4,7 +4,6 @@ import (
 	"DormAppBackend/db"
 	"DormAppBackend/forms"
 	"DormAppBackend/tlog"
-	"errors"
 
 	"github.com/jinzhu/gorm"
 )
@@ -24,11 +23,7 @@ func (r Request) NewRequest(rqForm forms.NewRequestForm, studentID int) (error, 
 		Message:   rqForm.Message,
 	}
 
-	if !db.GetDB().Table("request").Select("id").Where("student_id = ?", rq.StudentID).Where("message = ?", rq.Message).Where("status = ?", rq.Status).RecordNotFound() {
-		return errors.New("Request existed"), nil
-	}
-
-	err := db.GetDB().Create(rq).Error
+	err := db.GetDB().FirstOrCreate(&rq).Error
 	if err != nil {
 		tlog.Error("Can not create new request", err)
 		return err, nil
