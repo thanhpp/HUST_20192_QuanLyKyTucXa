@@ -89,7 +89,7 @@
 
  ![Màn hình Phòng trọ](img/sinhvien_phongtro.png)
 
- * Người dùng có thẻ xem thông tin về phòng trọ và các sinh viên cùng phòng trọ
+    * Người dùng có thẻ xem thông tin về phòng trọ và các sinh viên cùng phòng trọ
 
 #### Trang Theo dõi tiền trọ
 * Giao diện:
