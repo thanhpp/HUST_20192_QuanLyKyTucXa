@@ -38,19 +38,19 @@
 ### Giao diện chung
 - Màn hình đăng nhập:
 
-![Màn hình đăng nhập](img/dangnhap.png)
+  ![Màn hình đăng nhập](img/dangnhap.png)
 
 - Nút Đăng xuất:
 
   *Chọn biểu tượng bên góc phải trên cùng để hiển thị bảng đăng xuất.*
 
-![Đăng xuất](img/dangxuat.png)
+  ![Đăng xuất](img/dangxuat.png)
 
   *Sau khi đăng xuất sẽ có hộp thoại thông báo đăng xuất thành công.*
 
 - Thanh Navigation dọc
 
-![Navbar dọc](img/navbar1.png)
+  ![Navbar dọc](img/navbar1.png)
 
   *Thanh Navigation dọc này có thể ấn nút Hamburger trên cùng để thu gọn lại.*
 
@@ -78,12 +78,12 @@
 
   *Chọn "Chi tiết..." sẽ chuyển sang trang [Phòng trọ](#trang-Phòng-trọ)*
 
-![Màn hình trang chính](img/sinhvien_trangchinh.png)
+  ![Màn hình trang chính](img/sinhvien_trangchinh.png)
 
 #### Trang Thông báo
 - Giao diện:
 
-![Màn hình thông báo](img/sinhvien_thongbao1.png)
+  ![Màn hình thông báo](img/sinhvien_thongbao1.png)
 
   *Chọn "Xem thêm" sẽ hiện toàn bộ thông báo.*
 
@@ -94,29 +94,29 @@
 
   *Người dùng có thể xem thông tin về phòng trọ và các sinh viên cùng phòng trọ*
 
- ![Màn hình Phòng trọ](img/sinhvien_phongtro.png)
+  ![Màn hình Phòng trọ](img/sinhvien_phongtro.png)
 
 #### Trang Theo dõi tiền trọ
 - Giao diện:
 
-![Màn hình Theo dõi tiền trọ](img/sinhvien_theodoitientro.png)
+  ![Màn hình Theo dõi tiền trọ](img/sinhvien_theodoitientro.png)
 
 
 #### Trang Gửi yêu cầu
 - Giao diện:
 
-![Màn hình Gửi yêu cầu](img/sinhvien_guiyeucau.png)
+  ![Màn hình Gửi yêu cầu](img/sinhvien_guiyeucau.png)
 
 #### Trang Yêu cầu đã gửi
 - Giao diện:
 
   *Người dùng có thể xem các yêu cầu đã gửi và các phản hồi của quản lý KTX*
 
-![Màn hình Yêu cầu đã gửi](img/sinhvien_yeucaudagui.png)
+  ![Màn hình Yêu cầu đã gửi](img/sinhvien_yeucaudagui.png)
 
 #### Trang Thông tin cán vụ
 - Giao diện:
 
-![Màn hình Thông tin cán vụ](img/sinhvien_danhsachcanvu.png)
+  ![Màn hình Thông tin cán vụ](img/sinhvien_danhsachcanvu.png)
 
 ### Quản lý
