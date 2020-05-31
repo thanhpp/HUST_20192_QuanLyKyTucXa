@@ -90,7 +90,7 @@
 #### Trang Phòng trọ
 - Giao diện
 
-    *Người dùng có thể xem thông tin về phòng trọ và các sinh viên cùng phòng trọ*
+  *Người dùng có thể xem thông tin về phòng trọ và các sinh viên cùng phòng trọ*
 
  ![Màn hình Phòng trọ](img/sinhvien_phongtro.png)
 
@@ -108,7 +108,7 @@
 #### Trang Yêu cầu đã gửi
 - Giao diện:
 
-      *Người dùng có thể xem các yêu cầu đã gửi và các phản hồi của quản lý KTX*
+  *Người dùng có thể xem các yêu cầu đã gửi và các phản hồi của quản lý KTX*
 
 ![Màn hình Yêu cầu đã gửi](img/sinhvien_yeucaudagui.png)
 
