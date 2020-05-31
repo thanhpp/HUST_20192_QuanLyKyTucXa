@@ -90,7 +90,7 @@
 #### Trang Phòng trọ
 - Giao diện
 
-    *Người dùng có thẻ xem thông tin về phòng trọ và các sinh viên cùng phòng trọ*
+    *Người dùng có thể xem thông tin về phòng trọ và các sinh viên cùng phòng trọ*
 
  ![Màn hình Phòng trọ](img/sinhvien_phongtro.png)
 
@@ -98,3 +98,23 @@
 - Giao diện:
 
 ![Màn hình Theo dõi tiền trọ](img/sinhvien_theodoitientro.png)
+
+
+#### Trang Gửi yêu cầu
+- Giao diện:
+
+![Màn hình Gửi yêu cầu](img/sinhvien_guiyeucau.png)
+
+#### Trang Yêu cầu đã gửi
+- Giao diện:
+
+      *Người dùng có thể xem các yêu cầu đã gửi và các phản hồi của quản lý KTX*
+
+![Màn hình Yêu cầu đã gửi](img/sinhvien_yeucaudagui.png)
+
+#### Trang Thông tin cán vụ
+- Giao diện:
+
+![Màn hình Thông tin cán vụ](img/sinhvien_danhsachcanvu.png)
+
+### Quản lý
