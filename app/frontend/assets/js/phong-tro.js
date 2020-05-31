@@ -56,7 +56,7 @@ fetch("http://52.15.50.37:9090/lv0/friends", friendsRequestOptions)
     console.log("Không kết nối được tới máy chủ", error);
   });
 
-// var tabledata = [
+// let tabledata = [
 //   {
 //     name: "Tran Dinh Vu",
 //     dob: "13/12/1999",
@@ -67,27 +67,33 @@ fetch("http://52.15.50.37:9090/lv0/friends", friendsRequestOptions)
 //     name: "Tran Dinh A",
 //     dob: "13/12/1999",
 //     contact: "0382212381",
-//     address: "Hà Nội",
+//     address: "Hạ Long",
 //   },
 //   {
 //     name: "Tran Dinh B",
 //     dob: "13/12/1999",
 //     contact: "0382212381",
-//     address: "Hà Nội",
+//     address: "Hưng Yên",
 //   },
 //   {
 //     name: "Tran Dinh C",
 //     dob: "13/12/1999",
 //     contact: "09191919191",
-//     address: "Hà Nội",
+//     address: "New York",
 //   },
 //   {
 //     name: "Tran Dinh D",
 //     dob: "13/12/1999",
 //     contact: "09191919191",
-//     address: "Hà Nội",
+//     address: "Bác Ninh",
 //   },
+  
 // ];
+// for (var i = 0; i < Object.keys(tabledata).length; i++) {
+//   tabledata[i].stt = i + 1;
+// }
+
+// handleTable();
 
 function handleTable() {
   let table = new Tabulator("#roomate-table", {
