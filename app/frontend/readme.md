@@ -89,9 +89,13 @@
 
  ![Màn hình Phòng trọ](img/sinhvien_phongtro.png)
 
-    * Người dùng có thẻ xem thông tin về phòng trọ và các sinh viên cùng phòng trọ
+  * Người dùng có thẻ xem thông tin về phòng trọ và các sinh viên cùng phòng trọ
 
 #### Trang Theo dõi tiền trọ
 * Giao diện:
 
 ![Màn hình Theo dõi tiền trọ](img/sinhvien_theodoitientro.png)
+* Bullet list
+    * Nested bullet
+        * Sub-nested bullet etc
+* Bullet list item 2
