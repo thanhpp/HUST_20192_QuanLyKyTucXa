@@ -36,24 +36,25 @@
 
 ## Giao diện
 ### Giao diện chung
-* Màn hình đăng nhập:
+- Màn hình đăng nhập:
 
 ![Màn hình đăng nhập](img/dangnhap.png)
 
-* Nút Đăng xuất:
+- Nút Đăng xuất:
 
 ![Đăng xuất](img/dangxuat.png)
 
   *Sau khi đăng xuất sẽ có hộp thoại thông báo đăng xuất thành công.*
 
-* Thanh Navigation dọc
+- Thanh Navigation dọc
 
 ![Navbar dọc](img/navbar1.png)
 
   *Thanh Navigation dọc này có thể ấn nút Hamburger trên cùng để thu gọn lại.*
   ![Navbar dọc thu gọn](img/navbar2.png)
 
-* Các trang đều được code responsive với nhiều kích cỡ màn hình, bao gồm trên điện thoại:
+- Các trang đều được code responsive với nhiều kích cỡ màn hình, bao gồm trên điện thoại:
+
   *Giao diện trên màn hình to*
 
   ![Màn hình to](img/manhinhto.png)
@@ -68,15 +69,16 @@
 
 ### Sinh viên
 #### Trang chính
-* Giao diện:
+- Giao diện:
+
+  *Card Lịch sẽ cho người dùng xem lịch theo tháng và highlight Ngày hiện tại*
+
+  *Chọn "Chi tiết..." sẽ chuyển sang trang [Phòng trọ](#trang-Phòng-trọ)*
 
 ![Màn hình trang chính](img/sinhvien_trangchinh.png)
 
-  *Card Lịch sẽ cho người dùng xem lịch theo tháng và highlight Ngày hiện tại*
-  *Chọn "Chi tiết..." sẽ chuyển sang trang [Phòng trọ](#trang-Phòng-trọ)*
-
 #### Trang Thông báo
-* Giao diện:
+- Giao diện:
 
 ![Màn hình thông báo](img/sinhvien_thongbao1.png)
 
@@ -85,13 +87,13 @@
   ![Màn hình Xem thêm](img/sinhvien_thongbao2.png)
 
 #### Trang Phòng trọ
-* Giao diện
-
- ![Màn hình Phòng trọ](img/sinhvien_phongtro.png)
+- Giao diện
 
     *Người dùng có thẻ xem thông tin về phòng trọ và các sinh viên cùng phòng trọ*
 
+ ![Màn hình Phòng trọ](img/sinhvien_phongtro.png)
+
 #### Trang Theo dõi tiền trọ
-* Giao diện:
+- Giao diện:
 
 ![Màn hình Theo dõi tiền trọ](img/sinhvien_theodoitientro.png)
