@@ -115,17 +115,18 @@
                   </div>
                   <div class="card-body">
                     <div class="row">
-                      <div class="col-8">
+                      <div class="col-6">
                         <span><h6>Tìm kiếm dữ liệu theo cột</h6></span>
-                        <select id="filter-field2">
+                        <select id="filter-field">
                           <option></option>
-                          <option value="id">STT</option>
                           <option value="name">Họ và tên</option>
                           <option value="student_id">MSSV</option>
-                          <option value="register_date">Ngày nộp đơn</option>
+                          <option value="room">Phòng</option>
+                          <option value="type_of_vehicle">Loại xe</option>
+                          <option value="plate">Biển xe</option>
                         </select>
 
-                        <select id="filter-type2">
+                        <select id="filter-type">
                           <option value="like">like</option>
                           <option value="=">=</option>
                           <option value="<"><</option>
@@ -135,12 +136,14 @@
                           <option value="!=">!=</option>
                         </select>
 
-                        <input id="filter-value2" type="text" placeholder="điền dữ liệu cần tìm">
+                        <input id="filter-value" type="text" placeholder="điền dữ liệu cần tìm">
                       </div>
-                      <div class="col-4">
-                        <a href="" id="xuat-excel2" style="float: right" class="btn btn-lg btn-primary">Xuất Excel</a>
+                      <div class="col-3">
+                        <a href="#" id="add-student" style="float: right" class="btn btn-lg btn-primary">Thêm sinh viên</a>
                       </div>
-
+                      <div class="col-3">
+                        <a href="#" id="download-xlsx" style="float: right" class="btn btn-lg btn-success">Xuất Excel</a>
+                      </div>
                     </div>
                     <br>
                     <div id="student-parking-table"></div>
@@ -152,6 +155,116 @@
       </div>
       </section>
     </div>
+    <div class="modal fade" id="student-table-modal" tabindex="-1" role="dialog" aria-labelledby="studentModal" aria-hidden="true">
+      <div class="modal-dialog  modal-md modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="studentModal">Thông tin chi tiết</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="card">
+              <div class="card author-box card-primary">
+                <div class="card-body">
+                  <div class="author-box-left">
+                    <img alt="image" src="../assets/img/avatar/avatar-1.png" class="rounded-circle author-box-picture">
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="author-box-details">
+                    <div class="author-box-name">
+                      <form action="">
+                        <div class="form-group">
+                          <p><strong>Họ và tên: </strong></p>
+                          <input type="text" class="form-control" value="" id="student-name">
+                        </div>
+                        <div class="form-group">
+                          <p><strong>Phòng: </strong></p>
+                          <input type="text" class="form-control" value="" id="student-room">
+                        </div>
+                        <div class="form-group">
+                          <p><strong>Mã số sinh viên: </strong></p>
+                          <input type="text" class="form-control" value="" id="student-id">
+                        </div>
+                        <div class="form-group">
+                          <p><strong>Loại xe: </strong></p>
+                          <input type="text" class="form-control" value="" id="type_of_vehicle">
+                        </div>
+                        <div class="form-group">
+                          <p><strong>Biển xe: </strong></p>
+                          <input type="text" class="form-control" value="" id="plate">
+                        </div>
+                        <div class="form-group">
+                          <p><strong>Ngày đăng ký: </strong> </strong><span id="register_date">3/8/2018</span></p>
+                        <p><strong>Ngày cập nhật: </strong><span id ="update_date"></span></p>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+            <button type="button" class="btn btn-primary" id="change-student-button">Lưu lại</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="modal fade" id="add-student-table-modal" tabindex="-1" role="dialog" aria-labelledby="addStudentModal" aria-hidden="true">
+      <div class="modal-dialog  modal-md modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addStudentModal">Thêm sinh viên gửi xe</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="card">
+              <div class="card card-primary">
+                <div class="card-body">
+                  <div class="">
+                    <div class="e">
+                      <form action="">
+                        <div class="form-group">
+                          <p><strong>Họ và tên: </strong></p>
+                          <input type="text" class="form-control" value="" id="add-student-name">
+                        </div>
+                        <div class="form-group">
+                          <p><strong>Phòng: </strong></p>
+                          <input type="text" class="form-control" value="" id="add-student-room">
+                        </div>
+                        <div class="form-group">
+                          <p><strong>Mã số sinh viên: </strong></p>
+                          <input type="text" class="form-control" value="" id="add-student-id">
+                        </div>
+                        <div class="form-group">
+                          <p><strong>Loại xe: </strong></p>
+                          <input type="text" class="form-control" value="" id="add-type_of_vehicle">
+                        </div>
+                        <div class="form-group">
+                          <p><strong>Biển xe: </strong></p>
+                          <input type="text" class="form-control" value="" id="add-plate">
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+            <button type="button" class="btn btn-primary" id="add-student-button">Thêm sinh viên</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
     <footer class="main-footer">
       <div class="footer-left">
         Copyright &copy; 2018
@@ -165,76 +278,7 @@
   </div>
   </div>
 
-  <div class="modal fade" id="student-table-modal" tabindex="-1" role="dialog" aria-labelledby="studentModal" aria-hidden="true">
-    <div class="modal-dialog  modal-lg modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="studentModal">Thông tin chi tiết</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="card">
-            <div class="card author-box card-primary">
-              <div class="card-body">
-                <div class="author-box-left">
-                  <img alt="image" src="../assets/img/avatar/avatar-1.png" class="rounded-circle author-box-picture">
-                  <div class="clearfix"></div>
-                </div>
-                <div class="author-box-details">
-                  <div class="author-box-name">
-                    <form action="">
-                      <div class="form-group">
-                        <p><strong>Họ và tên: </strong></p>
-                        <input type="text" class="form-control" value="" id="student-name">
-                      </div>
-                      <div class="form-group">
-                        <p><strong>Phòng: </strong></p>
-                        <input type="text" class="form-control" value="" id="student-room">
-                      </div>
-                      <div class="form-group">
-                        <p><strong>Mã số sinh viên: </strong></p>
-                        <input type="text" class="form-control" value="" id="student-id">
-                      </div>
-                      <div class="form-group">
-                        <p><strong>Ngày sinh: </strong></p>
-                        <input type="text" class="form-control" value="" id="dob">
-                      </div>
-                      <div class="form-group">
-                        <p><strong>Địa chỉ: </strong></p>
-                        <input type="text" class="form-control" value="" id="student-address">
-                      </div>
-                      <div class="form-group">
-                        <p><strong>Thông tin liên lạc: </strong></p>
-                        <input type="text" class="form-control" value="" id="student-contact">
-                      </div>
-                      <div class="form-group">
-                        <p><strong>Trạng thái: </strong></p>
-                        <select class="form-control">
-                          <option>Chưa thanh toán</option>
-                          <option>Đã thanh toán</option>
-                        </select>
-                      </div>
-                      <div class="form-group">
-                        <p><strong>Ngày đăng ký: </strong> </strong><span id="register_date">3/8/2018</span></p>
-                      <p><strong>Ngày cập nhật: </strong><span id ="update_date"></span></p>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-          <button type="button" class="btn btn-primary" id="save-form">Lưu lại</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
+  
   <!-- General JS Scripts -->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
