@@ -32,3 +32,30 @@ func TestGetRoomInfo(t *testing.T) {
 		tlog.GetLogger().Info("room get suc")
 	}
 }
+
+func TestChangeRoomOccupied(t *testing.T) {
+	config.Init()
+	db.Init()
+	tlog.Init()
+	r := &Room{
+		RoomID:      2,
+		Price:       500000,
+		Occupied:    0,
+		Max:         8,
+		Description: "",
+	}
+
+	check := db.GetDB().Table("room").Where("room_id = ?", r.RoomID).RecordNotFound()
+	if check == true {
+		err := db.GetDB().Create(r).Error
+		if err != nil {
+			t.Errorf("Can not create new room %+v", err)
+			return
+		}
+	}
+
+	err := r.ChangeRoomOccupied(2, 1)
+	if err != nil {
+		t.Errorf("Can not change room occupied %+v", err)
+	}
+}

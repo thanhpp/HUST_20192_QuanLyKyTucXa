@@ -178,3 +178,50 @@ func (sCtrl StudentController) GetStudentByRoomID(c *gin.Context) {
 		"list_students": returnListStd,
 	})
 }
+
+func (sCtrl StudentController) UpdateStudentRoom(c *gin.Context) {
+	var err error
+
+	stdID := c.Query("stdid")
+	if stdID == "" {
+		c.JSON(http.StatusNotFound, gin.H{
+			"message": "No studentid found",
+		})
+		c.Abort()
+		return
+	}
+
+	roomID := c.Query("roomid")
+	if roomID == "" {
+		c.JSON(http.StatusNotFound, gin.H{
+			"message": "No room id found",
+		})
+		c.Abort()
+		return
+	}
+
+	stdIDInt, err := strconv.Atoi(stdID)
+	roomIDInt, err := strconv.Atoi(roomID)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"message": "Invalid arguments",
+			"error":   err,
+		})
+		c.Abort()
+		return
+	}
+
+	std, err := studenMod.ChangeRoom(stdIDInt, roomIDInt)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"message": "Can not update room info for student",
+		})
+		c.Abort()
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"message": "Update room info for student OK",
+		"student": std,
+	})
+}
