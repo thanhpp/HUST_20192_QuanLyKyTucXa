@@ -1,7 +1,7 @@
 var token = localStorage.getItem("token");
 var myHeaders = new Headers();
 //myHeaders.append("Content-Type", "text/plain", bearer);
-
+console.log(token);
 var requestOptions = {
   method: "GET",
   credentials: "omit",
