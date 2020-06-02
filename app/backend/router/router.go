@@ -54,6 +54,10 @@ func NewRouter() *gin.Engine {
 		level1.GET("/check/:usr", userCtrl.GetUserByUsername)
 		level1.GET("/studentinfo", stdCtrl.GetStudentInfoLV1)
 		level1.GET("/studentbyroom", stdCtrl.GetStudentByRoomID)
+		level1.GET("/listroom", roomCtrl.GetAllRoom)
+		level1.GET("/changeroom", stdCtrl.UpdateStudentRoom)
+		level1.GET("/listfac/:roomid", facCtrl.GetListFacByRoomID)
+		level1.GET("/fac/:id", facCtrl.GetFacilityByFacID)
 
 	}
 

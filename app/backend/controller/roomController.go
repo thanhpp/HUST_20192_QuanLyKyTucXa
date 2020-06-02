@@ -59,3 +59,23 @@ func (rCtrl RoomController) GetRoomInfo(c *gin.Context) {
 		"room":    room,
 	})
 }
+
+func (rCtrl RoomController) GetAllRoom(c *gin.Context) {
+	listRoom, err := roomMod.GetAllRoom()
+	if err != nil {
+		tlog.Info(tlog.Itf{
+			"msg": "Can not get list room",
+			"err": err,
+		})
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"message": "Can not get list room",
+		})
+		c.Abort()
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"message":    "Get list room OK",
+		"list_rooms": listRoom,
+	})
+}

@@ -12,7 +12,10 @@ import (
 //FacilityController ....
 type FacilityController struct{}
 
-var facMod = new(model.Facility)
+var (
+	facMod    = new(model.Facility)
+	facManMod = new(model.FacilitiesManage)
+)
 
 func (fCtrl FacilityController) GetFacilityByFacID(c *gin.Context) {
 	facID := c.Param("id")
@@ -46,5 +49,32 @@ func (fCtrl FacilityController) GetFacilityByFacID(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
 		"message":  "Get facility info success",
 		"facility": returnFac,
+	})
+}
+
+func (fCtrl FacilityController) GetListFacByRoomID(c *gin.Context) {
+	roomID := c.Param("roomid")
+
+	searchRoomID, err := strconv.Atoi(roomID)
+	if err != nil {
+		c.JSON(http.StatusNotAcceptable, gin.H{
+			"message": "Invalid roomID",
+		})
+		c.Abort()
+		return
+	}
+
+	listFac, err := facManMod.GetFacListByRoom(searchRoomID)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"message": "Can not get list facilities",
+		})
+		c.Abort()
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"message":         "Get list facilities by roomid OK",
+		"list_facilities": listFac,
 	})
 }

@@ -25,14 +25,21 @@ type FacilitiesManage struct {
 }
 
 //GetFacListByRoom Get facilities list by room id
-func (facManage FacilitiesManage) GetFacListByRoom(roomID int) (*FacilitiesManage, error) {
-	var returnFacManage = new(FacilitiesManage)
+func (facManage FacilitiesManage) GetFacListByRoom(roomID int) (*[]FacilitiesManage, error) {
+	var returnFacManage []FacilitiesManage
 	var err error
-	err = db.GetDB().Where("room_id = ?", roomID).Find(&returnFacManage).Error
+	rows, err := db.GetDB().Table("facilities_manage").Where("room_id = ?", roomID).Rows()
 	if err != nil {
 		return nil, err
 	}
-	return returnFacManage, err
+	for rows.Next() {
+		var facMan FacilitiesManage
+		db.GetDB().ScanRows(rows, &facMan)
+
+		returnFacManage = append(returnFacManage, facMan)
+	}
+
+	return &returnFacManage, err
 }
 
 //GetFacInfo ...

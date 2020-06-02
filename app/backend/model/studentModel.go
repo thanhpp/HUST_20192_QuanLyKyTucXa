@@ -110,3 +110,30 @@ func (s Student) GetDormMoney(studentid int) ([]MoneyManage, error) {
 
 	return listMoney, nil
 }
+
+func (s Student) ChangeRoom(studentID int, roomID int) (*Student, error) {
+	var returnStd Student
+	var rMod Room
+
+	err := db.GetDB().Table("student").Where("student_id = ?", studentID).Find(&returnStd).Error
+	if err != nil {
+		return nil, err
+	}
+
+	if returnStd.RoomID == roomID {
+		return nil, errors.New("Same room")
+	}
+
+	err = rMod.ChangeRoomOccupied(returnStd.RoomID, roomID)
+	if err != nil {
+		return nil, err
+	}
+	returnStd.RoomID = roomID
+
+	err = db.GetDB().Save(&returnStd).Error
+	if err != nil {
+		return nil, err
+	}
+
+	return &returnStd, nil
+}
