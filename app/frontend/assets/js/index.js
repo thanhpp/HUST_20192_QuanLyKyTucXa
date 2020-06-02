@@ -1,4 +1,4 @@
-var token = localStorage.getItem("token");
+var token = sessionStorage.getItem("token");
 var myHeaders = new Headers();
 //myHeaders.append("Content-Type", "text/plain", bearer);
 console.log(token);
@@ -12,7 +12,7 @@ var requestOptions = {
   redirect: "follow",
 };
 
-fetch("http://52.15.50.37:9090/lv0/usrinfo", requestOptions)
+fetch("http://25.43.134.201:8080/lv0/usrinfo", requestOptions)
   .then((response) => {
     response.json();
   })
@@ -26,7 +26,7 @@ fetch("http://52.15.50.37:9090/lv0/usrinfo", requestOptions)
   })
   .catch((error) => {
     console.log("Không kết nối được tới máy chủ", error);
-    alert("Không kết nối được tới máy chủ");
+    //alert("Không kết nối được tới máy chủ");
   });
 
   var roomRequestOptions = {
@@ -39,7 +39,7 @@ fetch("http://52.15.50.37:9090/lv0/usrinfo", requestOptions)
     redirect: "follow",
   };
   
-  fetch("http://52.15.50.37:9090/lv0/roominfo", roomRequestOptions)
+  fetch("http://25.43.134.201:8080/lv0/roominfo", roomRequestOptions)
     .then((response) => {
       response.json();
     })

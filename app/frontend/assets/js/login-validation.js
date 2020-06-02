@@ -1,4 +1,4 @@
-let token = localStorage.getItem('token');
+let token = sessionStorage.getItem('token');
 if (token != null){
     //redirect to page
 }

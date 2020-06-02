@@ -44,8 +44,8 @@ $(document).ready(function () {
       redirect: "follow",
     };
 
-    fetch("http://52.15.50.37:9090/user/login", requestOptions)
-      .then((response) => response.json())
+    fetch("http://25.43.134.201:8080/user/login", requestOptions)
+      .then((response) => {response.json()})
       .then((result) => {
         if (result.message == "login success") {
           var role = result.role;
