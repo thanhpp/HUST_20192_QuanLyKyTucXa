@@ -78,3 +78,37 @@ func (fCtrl FacilityController) GetListFacByRoomID(c *gin.Context) {
 		"list_facilities": listFac,
 	})
 }
+
+func (fCtrl FacilityController) GetListFacByStudentID(c *gin.Context) {
+	accessDes, err := authModel.ExtractTokenMetadata(c.Request)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"message": "Can not get list facilities",
+		})
+		c.Abort()
+		return
+	}
+
+	roomid, err := studenMod.GetRoomID(int(accessDes.UserID))
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"message": "Can not get list facilities",
+		})
+		c.Abort()
+		return
+	}
+
+	listFac, err := facManMod.GetFacListByRoom(roomid)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"message": "Can not get list facilities",
+		})
+		c.Abort()
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"message":         "Get list facilities by roomid OK",
+		"list_facilities": listFac,
+	})
+}

@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"DormAppBackend/forms"
 	"DormAppBackend/model"
 	"DormAppBackend/tlog"
 	"net/http"
@@ -12,7 +13,10 @@ import (
 //StudentController ...
 type StudentController struct{}
 
-var studenMod = new(model.Student)
+var (
+	studenMod = new(model.Student)
+	monMng    = new(model.MoneyManage)
+)
 
 //GetStudentInfo ...
 func (sCtrl StudentController) GetStudentInfo(c *gin.Context) {
@@ -223,5 +227,66 @@ func (sCtrl StudentController) UpdateStudentRoom(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
 		"message": "Update room info for student OK",
 		"student": std,
+	})
+}
+
+func (sCtrl StudentController) CalNewMonthMoney(c *gin.Context) {
+	var err error
+
+	listMonMong, err := monMng.CalculateNewMonth()
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"message":           "Error while calculate dorm money",
+			"list_money_manage": listMonMong,
+		})
+		c.Abort()
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"message":           "Calculate new month money OK",
+		"list_money_manage": listMonMong,
+	})
+}
+
+func (sCtrl StudentController) GetAllMoneyManage(c *gin.Context) {
+	listMonMng, err := monMng.GetAllMoneyManage()
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"message": "Can not get money manage",
+		})
+		c.Abort()
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"message":           "Get all money manage OK",
+		"list_money_manage": listMonMng,
+	})
+}
+
+func (sCtrl StudentController) UpdatePayment(c *gin.Context) {
+	var updatePay forms.UpdatePaymentForm
+
+	if c.ShouldBindJSON(&updatePay) != nil {
+		c.JSON(http.StatusNotAcceptable, gin.H{
+			"message": "Invalid post form",
+		})
+		c.Abort()
+		return
+	}
+
+	returnMonMng, err := monMng.UpdatePaymentStatus(updatePay.MoneyManageID, updatePay.Status)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"message": "Can not update payment status",
+		})
+		c.Abort()
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"message":      "Update payment status OK",
+		"money_manage": returnMonMng,
 	})
 }

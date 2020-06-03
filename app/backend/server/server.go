@@ -7,5 +7,5 @@ import (
 // Init create a server
 func Init() {
 	r := router.NewRouter()
-	r.Run("localhost:8080")
+	r.Run("25.43.134.201:8080")
 }
