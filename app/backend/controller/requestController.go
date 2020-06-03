@@ -83,3 +83,46 @@ func (rCtrl RequestController) ListRequestByStudentID(c *gin.Context) {
 		"list_request": listReq,
 	})
 }
+
+func (rCtrl RequestController) GetAllRequest(c *gin.Context) {
+	listRq, err := rqModel.GetAllRequest()
+
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"message": "Can not get list requests",
+		})
+		c.Abort()
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"message":      "Get list requests OK",
+		"list_request": listRq,
+	})
+}
+
+func (rCtrl RequestController) ReplyRequest(c *gin.Context) {
+	var replyForm forms.ReplyRequestForm
+
+	if c.ShouldBindJSON(&replyForm) != nil {
+		c.JSON(http.StatusNotAcceptable, gin.H{
+			"message": "Can not reply request",
+		})
+		c.Abort()
+		return
+	}
+
+	rep, err := rqModel.ReplyRequest(replyForm)
+	if err != nil {
+		c.JSON(http.StatusNotAcceptable, gin.H{
+			"message": "Can not reply request",
+		})
+		c.Abort()
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"message": "Reply request OK",
+		"reply":   rep,
+	})
+}

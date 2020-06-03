@@ -2,7 +2,9 @@ package model
 
 import (
 	"DormAppBackend/db"
+	"DormAppBackend/forms"
 	"DormAppBackend/tlog"
+	"errors"
 
 	"github.com/jinzhu/gorm"
 )
@@ -24,6 +26,36 @@ type FacilitiesManage struct {
 	Logs       string `json:"logs" gorm:"type:text"`
 }
 
+//GetFacInfo ...
+func (fac Facility) GetFacInfo(FacID int) (*Facility, error) {
+	var returnFacility = new(Facility)
+	var err error
+	err = db.GetDB().Table("facility").Where("id = ?", FacID).Find(&returnFacility).Error
+	if err != nil {
+		tlog.Error("Can not get facility from db", err)
+		return nil, err
+	}
+	return returnFacility, err
+}
+
+func (fac Facility) NewFacility(newFacForm forms.NewFacilityForm) (*Facility, error) {
+	newFac := &Facility{
+		Name:        newFacForm.Name,
+		Description: newFacForm.Description,
+	}
+
+	if !db.GetDB().Debug().First(&newFac, "name LIKE ?", newFac.Name).RecordNotFound() {
+		return nil, errors.New("record existed")
+	}
+
+	err := db.GetDB().Create(&newFac).Error
+	if err != nil {
+		return nil, err
+	}
+
+	return newFac, nil
+}
+
 //GetFacListByRoom Get facilities list by room id
 func (facManage FacilitiesManage) GetFacListByRoom(roomID int) (*[]FacilitiesManage, error) {
 	var returnFacManage []FacilitiesManage
@@ -42,14 +74,30 @@ func (facManage FacilitiesManage) GetFacListByRoom(roomID int) (*[]FacilitiesMan
 	return &returnFacManage, err
 }
 
-//GetFacInfo ...
-func (fac Facility) GetFacInfo(FacID int) (*Facility, error) {
-	var returnFacility = new(Facility)
-	var err error
-	err = db.GetDB().Table("facility").Where("id = ?", FacID).Find(&returnFacility).Error
+func (facManage FacilitiesManage) NewFacilityManage(newFacMngForm forms.NewFacilityManageForm) (*FacilitiesManage, error) {
+	facMng := &FacilitiesManage{
+		RoomID:     newFacMngForm.RoomID,
+		FacilityID: newFacMngForm.FacilityID,
+		Quantity:   newFacMngForm.Default,
+		Default:    newFacMngForm.Default,
+	}
+
+	if db.GetDB().Debug().Table("room").Select("room_id").Find(&Room{RoomID: facMng.RoomID}).RecordNotFound() {
+		return nil, errors.New("No room available")
+	}
+
+	if db.GetDB().Debug().Table("facility").Select("id").Find(&Facility{Model: gorm.Model{ID: uint(facMng.FacilityID)}}).RecordNotFound() {
+		return nil, errors.New("No facility available")
+	}
+
+	if !db.GetDB().Debug().First(&facMng, "room_id = ? AND facility_id = ?", facMng.RoomID, facMng.FacilityID).RecordNotFound() {
+		return nil, errors.New("record existed")
+	}
+
+	err := db.GetDB().Table("facilities_manage").Create(&facMng).Error
 	if err != nil {
-		tlog.Error("Can not get facility from db", err)
 		return nil, err
 	}
-	return returnFacility, err
+
+	return facMng, nil
 }

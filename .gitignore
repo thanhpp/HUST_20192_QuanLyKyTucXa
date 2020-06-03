@@ -18,4 +18,6 @@ go.sum
 **\Diagram\QuanLyKyTucXa.asta.lock
 **\*.bak
 **\*.lock
+
+DormAppBackend
 app/backend/DormAppBackend
