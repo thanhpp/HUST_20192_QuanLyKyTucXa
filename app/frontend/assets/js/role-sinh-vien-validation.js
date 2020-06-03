@@ -1,7 +1,6 @@
 var role = sessionStorage.getItem("role");
 var token = sessionStorage.getItem("token");
 
-alert(token);
 if (token == null) {
   alert("Vui lòng đăng nhập để truy cập trang này");
   window.location.href = "/app/frontend/pages/dang-nhap.html";
@@ -19,18 +18,18 @@ if (token == null) {
     redirect: "follow",
   };
 
-  fetch("http://52.15.50.37:9090/lv0/usrinfo", requestOptions)
-    .then((response) => {
-      console.log(response.status);
-      if (response.status == 401) {
+  fetch("http://25.43.134.201:8080/lv0/usrinfo", requestOptions)
+    .then((response) => response.json())
+    .then((result) => {
+      if (result.message == "Invalid authorization, please login again") {
         alert("Vui lòng đăng nhập để truy cập trang này");
         window.location.href = "/app/frontend/pages/dang-nhap.html";
       } else {
         if (role == "0") {
           return;
         } else {
-          alert("Bạn không có quyền truy cập trang này");
-          window.stop();
+          alert("Bạn không có quyền truy cập trang này, vui lòng đăng nhập lại");
+          window.location.href = "/app/frontend/pages/dang-nhap.html";
         }
       }
     })

@@ -1,4 +1,41 @@
 $(document).ready(function () {
+  var token = sessionStorage.getItem("token");
+  var role = sessionStorage.getItem("role");
+
+  if (token != null) {
+   var myHeaders = new Headers();
+  //myHeaders.append("Content-Type", "text/plain", bearer);
+
+  var requestOptions = {
+    method: "GET",
+    credentials: "omit",
+    headers: {
+      Authorization: "Bearer " + token,
+      "Content-Type": "text/plain",
+    },
+    redirect: "follow",
+  };
+
+  fetch("http://25.43.134.201:8080/lv0/usrinfo", requestOptions)
+    .then((response) => response.json())
+    .then((result) => {
+      if (result.message == "Invalid authorization, please login again") {
+        alert("Vui lòng đăng nhập để truy cập trang này");
+        window.location.href = "/app/frontend/pages/dang-nhap.html";
+      } else {
+        if (role == "0") {
+          return;
+        } else {
+          alert("Bạn không có quyền truy cập trang này, vui lòng đăng nhập lại");
+          window.location.href = "/app/frontend/pages/dang-nhap.html";
+        }
+      }
+    })
+    .catch((error) => {
+      alert("Không kết nối được tới máy chủ", error);
+      window.stop();
+    });
+  }
   // Get current date & time
   function updateTime() {
     var today = new Date();
@@ -45,7 +82,7 @@ $(document).ready(function () {
     };
 
     fetch("http://25.43.134.201:8080/user/login", requestOptions)
-      .then((response) => {response.json()})
+      .then((response) => response.json())
       .then((result) => {
         if (result.message == "login success") {
           var role = result.role;

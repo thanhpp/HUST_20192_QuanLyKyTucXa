@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport" />
+  <title>Quản lý thông báo &mdash; KTX</title>
+
+  <!-- <script src='/app/frontend/assets/js/login-validation.js'></script> -->
+  <!-- General CSS Files -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
+
+  <!-- CSS Libraries -->
+  <link href="/app/frontend/assets/js/tabulator-master/dist/css/tabulator.min.css" rel="stylesheet">
+  <link href="/app/frontend/assets/js/tabulator-master/dist/css/bootstrap/tabulator_bootstrap4.min.css"
+    rel="stylesheet">
+  <script type="text/javascript" src="/app/frontend/assets/js/tabulator-master/dist/js/tabulator.min.js"></script>
+
+
+
+  <!-- Template CSS -->
+  <link rel="stylesheet" href="/app/frontend/assets/css/style.css" />
+  <link rel="stylesheet" href="/app/frontend/assets/css/components.css" />
+  <link rel="stylesheet" href="/app/frontend/assets/css/custom.css" />
+
+  <script src='/app/frontend/assets/js/page/fullcalendar/core/main.js'></script>
+  <script src='/app/frontend/assets/js/page/fullcalendar/daygrid/main.js'></script>
+</head>
+
+<body class="sidebar-mini">
+  <div id="app">
+    <div class="main-wrapper">
+      <div class="navbar-bg"></div>
+      <nav class="navbar navbar-expand-lg main-navbar">
+        <form class="form-inline mr-auto">
+          <ul class="navbar-nav mr-3">
+            <li>
+              <a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a>
+            </li>
+            <li>
+              <a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a>
+            </li>
+          </ul>
+          <div class="search-element"></div>
+        </form>
+        <ul class="navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+              <img alt="image" src="../assets/img/avatar/avatar-1.png" class="rounded-circle mr-1" />
+              <div class="d-sm-none d-lg-inline-block">
+                Chào, <span id="student-name">Vũ</span>
+              </div>
+              <div class="dropdown-menu dropdown-menu-right">
+                <div class="dropdown-title">Hành động</div>
+                <a href="#" id="logout" class="dropdown-item has-icon text-danger">
+                  <i class="fas fa-sign-out-alt"></i> Đăng xuất
+                </a>
+              </div>
+          </li>
+        </ul>
+      </nav>
+      <div class="main-sidebar">
+        <aside id="sidebar-wrapper">
+          <div class="sidebar-brand">
+            <a href="index0.html">Ký túc xá</a>
+          </div>
+          <div class="sidebar-brand sidebar-brand-sm">
+            <a href="index0.html">KTX</a>
+          </div>
+          <ul class="sidebar-menu">
+            <li class="nav-item dropdown">
+              <a href="/app/frontend/pages/index0.html" class="nav-link"><i class="fas fa-info"></i><span>Tổng
+                  quan</span></a>
+            </li>
+            <li class="menu-header">Quản lý</li>
+            <li class="nav-item dropdown">
+              <a href="/app/frontend/pages/quan-ly-sinh-vien.html" class="nav-link"><i class="fas fa-user-friends"></i>
+                <span>Quản lý sinh viên</span></a>
+            </li>
+            <li class="nav-item dropdown">
+              <a href="/app/frontend/pages/quan-ly-phong.html" class="nav-link"><i class="fas fa-couch"></i> <span>Quản
+                  lý phòng</span></a>
+            </li>
+            <li class="nav-item dropdown ">
+              <a href="/app/frontend/pages/quan-ly-gui-xe.html" class="nav-link"><i class="fas fa-bicycle"></i>
+                <span>Quản lý gửi xe</span></a>
+            </li>
+            <li class="menu-header">Hỗ trợ</li>
+            <li class="nav-item dropdown ">
+              <a href="/app/frontend/pages/xu-ly-cac-yeu-cau.html" class="nav-link"><i class="fas fa-paper-plane"></i>
+                <span>Xử lý các yêu cầu</span></a>
+            </li>
+            <li class="nav-item dropdown active">
+              <a href="/app/frontend/pages/quan-ly-thong-bao.html" class="nav-link"><i class="far fa-file-alt"></i>
+                <span>Quản lý thông báo</span></a>
+            </li>
+        </aside>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <section class="section">
+          <div class="section-header">
+            <h1>Quản lý thông báo</h1>
+          </div>
+          <div class="section-body">
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                      <h4>Thêm thông báo</h4>
+                    </div>
+                    <div class="card-body">
+                      <div class="form-group">
+                        <label>Tiêu đề</label>
+                        <input id="header" type="text" class="form-control" >
+                      </div>
+                      <div class="form-group mb-0">
+                        <label>Nội dung</label>
+                        <textarea id="noi-dung-thong-bao" class="form-control"></textarea>
+                      </div>
+                    </div>
+                    <div class="card-footer text-right">
+                      <button id="submit-button" class="btn btn-primary">Gửi</button>
+                      <button type="reset" class="btn btn-secondary">Reset</button>
+                    </div>
+                </div>
+              </div>
+ 
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Danh sách thông báo</h4>
+                  </div>
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-12">
+                        <span>
+                          <h6>Tìm kiếm dữ liệu theo cột</h6>
+                        </span>
+                        <select id="filter-field">
+                          <option></option>
+                          <option value="id">Mã yêu cầu</option>
+                          <option value="room">Phòng</option>
+                          <option value="sent_date">Ngày gửi</option>
+                          <option value="status">Tình trạng</option>
+                        </select>
+
+                        <select id="filter-type">
+                          <option value="like">like</option>
+                          <option value="=">=</option>
+                          <option value="<"><</option>
+                          <option value="<="><=</option>
+                          <option value=">">></option>
+                          <option value=">=">>=</option>
+                          <option value="!=">!=</option>
+                        </select>
+
+                        <input id="filter-value" type="text" placeholder="điền dữ liệu cần tìm">
+                      </div>
+                    </div>
+                    <br>
+                    <div id="student-parking-table"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+      </section>
+    </div>
+    <div class="modal fade" id="student-request-modal" tabindex="-1" role="dialog" aria-labelledby="studentModal"
+      aria-hidden="true">
+      <div class="modal-dialog  modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="studentModal">Thông tin yêu cầu</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="card">
+              <div class="card card-primary">
+                <div class="card-body">
+                  <div class="author-box-details">
+                    <div class="author-box-name">
+                      <form action="">
+                        <div>
+                          <p><strong>Tiêu đề: <span id="subject"></span></strong></p>
+                        </div>
+                        <div>
+                          <p><strong>Mã yêu cầu: </strong><span id="id"></span></p>
+                        </div>
+                        <div>
+                          <p><strong>Ngày gửi: </strong><span id="sent-date"></span></p>
+                        </div>
+                        <div>
+                          <p><strong>Tên sinh viên: </strong><span id="student_name"></span></p>
+                        </div>
+                        <div>
+                          <p><strong>Mã số sinh viên: </strong><span id="student-id"></span></p>
+                        </div>
+                        <div>
+                          <p><strong>Phòng: </strong><span id="room"></span></p>
+                        </div>
+                        <div>
+                          <p><strong>Nội dung: </strong></p>
+                          <p>
+                            <span id="content"></span>
+                          </p>
+                        </div>
+                        <div class="form-group">
+                          <p><strong>Phản hồi: </strong></p>
+                          <input type="text" class="form-control" value="" id="reply">
+                        </div>
+                        <div class="form-group">
+                          <p><strong>Tình trạng: </strong></p>
+                          <select class="form-control" id="status">
+                            <option val="Chưa xử lý">Chưa xử lý</option>
+                            <option val="Đang xử lý">Đang xử lý</option>
+                            <option val="Đã xử lý">Đã xử lý</option>
+                          </select>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+            <button type="button" class="btn btn-primary" id="change-student-button">Lưu lại</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="main-footer">
+      <div class="footer-left">
+        Copyright &copy; 2018
+        <div class="bullet"></div>
+        Design By <a href="https://nauval.in/">Muhamad Nauval Azhar</a>
+      </div>
+      <div class="footer-right">
+        2.3.0
+      </div>
+    </footer>
+  </div>
+  </div>
+
+
+  <!-- General JS Scripts -->
+  <script src="/app/frontend/assets/js/jquery-3.5.1.min.js"
+    ></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="/app/frontend/assets/js/stisla.js"></script>
+
+  <!-- JS Libraies -->
+
+  <!-- Template JS File -->
+  <script src="/app/frontend/assets/js/scripts.js"></script>
+  <script type="text/javascript" src="https://oss.sheetjs.com/sheetjs/xlsx.full.min.js"></script>
+  <script src="/app/frontend/assets/js/custom.js"></script>
+  <script src="/app/frontend/assets/js/moment.js"></script>
+  <script src="/app/frontend/assets/js/quan-ly-thong-bao.js"></script>
+
+  <!-- Page Specific JS File -->
+
+</body>
+
+</html>
