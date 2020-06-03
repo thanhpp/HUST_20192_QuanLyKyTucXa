@@ -1,7 +1,6 @@
 var token = sessionStorage.getItem("token");
 var myHeaders = new Headers();
 //myHeaders.append("Content-Type", "text/plain", bearer);
-console.log(token);
 var requestOptions = {
   method: "GET",
   credentials: "omit",
@@ -37,7 +36,7 @@ fetch("http://25.43.134.201:8080/lv0/usrinfo", requestOptions)
       "/" +
       update_date_split[0];
 
-    $(".student-name").text(sessionStorage.getItem("username"));
+    
     $("#student-id").text(result.student_info.studentid);
     $("#student-birth").text(result.student_info.dob);
     $("#student-address").text(result.student_info.address);

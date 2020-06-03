@@ -130,10 +130,10 @@
                       <div class="card-body">
                         <div class="author-box-details" id="info-description">
                           <div class="author-box-name">
-                            <p><strong>Phòng trọ: </strong><span id="student-room">103</span></p>
-                            <p><strong>Tiền trọ: </strong><span id="room-fee">200,000</span>đ</p>
-                            <p><strong>Hạn đóng tiền: </strong><span id="due-date">6/6/2020</span></p>
-                            <p><strong>Trạng thái: </strong><span id="fee-status">Chưa thanh toán</span></p>
+                            <p><strong>Phòng trọ: </strong><span id="student-room"></span></p>
+                            <p><strong>Tiền trọ: </strong><span id="room-fee"></span>đ</p>
+                            <p><strong>Hạn đóng tiền: </strong><span id="due-date">Mùng 6 hàng tháng</span></p>
+                            <p><strong>Trạng thái: </strong><span id="fee-status"></span></p>
                           </div>
                         </div>
                       </div>
@@ -153,7 +153,7 @@
                 </div>
               </div>
               <div class="col-12 col-lg-12 col-xl-7">
-                <div class="card">
+                <!-- <div class="card">
                   <div class="card-header">
                     <h4>Các khoản phí trong tháng</h4>
                   </div>
@@ -180,7 +180,7 @@
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> -->
                 <div class="card">
                   <div class="card-header">
                     <h4>Lịch sử thanh toán tiền trọ</h4>
@@ -193,29 +193,25 @@
                           </span>
                           <select id="filter-field">
                             <option></option>
-                            <option value="student_id">MSSV</option>
-                            <option value="id">STT</option>
-                            <option value="name">Họ và tên</option>
-                            <option value="gender">Gender</option>
-                            <option value="room">Phòng</option>
-                            <option value="fee_status">Tình trạng nộp phí</option>
+                            <option value="month">Tháng</option>
+                            <option value="year">Năm</option>
+                            <option value="status">Tình trạng nộp phí</option>
                           </select>
 
                           <select id="filter-type">
-                            <option value="=">=</option>
+                          <option value="like">like</option>>
+                          <option value="=">=</option>
                           <option value="<"><</option>
                           <option value="<="><=</option>
                           <option value=">">></option>
                           <option value=">=">>=</option>
                           <option value="!=">!=</option>
-                          <option value="like">like</option>>
                           </select>
 
                           <input id="filter-value" type="text" placeholder="điền dữ liệu cần tìm">
                         </div>
                         <div class="col-4">
-                          <a href="#" id="download-xlsx" style="float: right" class="btn btn-lg btn-primary">Xuất
-                            Excel</a>
+                         
                         </div>
                       </div>
                       <br>

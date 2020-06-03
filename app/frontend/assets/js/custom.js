@@ -23,7 +23,7 @@ $("#logout").click(function () {
       redirect: "follow",
     };
 
-    fetch("http://52.15.50.37:9090/user/logout", requestOptions)
+    fetch("http://25.43.134.201:8080/user/logout", requestOptions)
       .then((response) => response.json())
       .then((result) => {
         if(result.message == "Logout successfully"){
@@ -46,5 +46,7 @@ $("#xemthem").fireModal({
   title: "Thông báo tu sửa một số khu vực của Ký túc xá",
   body: $("#modal-content-part"),
 });
+
+$(".student-name").text(sessionStorage.getItem("username"));
 
 

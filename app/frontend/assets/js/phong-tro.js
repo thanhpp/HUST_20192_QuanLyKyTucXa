@@ -1,4 +1,4 @@
-var token = localStorage.getItem("token");
+var token = sessionStorage.getItem("token");
 var myHeaders = new Headers();
 //myHeaders.append("Content-Type", "text/plain", bearer);
 
@@ -12,24 +12,23 @@ var roomRequestOptions = {
   redirect: "follow",
 };
 
-fetch("http://52.15.50.37:9090/lv0/roominfo", roomRequestOptions)
-  .then((response) => {
-    response.json();
-  })
+fetch("http://25.43.134.201:8080/lv0/roominfo", roomRequestOptions)
+  .then((response) => response.json())
   .then((result) => {
-    $("#student-room").val(result.room.roomID);
-    $("#room-fee").val(result.room.roomPrice);
-    $("#current-number").val(result.room.occupied);
-    $("#max-number").val(result.room.roomMax);
-    $("#due-date").val(result.room.duedDate);
-    $("#fee-status").val(result.room.feeStatus);
+    if (result.message == "Get room info successfully") {
+      $("#student-room").text(result.room.roomID);
+      $("#current-number").text(result.room.occupied);
+      $("#max-number").text(result.room.roomMax);
+    } else {
+      alert("Có lỗi xảy ra");
+    }
   })
   .catch((error) => {
     console.log("Không kết nối được tới máy chủ", error);
     alert("Không kết nối được tới máy chủ");
   });
 
-var friendsRequestOptions = {
+var roomMoneyRequestOptions = {
   method: "GET",
   credentials: "omit",
   headers: {
@@ -46,7 +45,7 @@ fetch("http://52.15.50.37:9090/lv0/friends", friendsRequestOptions)
     response.json();
   })
   .then((result) => {
-    tabledata = result;
+    tabledata = result.friend_list;
     for (var i = 0; i < Object.keys(tabledata).length; i++) {
       tabledata[i].stt = i + 1;
     }
@@ -110,6 +109,7 @@ function handleTable() {
         headerSort: false,
       },
       { title: "Họ và tên", field: "name", headerSort: false, width: 200 },
+      { title: "MSSV", field: "studentid", headerSort: false },
       { title: "Ngày sinh", field: "dob", headerSort: false },
       {
         title: "SĐT",
