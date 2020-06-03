@@ -12,7 +12,7 @@ import (
 //Student ...
 type Student struct {
 	DefaultModel
-	StudentID int    `json:"studenid" gorm:"type:int; not null; unique_index; primary_key"`
+	StudentID int    `json:"studentid" gorm:"type:int; not null; unique_index; primary_key"`
 	Name      string `json:"name" gorm:"type:text; not null"`
 	DOB       string `json:"dob" gorm:"type:text"`
 	Contact   string `json:"contact" gorm:"type:text; not null"`

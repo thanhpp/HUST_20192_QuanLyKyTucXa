@@ -45,6 +45,7 @@ func NewRouter() *gin.Engine {
 	facCtrl := new(controller.FacilityController)
 	rqCtrl := new(controller.RequestController)
 	userCtrl := new(controller.UserController)
+	notiCtrl := new(controller.NotificationController)
 
 	level1 := router.Group("/lv1")
 	{
@@ -60,6 +61,8 @@ func NewRouter() *gin.Engine {
 
 		level1.GET("/listfac/:roomid", facCtrl.GetListFacByRoomID)
 		level1.GET("/fac/:id", facCtrl.GetFacilityByFacID)
+		level1.POST("/newfac", facCtrl.NewFacility)
+		level1.POST("/newfacmng", facCtrl.NewFacilityManage)
 
 		level1.GET("/caldormmoney", stdCtrl.CalNewMonthMoney)
 		level1.GET("/getallmoneymanage", stdCtrl.GetAllMoneyManage)
@@ -68,6 +71,8 @@ func NewRouter() *gin.Engine {
 		level1.GET("/listrequest", rqCtrl.GetAllRequest)
 		level1.POST("/replyrequest", rqCtrl.ReplyRequest)
 
+		level1.GET("/listnoti", notiCtrl.GetAllNoti)
+		level1.POST("/newnoti", notiCtrl.CreateNoti)
 	}
 
 	level0 := router.Group("/lv0")
@@ -79,10 +84,14 @@ func NewRouter() *gin.Engine {
 		level0.GET("/friends", stdCtrl.GetFriends)
 		level0.GET("/roominfo", roomCtrl.GetRoomInfo)
 		level0.GET("/dormmoney", stdCtrl.GetDormMoney)
+
 		level0.GET("/listfac", facCtrl.GetListFacByStudentID)
 		level0.GET("/fac/:id", facCtrl.GetFacilityByFacID)
+
 		level0.GET("/listreq", rqCtrl.ListRequestByStudentID)
 		level0.POST("/sendreq", rqCtrl.NewRequest)
+
+		level0.GET("/listnoti", notiCtrl.GetAllNoti)
 	}
 	router.NoRoute()
 	return router

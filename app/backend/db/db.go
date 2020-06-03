@@ -24,7 +24,7 @@ func Init() {
 	}
 
 	db.SingularTable(true)
-
+	db.LogMode(true)
 }
 
 //GetDB return a handler with the db

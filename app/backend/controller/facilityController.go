@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"DormAppBackend/forms"
 	"DormAppBackend/model"
 	"DormAppBackend/tlog"
 	"net/http"
@@ -110,5 +111,55 @@ func (fCtrl FacilityController) GetListFacByStudentID(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
 		"message":         "Get list facilities by roomid OK",
 		"list_facilities": listFac,
+	})
+}
+
+func (fCtrl FacilityController) NewFacility(c *gin.Context) {
+	var newFacForm forms.NewFacilityForm
+	if c.ShouldBindJSON(&newFacForm) != nil {
+		c.JSON(http.StatusNotAcceptable, gin.H{
+			"message": "Invalid new facility form",
+		})
+		c.Abort()
+		return
+	}
+
+	newFac, err := facMod.NewFacility(newFacForm)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"message": "Can not create new facility",
+		})
+		c.Abort()
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"message":  "Create new facility OK",
+		"facility": newFac,
+	})
+}
+
+func (fCtrl FacilityController) NewFacilityManage(c *gin.Context) {
+	var newFacMngForm forms.NewFacilityManageForm
+	if c.ShouldBindJSON(&newFacMngForm) != nil {
+		c.JSON(http.StatusNotAcceptable, gin.H{
+			"message": "Invalid new facility manage form",
+		})
+		c.Abort()
+		return
+	}
+
+	newFacMng, err := facManMod.NewFacilityManage(newFacMngForm)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"message": "Can not create new facility manage",
+		})
+		c.Abort()
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"message":         "Create new facility manage OK",
+		"facility_manage": newFacMng,
 	})
 }
