@@ -60,7 +60,10 @@
   - Các tham số để khởi tạo CSDL
 
 ### 2. Frontend:
-
+- Sử dụng phần mềm VSCode và Extension Live Server
+  - Tải và cài đặt phần mềm VSCode: https://code.visualstudio.com/
+  - Tìm và cài đặt extension Live Server: https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer
+  - Sau khi cài đặt extension, mở file HTML bạn muốn rồi ấn vào nút Go Live ở góc trái dưới màn hình
 ### 3. Hamachi:
 - Đăng ký tài khoản tại: https://www.vpn.net/
 - Tải và cài đặt Hamachi trên máy tính tại : https://www.vpn.net/
