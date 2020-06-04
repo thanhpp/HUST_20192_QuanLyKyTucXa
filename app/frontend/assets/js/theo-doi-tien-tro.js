@@ -36,7 +36,6 @@ var roomMoneyRequestOptions = {
   },
   redirect: "follow",
 };
-let tabledata;
 
 var roomMoneyRequestOptions = {
   method: "GET",
@@ -47,31 +46,81 @@ var roomMoneyRequestOptions = {
   },
   redirect: "follow",
 };
+var tabledata;
 
 fetch("http://25.43.134.201:8080/lv0/dormmoney", roomMoneyRequestOptions)
   .then((response) => response.json())
   .then((result) => {
     if (result.message == "Dorm money history") {
       tabledata = result.money_list;
-      
-      
-    } else {
-      alert("Có lỗi xảy ra");
+
+      if (result.message == "Dorm money history") {
+        var money_history = result.money_list;
+        console.log(money_history[Object.keys(money_history).length - 1]);
+        if (
+          money_history[Object.keys(money_history).length - 1].status ==
+          "unpaid"
+        ) {
+          $("#fee-status").text("Chưa thanh toán");
+        } else {
+          $("#fee-status").text("Đã thanh toán");
+        }
+      } else {
+        alert("Có lỗi xảy ra");
+      }
+      handleTable(tabledata);
     }
   })
   .catch((error) => {
     console.log("Không kết nối được tới máy chủ", error);
     alert("Không kết nối được tới máy chủ");
   });
-
-  var table = new Tabulator("#fee-history-table", {
-    height:205, // set height of table (in CSS or here), this enables the Virtual DOM and improves render speed dramatically (can be any valid css height value)
-    data:tabledata, //assign data to table
-    layout:"fitColumns", //fit columns to width of table (optional)
-    columns:[ //Define Table Columns
-      {title:"Tháng", field:"month", sorter:"number" },
-      {title:"Năm", field:"year", sorter:"number" },
-      {title:"Số tiền", field:"money", sorter:"number" },
-      {title:"Trạng thái", field:"status", sorter:"string" },
+let table;
+function handleTable(data) {
+  table = new Tabulator("#table", {
+    height: 205,
+    data: data,
+    layout: "fitColumns",
+    columns: [
+      { title: "Tháng", field: "month", sorter: "number" },
+      { title: "Năm", field: "year", sorter: "number" },
+      { title: "Số tiền", field: "money", sorter: "number" },
+      { title: "Trạng thái", field: "status", sorter: "string" },
     ],
- });
+  });
+}
+var fieldEl = document.getElementById("filter-field");
+var typeEl = document.getElementById("filter-type");
+var valueEl = document.getElementById("filter-value");
+
+//Custom filter example
+function customFilter(data) {
+  return data.car && data.rating < 3;
+}
+
+//Trigger setFilter function with correct parameters
+function updateFilter() {
+  var filterVal = fieldEl.options[fieldEl.selectedIndex].value;
+  var typeVal = typeEl.options[typeEl.selectedIndex].value;
+
+  var filter = filterVal == "function" ? customFilter : filterVal;
+
+  if (filterVal == "function") {
+    typeEl.disabled = true;
+    valueEl.disabled = true;
+  } else {
+    typeEl.disabled = false;
+    valueEl.disabled = false;
+  }
+
+  if (filterVal) {
+    table.setFilter(filter, typeVal, valueEl.value);
+  }
+}
+
+document
+  .getElementById("filter-field")
+  .addEventListener("change", updateFilter);
+document.getElementById("filter-type").addEventListener("change", updateFilter);
+document.getElementById("filter-value").addEventListener("keyup", updateFilter);
+

@@ -28,7 +28,7 @@ fetch("http://25.43.134.201:8080/lv0/roominfo", roomRequestOptions)
     alert("Không kết nối được tới máy chủ");
   });
 
-var roomMoneyRequestOptions = {
+var friendsRequestOptions = {
   method: "GET",
   credentials: "omit",
   headers: {
@@ -40,11 +40,10 @@ var roomMoneyRequestOptions = {
 
 let tabledata;
 
-fetch("http://52.15.50.37:9090/lv0/friends", friendsRequestOptions)
-  .then((response) => {
-    response.json();
-  })
-  .then((result) => {
+fetch("http://25.43.134.201:8080/lv0/friends", friendsRequestOptions)
+.then((response) => response.json())
+.then((result) => {
+    console.log(result);
     tabledata = result.friend_list;
     for (var i = 0; i < Object.keys(tabledata).length; i++) {
       tabledata[i].stt = i + 1;
@@ -55,50 +54,13 @@ fetch("http://52.15.50.37:9090/lv0/friends", friendsRequestOptions)
     console.log("Không kết nối được tới máy chủ", error);
   });
 
-// let tabledata = [
-//   {
-//     name: "Tran Dinh Vu",
-//     dob: "13/12/1999",
-//     contact: "09191919191",
-//     address: "Hà Nội",
-//   },
-//   {
-//     name: "Tran Dinh A",
-//     dob: "13/12/1999",
-//     contact: "0382212381",
-//     address: "Hạ Long",
-//   },
-//   {
-//     name: "Tran Dinh B",
-//     dob: "13/12/1999",
-//     contact: "0382212381",
-//     address: "Hưng Yên",
-//   },
-//   {
-//     name: "Tran Dinh C",
-//     dob: "13/12/1999",
-//     contact: "09191919191",
-//     address: "New York",
-//   },
-//   {
-//     name: "Tran Dinh D",
-//     dob: "13/12/1999",
-//     contact: "09191919191",
-//     address: "Bác Ninh",
-//   },
-  
-// ];
-// for (var i = 0; i < Object.keys(tabledata).length; i++) {
-//   tabledata[i].stt = i + 1;
-// }
 
-// handleTable();
 
 function handleTable() {
   let table = new Tabulator("#roomate-table", {
     height: "100%", // set height of table (in CSS or here), this enables the Virtual DOM and improves render speed dramatically (can be any valid css height value)
     data: tabledata, //assign data to table
-    layout: "fitDataStretch", //fit columns to width of table (optional)
+    layout: "fitDataFill", //fit columns to width of table (optional)
     columns: [
       //Define Table Columns
       {

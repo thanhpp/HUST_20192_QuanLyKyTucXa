@@ -25,11 +25,9 @@
     <!-- CSS Libraries -->
    
     <!-- Template CSS -->
-    <link rel="stylesheet" href="../assets/css/style.css" />
-    <link rel="stylesheet" href="../assets/css/components.css" />
-    <link rel="stylesheet" href="../assets/css/custom.css" />
-    <link rel="stylesheet" href="../assets/css/customCalendar.css" />
-
+    <link rel="stylesheet" href="/app/frontend/assets/css/style.css" />
+    <link rel="stylesheet" href="/app/frontend/assets/css/components.css" />
+    <link rel="stylesheet" href="/app/frontend/assets/css/custom.css" />
 
   </head>
 
@@ -69,7 +67,7 @@
                   class="rounded-circle mr-1"
                 />
                 <div class="d-sm-none d-lg-inline-block">
-                  Chào, <span id="student-name">Vũ</span>
+                  Chào, <span class="student-name"></span>
                 </div>
               <div class="dropdown-menu dropdown-menu-right">
                 <div class="dropdown-title">Hành động</div>
@@ -142,56 +140,10 @@
             <div class="section-header">
               <h1>Thông báo</h1>
             </div>
-            <div class="section-body">
-              <div class="row">
-                <div class="col-12 ">
-                  <article class="article article-style-b">
-                    <div class="article-details">
-                      <div class="article-title">
-                        <h2><a href="#">Thông báo thay đổi về tiền trọ tháng 6</a></h2>
-                      </div>
-                      <div>
-                        <p>
-                          <small><span>15/5/2020</span> | <span>20:00</span> </small>
-                        </p>
-                        <p class="article-general">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ea magnam perspiciatis, nesciunt accusamus nihil inventore veritatis accusantium, dolore veniam deleniti dolorem magni distinctio. Accusamus, cum? Tenetur officiis voluptatum laborum repudiandae praesentium dolorem amet illum voluptas.
-                        </p>
-                      </div>
-                      <div class="article-cta">
-                        <a id="xemthem" href="#">Xem thêm <i class="fas fa-chevron-right"></i></a>
-                      </div>
-                    </div>
-                  </article>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-12 ">
-                  <article class="article article-style-b">
-                    <div class="article-details">
-                      <div class="article-title">
-                        <h2><a href="#">Thông báo tu sửa một số khu vực của Ký túc xá</a></h2>
-                      </div>
-                      <p>
-                        <small><span>15/5/2020</span> | <span>20:00</span> </small>
-                      </p>
-                      <div>
-                        <p class="article-general">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ea magnam perspiciatis, nesciunt accusamus nihil inventore veritatis accusantium, dolore veniam deleniti dolorem magni distinctio. Accusamus, cum? Tenetur officiis voluptatum laborum repudiandae praesentium dolorem amet illum voluptas.
-                        </p>
-                      </div>
-                      <div class="article-cta">
-                        <a id="xemthem" href="#">Xem thêm <i class="fas fa-chevron-right"></i></a>
-                      </div>
-                    </div>
-                  </article>
-                </div>
-              </div>
-                  
+            <div id="body" class="section-body">
               </div>
             </div>
           </section>
-        </div>
-        <div id="modal-content-part" class="modal-part">
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est quam incidunt maiores veritatis recusandae, explicabo dolore rerum quisquam modi neque. Fuga ratione vel cumque illo! Tenetur, mollitia sunt possimus et libero adipisci eveniet qui, illo in ratione nesciunt labore. Ratione ad iusto veritatis quasi alias earum animi voluptatibus velit quae optio temporibus magni ipsum similique possimus, deleniti consequuntur nisi pariatur obcaecati dolorum amet qui. Animi excepturi molestias enim? Ut, quo minima dicta eius natus beatae, quasi vitae rerum reiciendis hic perspiciatis omnis possimus sed ipsam quod recusandae veniam laboriosam impedit tempore sequi labore accusantium culpa eligendi cum. Dolore, earum! Eligendi saepe molestias optio pariatur amet, et nulla necessitatibus officiis, facere nesciunt rerum omnis quisquam fugit ad voluptatibus aliquid eius? Accusantium magni, explicabo distinctio sapiente inventore corporis, est voluptatum facilis et sequi quo reprehenderit quos voluptates officiis exercitationem eaque ullam quam veritatis praesentium asperiores harum nesciunt voluptatem? Officia incidunt nihil tempora tenetur! Quae nobis nam quis debitis, odit laudantium consequatur temporibus unde officiis sed illum et exercitationem, repellendus blanditiis doloribus molestiae quos facere. Error ut, quasi ab debitis fugit accusamus dicta fuga modi optio quidem temporibus repellendus? Quia mollitia harum aliquid vero labore, est ex recusandae quibusdam quas quod similique modi.</p>
         </div>
         <footer class="main-footer">
           <div class="footer-left">
@@ -207,31 +159,29 @@
     </div>
 
     <!-- General JS Scripts -->
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.min.js"
-      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="../assets/js/stisla.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+  crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<script src="/app/frontend/assets/js/stisla.js"></script>
 
-    <!-- JS Libraies -->
+<!-- JS Libraies -->
 
-    <!-- Template JS File -->
-    <script src="../assets/js/scripts.js"></script>
-    <script src="../assets/js/custom.js"></script>
+<!-- Template JS File -->
+<script src="/app/frontend/assets/js/scripts.js"></script>
+<script type="text/javascript" src="https://oss.sheetjs.com/sheetjs/xlsx.full.min.js"></script>
+<script src="/app/frontend/assets/js/custom.js"></script>
+<script src="/app/frontend/assets/js/role-sinh-vien-validation.js"></script>
+<script src="/app/frontend/assets/js/thong-bao.js"></script>
 
     <!-- Page Specific JS File -->
   </body>
 </html>
+
+
