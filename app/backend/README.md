@@ -6,11 +6,13 @@
 
 ### [II. Các thư viện ngoài sử dụng](#các-thư-viện-ngoài-sử-dụng)
 
-### [III. Danh sách các API đang cung cấp](#danh-sách-các-api-đang-cung-cấp)
+### [III. SQL Tables](#sql-tables)
+
+### [IV. Danh sách các API đang cung cấp](#danh-sách-các-api-đang-cung-cấp)
 
 #### [POSTMAN](#POSTMAN)
 
-### [IV. Thiết kế các API](#thiết-kế-các-api)
+### [V. Thiết kế các API](#thiết-kế-các-api)
 
 #### [1. Level 0](#1-level-0)
 
@@ -72,6 +74,7 @@
 - Vấn đề gửi yêu cầu:
     - Sinh viên có thể lấy toàn bộ danh sách yêu cầu mình đã tạo
     - Sinh viên có thể tạo yêu cầu mới(tuy nhiên không được trùng về trạng thái và title)
+- Sửa đổi thông tin cá nhân.
 
 ### 2. Level 1
 
@@ -88,3 +91,4 @@
     - Thay đổi trạng thái trả tiền trọ của sinh viên.
     - Tạo CSVC mới.
     - Thêm CSVC cho các phòng.
+    - Chỉnh sửa số lượng CSVC.
