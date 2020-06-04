@@ -30,6 +30,7 @@ $("#logout").click(function () {
           sessionStorage.removeItem('token');
           sessionStorage.removeItem('role');
           alert("Đăng xuất thành công!")
+          window.location.href = "/app/frontend/pages/dang-nhap.html"
         }else if(result.message == "User not logged in"){
           alert("Người dùng chưa đăng nhập")
           window.location.href = "/app/frontend/pages/dang-nhap.html"

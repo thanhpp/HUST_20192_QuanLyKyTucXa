@@ -50,7 +50,7 @@
             <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
               <img alt="image" src="../assets/img/avatar/avatar-1.png" class="rounded-circle mr-1" />
               <div class="d-sm-none d-lg-inline-block">
-                Chào, <span id="student-name">Trần Đình Vũ</span>
+                Chào, <span id="student-name">Admin</span>
               </div>
               <div class="dropdown-menu dropdown-menu-right">
                 <div class="dropdown-title">Hành động</div>
@@ -111,31 +111,11 @@
                     <div class="card-icon">
                       <i class="far fa-question-circle"></i>
                     </div>
-                    <h4>3</h4>
+                    <h4 id="remaining-request">3</h4>
                     <div class="card-description">Đơn yêu cầu hỗ trợ chưa xử lý</div>
                   </div>
                   <div class="card-body p-0">
                     <div class="tickets-list">
-                      <a class="ticket-item">
-                        <div class="ticket-title">
-                          <h4>Thắc mắc về tiền trọ trong đợt dịch Covid-19</h4>
-                        </div>
-                        <div class="ticket-info">
-                          <div>Trần Đình Vũ - 20176126</div>
-                          <div class="bullet"></div>
-                          <div class="text-primary">15/5/2020</div>
-                        </div>
-                      </a>
-                      <a class="ticket-item">
-                        <div class="ticket-title">
-                          <h4>Thắc mắc về tốc độ mạng của KTX</h4>
-                        </div>
-                        <div class="ticket-info">
-                          <div>Mai Nam Hải - 20174412</div>
-                          <div class="bullet"></div>
-                          <div class="text-primary">16/5/2020</div>
-                        </div>
-                      </a>
                       <a href="xu-ly-cac-yeu-cau.html" class="ticket-item ticket-more">
                         Tới trang xử lý yêu cầu <i class="fas fa-chevron-right"></i>
                       </a>
@@ -154,11 +134,11 @@
                       <div class="card-stats">
                         <div class="card-stats-items">
                           <div class="card-stats-item card-stats-2">
-                            <div class="card-stats-item-count">82</div>
+                            <div class="card-stats-item-count" id="used-beds"></div>
                             <div class="card-stats-item-label">Đang sử dụng</div>
                           </div>
                           <div class="card-stats-item card-stats-2">
-                            <div class="card-stats-item-count">30</div>
+                            <div class="card-stats-item-count" id="empty-beds"></div>
                             <div class="card-stats-item-label">Còn trống</div>
                           </div>
                         </div>
@@ -170,8 +150,7 @@
                         <div class="card-header">
                           <h4>Tổng số giường</h4>
                         </div>
-                        <div class="card-body">
-                          67
+                        <div class="card-body" id="total-beds">
                         </div>
                       </div>
                     </div>
@@ -189,11 +168,11 @@
                       <div class="card-stats">
                         <div class="card-stats-items">
                           <div class="card-stats-item card-stats-2">
-                            <div class="card-stats-item-count">82</div>
+                            <div class="card-stats-item-count" id="paid-student"></div>
                             <div class="card-stats-item-label">Đã thanh toán</div>
                           </div>
                           <div class="card-stats-item card-stats-2">
-                            <div class="card-stats-item-count">30</div>
+                            <div class="card-stats-item-count" id="unpaid-student"></div>
                             <div class="card-stats-item-label">Chưa thanh toán</div>
                           </div>
                         </div>
@@ -205,8 +184,8 @@
                         <div class="card-header">
                           <h4>Tổng số sinh viên</h4>
                         </div>
-                        <div class="card-body">
-                          112
+                        <div class="card-body" id="total-student">
+                          
                         </div>
                       </div>
                     </div>
@@ -263,6 +242,8 @@
   <script src="/app/frontend/assets/js/scripts.js"></script>
   <script src="/app/frontend/assets/js/calendar.js"></script>
   <script src="/app/frontend/assets/js/custom.js"></script>
+  <script src="/app/frontend/assets/js/role-quan-ly-validation.js"></script>
+  <script src="/app/frontend/assets/js/index0.js"></script>
 
   <!-- Page Specific JS File -->
 </body>

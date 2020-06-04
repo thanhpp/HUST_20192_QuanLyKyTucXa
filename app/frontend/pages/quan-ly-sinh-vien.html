@@ -52,7 +52,7 @@
             <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
               <img alt="image" src="../assets/img/avatar/avatar-1.png" class="rounded-circle mr-1" />
               <div class="d-sm-none d-lg-inline-block">
-                Chào, <span id="student-name">Vũ</span>
+                Chào, <span id="student-name">Admin</span>
               </div>
               <div class="dropdown-menu dropdown-menu-right">
                 <div class="dropdown-title">Hành động</div>
@@ -119,11 +119,11 @@
                       <div class="card-stats">
                         <div class="card-stats-items">
                           <div class="card-stats-item card-stats-2">
-                            <div class="card-stats-item-count">82</div>
+                            <div class="card-stats-item-count" id="paid-student"></div>
                             <div class="card-stats-item-label">Đã thanh toán</div>
                           </div>
                           <div class="card-stats-item card-stats-2">
-                            <div class="card-stats-item-count">30</div>
+                            <div class="card-stats-item-count" id="unpaid-student"></div>
                             <div class="card-stats-item-label">Chưa thanh toán</div>
                           </div>
                         </div>
@@ -135,8 +135,8 @@
                         <div class="card-header">
                           <h4>Tổng số sinh viên</h4>
                         </div>
-                        <div class="card-body">
-                          112
+                        <div class="card-body" id="total-student">
+                          
                         </div>
                       </div>
                     </div>
@@ -164,12 +164,10 @@
                         <span><h6>Tìm kiếm dữ liệu theo cột</h6></span>
                         <select id="filter-field">
                           <option></option>
-                          <option value="student_id">MSSV</option>
-                          <option value="id">STT</option>
+                          <option value="studentid">MSSV</option>
                           <option value="name">Họ và tên</option>
-                          <option value="gender">Gender</option>
                           <option value="room">Phòng</option>
-                          <option value="fee_status">Tình trạng nộp phí</option>
+                          <option value="status">Tình trạng nộp phí</option>
                         </select>
 
                         <select id="filter-type">
@@ -191,43 +189,6 @@
                     </div>
                     <br>
                     <div id="student-table"></div>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="card-header">
-                    <h4>Danh sách sinh viên yêu cầu vào KTX</h4>
-                  </div>
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-8">
-                        <span><h6>Tìm kiếm dữ liệu theo cột</h6></span>
-                        <select id="filter-field2">
-                          <option></option>
-                          <option value="student_id">MSSV</option>
-                          <option value="id">STT</option>
-                          <option value="name">Họ và tên</option>
-                          <option value="register_date">Ngày nộp đơn</option>
-                        </select>
-
-                        <select id="filter-type2">
-                          <option value="=">=</option>
-                          <option value="<"><</option>
-                          <option value="<="><=</option>
-                          <option value=">">></option>
-                          <option value=">=">>=</option>
-                          <option value="!=">!=</option>
-                          <option value="like">like</option>
-                        </select>
-
-                        <input id="filter-value2" type="text" placeholder="điền dữ liệu cần tìm">
-                      </div>
-                      <div class="col-4">
-                        <a href="" id="xuat-excel2" style="float: right" class="btn btn-lg btn-success">Xuất Excel</a>
-                      </div>
-
-                    </div>
-                    <br>
-                    <div id="student-appending-table"></div>
                   </div>
                 </div>
               </div>
@@ -270,39 +231,33 @@
                   <div class="author-box-name">
                     <form action="">
                       <div class="form-group">
-                        <p><strong>Họ và tên: </strong></p>
-                        <input type="text" class="form-control" value="" id="student-name">
+                        <p><strong>Họ và tên: </strong><span id="name"></span></p>
                       </div>
                       <div class="form-group">
-                        <p><strong>Phòng: </strong></p>
-                        <input type="text" class="form-control" value="" id="student-room">
+                        <p><strong>Phòng: </strong><span id="room"></span></p>
                       </div>
                       <div class="form-group">
-                        <p><strong>Mã số sinh viên: </strong></p>
-                        <input type="text" class="form-control" value="" id="student-id">
+                        <p><strong>Mã số sinh viên: </strong><span id="studentid"></span></p>
                       </div>
                       <div class="form-group">
-                        <p><strong>Ngày sinh: </strong></p>
-                        <input type="text" class="form-control" value="" id="dob">
+                        <p><strong>Ngày sinh: </strong><span id="dob"></span></p>
                       </div>
                       <div class="form-group">
-                        <p><strong>Địa chỉ: </strong></p>
-                        <input type="text" class="form-control" value="" id="student-address">
+                        <p><strong>Địa chỉ: </strong><span id="address"></span></p>
                       </div>
                       <div class="form-group">
-                        <p><strong>Thông tin liên lạc: </strong></p>
-                        <input type="text" class="form-control" value="" id="student-contact">
+                        <p><strong>SĐT: </strong><span id="contact"></span></p>
                       </div>
                       <div class="form-group">
                         <p><strong>Trạng thái: </strong></p>
-                        <select class="form-control">
-                          <option>Chưa thanh toán</option>
-                          <option>Đã thanh toán</option>
+                        <select class="form-control" id="status">
+                          <option value="Chưa thanh toán">Chưa thanh toán</option>
+                          <option value="Đã thanh toán">Đã thanh toán</option>
                         </select>
                       </div>
                       <div class="form-group">
-                        <p><strong>Ngày đăng ký: </strong> </strong><span id="register_date">3/8/2018</span></p>
-                      <p><strong>Ngày cập nhật: </strong><span id ="update_date"></span></p>
+                        <p><strong>Ngày đăng ký: </strong> </strong><span id="CreatedAt"></span></p>
+                      <p><strong>Ngày cập nhật: </strong><span id ="UpdatedAt"></span></p>
                       </div>
                     </form>
                   </div>
@@ -313,7 +268,9 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-          <button type="button" class="btn btn-primary" id="save-form">Lưu lại</button>
+          <div class="button">
+            <a id="save-button" href="#" class="btn btn-primary btn-md btn-icon icon-right" tabindex="4">Lưu</a>
+          </div>
         </div>
       </div>
     </div>
@@ -339,6 +296,7 @@
   <script type="text/javascript" src="https://oss.sheetjs.com/sheetjs/xlsx.full.min.js"></script>
   <script src="/app/frontend/assets/js/custom.js"></script>
   <script src="/app/frontend/assets/js/calendar.js"></script>
+  <script src="/app/frontend/assets/js/role-quan-ly-validation.js"></script>
   <script src="/app/frontend/assets/js/quan-ly-sinh-vien.js"></script>
 
   <!-- Page Specific JS File -->

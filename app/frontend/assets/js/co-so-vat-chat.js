@@ -46,7 +46,7 @@ function handleTable(data){
       },
       { title: "Tên CSVC", field: "facility_name", sorter: "string" },
       { title: "Số lượng hiện tại", field: "quantity", sorter: "number" },
-      { title: "Số lượng ban đầu", field: "quantity", sorter: "number" },
+      { title: "Số lượng ban đầu", field: "default", sorter: "number" },
     ],
   });
   

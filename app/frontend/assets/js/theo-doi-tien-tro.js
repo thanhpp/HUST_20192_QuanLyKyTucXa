@@ -37,15 +37,6 @@ var roomMoneyRequestOptions = {
   redirect: "follow",
 };
 
-var roomMoneyRequestOptions = {
-  method: "GET",
-  credentials: "omit",
-  headers: {
-    Authorization: "Bearer " + token,
-    "Content-Type": "text/plain",
-  },
-  redirect: "follow",
-};
 var tabledata;
 
 fetch("http://25.43.134.201:8080/lv0/dormmoney", roomMoneyRequestOptions)

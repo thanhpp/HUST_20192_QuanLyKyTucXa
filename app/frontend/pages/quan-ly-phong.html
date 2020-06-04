@@ -108,10 +108,10 @@
           </div>
           <div class="section-body">
             <div class="row">
-              <div class="col-12 col-lg-12 col-xl-6">
+              <div class="col-12 col-lg-12 col-xl-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Phòng ký túc xá</h4>
+                    <h4>Số giường ký túc xá</h4>
                     <div class="card-header-action">
                       
                     </div>
@@ -120,29 +120,42 @@
                     <div class="card card-statistic-2">
                       <div class="card-stats">
                         <div class="card-stats-items">
-                          <div class="card-stats-item">
-                            <div class="card-stats-item-count">52</div>
+                          <div class="card-stats-item card-stats-2">
+                            <div class="card-stats-item-count" id="used-beds"></div>
                             <div class="card-stats-item-label">Đang sử dụng</div>
                           </div>
-                          <div class="card-stats-item">
-                            <div class="card-stats-item-count">12</div>
-                            <div class="card-stats-item-label">Trống</div>
-                          </div>
-                          <div class="card-stats-item">
-                            <div class="card-stats-item-count">3</div>
-                            <div class="card-stats-item-label">Không dùng được</div>
+                          <div class="card-stats-item card-stats-2">
+                            <div class="card-stats-item-count" id="empty-beds"></div>
+                            <div class="card-stats-item-label">Còn trống</div>
                           </div>
                         </div>
                       </div>
-                      <div class="card-icon shadow-primary bg-primary">
-                        <i class="fas fa-home"></i>
-                      </div>
-                      <div class="card-wrap">
-                        <div class="card-header">
-                          <h4>Tổng số phòng</h4>
+                      <div class="row">
+                        <div class="col-6">
+                          <div class="card-icon shadow-primary bg-primary">
+                            <i class="fas fa-bed"></i>
+                          </div>
+                          <div class="card-wrap">
+                            <div class="card-header">
+                              <h4>Tổng số giường</h4>
+                            </div>
+                            <div class="card-body" id="total-beds">
+                              
+                            </div>
+                          </div>
                         </div>
-                        <div class="card-body">
-                          67
+                        <div class="col-6">
+                          <div class="card-icon shadow-primary bg-primary">
+                            <i class="fas fa-bed"></i>
+                          </div>
+                          <div class="card-wrap">
+                            <div class="card-header">
+                              <h4>Tổng số phòng</h4>
+                            </div>
+                            <div class="card-body" id="total-room">
+                              67
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -153,76 +166,35 @@
                     </div>
                     <div class="card-body">
                       <div class="row">
-                        <div class="col-8">
+                        <div class="col-12">
                           <span><h6>Tìm kiếm dữ liệu theo cột</h6></span>
                           <select id="filter_field">
                             <option></option>
-                            <option value="room">Số phòng</option>
-                            <option value="id">STT</option>
-                            <option value="limit">Giới hạn</option>
-                            <option value="empty_bed">Trống</option>
-                            <option value="price">Giá</option>
+                            <option value="roomID">Phòng</option>
+                            <option value="roomMax">Giới hạn</option>
+                            <option value="occupied">Đang có</option>
+                            <option value="empty">Trống</option>
+                            <option value="roomPrice">Giá</option>
                           </select>
                           <select id="filter_type">
+                            <option value="like">like</option>
                             <option value="=">=</option>
                             <option value="<"><</option>
                             <option value="<="><=</option>
                             <option value=">">></option>
                             <option value=">=">>=</option>
                             <option value="!=">!=</option>
-                            <option value="like">like</option>
                           </select>
   
                           <input id="filter_value" type="text" placeholder="điền dữ liệu cần tìm">
                         </div>
-                        <div class="col-4">
-                          <a href="#" id="download-xlsx" style="float: right" class="btn btn-lg btn-success">Xuất Excel</a>
+                        <div class="col-12">
+                          <a href="#" id="download-room-list-xlsx" style="float: right" class="btn btn-lg btn-success">Xuất Excel</a>
                         </div>
-  
                       </div>
                       <br>
                       <div id="room-table"></div>
                     </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-12 col-md-12 col-xl-6">
-                
-                <div class="card">
-                  <div class="card-header">
-                    <h4>Danh sách cơ sở vật chất</h4>
-                  </div>
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-8">
-                        <span><h6>Tìm kiếm dữ liệu theo cột</h6></span>
-                        <select id="filter_field2">
-                          <option></option>
-                          <option value="id">STT</option>
-                          <option value="name">Họ và tên</option>
-                          <option value="student_id">MSSV</option>
-                          <option value="register_date">Ngày nộp đơn</option>
-                        </select>
-
-                        <select id="filter_type2">
-                          <option value="=">=</option>
-                          <option value="<"><</option>
-                          <option value="<="><=</option>
-                          <option value=">">></option>
-                          <option value=">=">>=</option>
-                          <option value="!=">!=</option>
-                          <option value="like">like</option>
-                        </select>
-
-                        <input id="filter_value2" type="text" placeholder="điền dữ liệu cần tìm">
-                      </div>
-                      <div class="col-4">
-                        <a href="" id="xuat-excel2" style="float: right" class="btn btn-lg btn-success">Xuất Excel</a>
-                      </div>
-
-                    </div>
-                    <br>
-                    <div id="student-appending-table"></div>
                   </div>
                 </div>
               </div>
@@ -245,7 +217,7 @@
   </div>
 
   <div class="modal fade" id="room-table-modal" tabindex="-1" role="dialog" aria-labelledby="studentModal" aria-hidden="true">
-    <div class="modal-dialog  modal-lg modal-dialog-centered" role="document">
+    <div class="modal-dialog  modal-xl modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="studentModal">Thông tin chi tiết</h5>
@@ -261,24 +233,31 @@
                   <div class="author-box-name">
                     <form action="">
                       <div class="form-group">
-                        <p><strong>Số phòng: </strong></p>
-                        <input type="text" class="form-control" value="" id="room">
+                        <p><strong>Số phòng: </strong><span id="room"></span></p>
                       </div>
                       <div class="form-group">
-                        <p><strong>Giá: </strong></p>
-                        <input type="text" class="form-control" value="" id="price">
+                        <p><strong>Giá: </strong><span id="price"></span></p>
                       </div>
                       <div class="form-group">
-                        <p><strong>Số sinh viên tối đa: </strong></p>
-                        <input type="text" class="form-control" value="" id="limit">
+                        <p><strong>Tối đa: </strong><span id="limit"></span></p>
                       </div>
                       <div class="form-group">
-                        <p><strong>Số giường trống: </strong></p>
-                        <input type="text" class="form-control" value="" id="empty_bed">
+                        <p><strong>Đang có: </strong><span id="occupied"></span></p>
                       </div>
                       <div class="form-group">
-                        <p><strong>Ngày đăng ký: </strong> </strong><span id="register_date">3/8/2018</span></p>
-                      <p><strong>Ngày cập nhật: </strong><span id ="update_date"></span></p>
+                        <p><strong>Còn trống: </strong><span id="empty"></span></p>
+                      </div>
+                      <div class="form-group">
+                        <p><strong>Danh sách sinh viên: </strong></p>
+                        <div id="students-in-room"></div>
+                      </div>
+                      <div class="form-group">
+                        <p><strong>Danh sách CSVC: </strong></p>
+                        <div id="facilities-in-room"></div>
+                      </div>
+                      <div class="form-group">
+                        <p><strong>Ngày đăng ký: </strong><span id="register_date"></span></p>
+                        <p><strong>Ngày cập nhật: </strong><span id="update_date"></span></p>
                       </div>
                     </form>
                   </div>
@@ -289,11 +268,46 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-          <button type="button" class="btn btn-primary" id="save-form">Lưu lại</button>
         </div>
       </div>
     </div>
   </div>
+<div class="modal fade" id="facility-table-modal" tabindex="-1" role="dialog" aria-labelledby="studentModal1" aria-hidden="true">
+    <div class="modal-dialog  modal-md modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="studentModal1">Thông tin chi tiết</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="card">
+            <div class="card card-primary">
+              <div class="card-body">
+                      <div>
+                        <p><strong>ID: </strong><span id="fac_ID"></span></p>
+                      </div>
+                      <div>
+                        <p><strong>Thông tin: </strong><span id="fac_des"></span></p>
+                      </div>
+                      <div>
+                        <p><strong>SL hiện tại: </strong></p>
+                        <input type="text" class="form-control" value="" id="fac_quantity">
+                      </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+          <div class="button">
+            <a id="facility-update-button" href="#" class="btn btn-primary btn-md btn-icon icon-right" tabindex="4">Cập nhật</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> 
 
   <!-- General JS Scripts -->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -314,6 +328,7 @@
   <script src="/app/frontend/assets/js/scripts.js"></script>
   <script type="text/javascript" src="https://oss.sheetjs.com/sheetjs/xlsx.full.min.js"></script>
   <script src="/app/frontend/assets/js/custom.js"></script>
+  <script src="/app/frontend/assets/js/role-quan-ly-validation.js"></script>
   <script src="/app/frontend/assets/js/quan-ly-phong.js"></script>
 
   <!-- Page Specific JS File -->
