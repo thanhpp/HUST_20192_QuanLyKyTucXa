@@ -10,20 +10,6 @@
 
 #### [POSTMAN](#POSTMAN)
 
-#### [health](#health)
-
-##### [1. check](#1-check-kiểm-tra-hoạt-động-của-server)
-
-#### [user](#user)
-
-##### [1. login](#1-loginpost)
-
-##### [2. logout](#2-logoutget)
-
-##### [3. register](#3-registerpost)
-
-### [TODO LIST](#todo-list)
-
 ## Thiết kế hệ thống
 
 ![BackEndDesign](img/DormAppBackendDesign.png)
@@ -48,9 +34,9 @@
 
 - Thư viện dùng cho việc mã hóa, hash trong Go.
 
-5.[uuid](https://github.com/twinj/uuid)
+5.[Jwt-go](https://github.com/dgrijalva/jwt-go)
 
-6.[Jwt-go](https://github.com/dgrijalva/jwt-go)
+- Thư viện dùng cho việc tạo và xác thực JWT trong Go.
 
 ## [SQL TABLES](https://github.com/ThanhPP/HUST_20192_QuanLyKyTucXa/blob/master/app/backend/SQL.md)
 
@@ -58,157 +44,41 @@
 
 ### [POSTMAN](https://www.getpostman.com/collections/8894497461d3adc2ec1e)
 
-### health
+## Thiết kế các API:
+- Chia người sử dụng thành 3 dạng:
+    - user (Khi chưa đăng nhập)
+    - level 1 (người quản lý)
+    - level 0 (sinh viên)
 
-#### 1. check: kiểm tra hoạt động của server
+- Thông tin về phân quyền, xác thực được lưu trong token trả về và được kiểm tra mỗi khi người dùng gọi request. 
 
-### user
+- Refresh token được dùng để lấy thêm access token mới.
+### 1. Level 0
 
-#### 1. login(POST)
+- MSSV được đính kèm vào jwt để định danh sinh viên khi thực hiện request.
+- Sinh viên có thể lấy các thông tin liên quan đến mình.
+    - Lấy thông tin bản thân. (Dự kiến kết nối với hệ thống khác)
+    - Lấy thông tin về phòng trọ:
+        - Danh sách bạn cùng phòng
+        - Lịch sử đóng tiền trọ
+        - Danh sách cơ sở vật chất có trong phòng.
+    - Lấy thông tin về thông báo chung.
+- Vấn đề gửi yêu cầu:
+    - Sinh viên có thể lấy toàn bộ danh sách yêu cầu mình đã tạo
+    - Sinh viên có thể tạo yêu cầu mới(tuy nhiên không được trùng về trạng thái và title)
 
-1.1 Login form:
+### 2. Level 1
 
-```JSON
-{
-    "username" : "text",
-    "password" : "text",
-}
-```
+- Người quản lý có khả năng lấy các thông tin:
+    - Sinh viên
+    - Phòng trọ
+    - CSVC của các phòng
+    - Lấy toàn bộ các thông báo chung.
 
-1.2 Chi tiết:
-
-- Token Expire time : 15 phút
-
-- Refresh Token Expire time :  1 tuần
-
-1.3 Reply JSON:
-
-```JSON
-{
-    "message": "Invalid form",
-}
-```
-
-```JSON
-{
-    "message": "Invalid login details",
-}
-```
-
-```JSON
-{
-    "message": "login success",
-    "role":    "role",
-    "token":   "token",
-}
-```
-
-1.4. Token:
-
-```JSON
-{
-    "access_token": "",
-    "refresh_token": "",
-}
-```
-
-1.5. User:
-
-```JSON
-{
-    "ID": "",
-    "CreatedAt":"",
-    "UpdatedAt":"",
-    "DeletedAt":"",
-    "username":"",
-    "password":"",
-}
-```
-
-1.6. Hình ảnh :
-![LoginRequest](img/UserLoginRequest.png)
-
-1.7. Cách xác thực :
-
-- [Bearer Token](https://learning.postman.com/docs/postman/sending-api-requests/authorization/#bearer-token)
-
-- [Mẫu postman Request](https://www.postman.com/collections/7f941b400a88ddd9c137)
-
-##### 2. logout(GET)
-
-2.1. Hình ảnh :
-![LogoutRequest](img/UserLogout.png)
-
-2.2. Reply JSON:
-
-```JSON
-{
-    "message": "Logout successfully"
-}
-```
-
-```JSON
-{
-    "message": "User not logged in"
-}
-```
-
-##### 3. register(POST)
-
-3.1. Register form :
-
-```JSON
-{
-    "username" : " ",
-    "password" : " ",
-    "userID" : " ",
-}
-```
-
-3.2. Reply JSON :
-
-```JSON
-{
-    "message": "Invalid format"
-}
-```
-
-```JSON
-{
-    "message": "Username existed"
-}
-```
-
-```JSON
-{
-    "message": " ",
-    "user": {
-        "ID": 0,
-        "CreatedAt": " ",
-        "UpdatedAt": " ",
-        "DeletedAt": null,
-        "username": " ",
-        "password": " "
-    }
-}
-```
-
-3.1. Hình ảnh :
-![RegisterRequest](img/UserRegister.png)
-
-- [x] Authorize Header
-
-### lv0(level 0 - sinh viên)
-
-## TODO LIST
-
-- [x] login
-
-- [ ] Quản lý sinh viên
-
-  - [ ] Lấy danh sách sinh viên đang trọ.
-
-- [ ] Quản lý phòng
-
-  - [ ] Danh sách sinh viên theo phòng.
-  - [ ] Danh sách cơ sở vật chất theo phòng.
+- Người quản lý có quyền thêm và sửa đổi CSDL:
+    - Đổi phòng trọ cho sinh viên
+    - Tính tiền trọ cho tháng mới của toàn bộ sinh viên.
+    - Trả lời yêu cầu của sinh viên.
+    - Thay đổi trạng thái trả tiền trọ của sinh viên.
+    - Tạo CSVC mới.
+    - Thêm CSVC cho các phòng.

@@ -11,3 +11,7 @@ DBName = "dormapp"
 # Redis
 RedisHost = "127.0.0.1:6379"
 RedisPassword = ""
+
+# Server
+SrvHost = "25.43.134.201"
+SrvPort = "8080"
