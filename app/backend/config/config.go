@@ -9,15 +9,18 @@ import (
 var (
 	config *viper.Viper
 
-	dbConfig *DBConfig
-	rdConfig = new(RDConfig)
+	dbConfig  *DBConfig
+	rdConfig  = new(RDConfig)
+	srvConfig = new(ServerConfig)
 )
 
 //Init takes the environment starts the viper
 func Init() {
 	configInit()
+
 	dbConfigInit()
 	redisConfigInit()
+	serverConfigInit()
 }
 
 //GetConfig return the Viper to read config from file
@@ -83,4 +86,22 @@ func redisConfigInit() {
 //GetRedisConfig config object for redis
 func GetRedisConfig() *RDConfig {
 	return rdConfig
+}
+
+//Server config
+type ServerConfig struct {
+	SrvHost string
+	SrvPort string
+}
+
+func serverConfigInit() {
+	c := getConfig()
+	srvConfig = &ServerConfig{
+		SrvHost: c.GetString("SrvHost"),
+		SrvPort: c.GetString("SrvPort"),
+	}
+}
+
+func GetServerConfig() *ServerConfig {
+	return srvConfig
 }

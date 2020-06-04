@@ -38,15 +38,15 @@ func TestChangeRoomOccupied(t *testing.T) {
 	db.Init()
 	tlog.Init()
 	r := &Room{
-		RoomID:      2,
-		Price:       500000,
+		RoomID:      3,
+		Price:       600000,
 		Occupied:    0,
 		Max:         8,
 		Description: "",
 	}
 
 	check := db.GetDB().Table("room").Where("room_id = ?", r.RoomID).RecordNotFound()
-	if check == true {
+	if check != true {
 		err := db.GetDB().Create(r).Error
 		if err != nil {
 			t.Errorf("Can not create new room %+v", err)
@@ -54,7 +54,7 @@ func TestChangeRoomOccupied(t *testing.T) {
 		}
 	}
 
-	err := r.ChangeRoomOccupied(2, 1)
+	err := r.ChangeRoomOccupied(1, 2)
 	if err != nil {
 		t.Errorf("Can not change room occupied %+v", err)
 	}

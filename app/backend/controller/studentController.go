@@ -290,3 +290,72 @@ func (sCtrl StudentController) UpdatePayment(c *gin.Context) {
 		"money_manage": returnMonMng,
 	})
 }
+
+func (sCtrl StudentController) NewStudentInfo(c *gin.Context) {
+	var stdInfoForm forms.StudentInfoForm
+
+	accessDes, err := authModel.ExtractTokenMetadata(c.Request)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"message": "Can not find user",
+		})
+		c.Abort()
+		return
+	}
+
+	if c.ShouldBindJSON(&stdInfoForm) != nil {
+		c.JSON(http.StatusNotAcceptable, gin.H{
+			"message": "Invalid student info form",
+		})
+		c.Abort()
+		return
+	}
+
+	std, err := studenMod.NewStudentInfto(int(accessDes.UserID), stdInfoForm)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"message": "Can not create new student info",
+		})
+		c.Abort()
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"message": "Update student info OK",
+		"student": std,
+	})
+}
+
+func (sCtrl StudentController) GetAllStudent(c *gin.Context) {
+	listStd, err := studenMod.GetAllStudent()
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"message": "Can not get list students",
+		})
+		c.Abort()
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"message":      "Get list student OK",
+		"list_student": listStd,
+	})
+}
+
+func (sCtrl StudentController) GetPaymentReport(c *gin.Context) {
+	paid, unpaid, err := monMng.GetReportStudentPayment()
+
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"message": "Can not get payment report",
+		})
+		c.Abort()
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"message": "Get payment report OK",
+		"paid":    paid,
+		"unpaid":  unpaid,
+	})
+}

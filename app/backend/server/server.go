@@ -1,11 +1,13 @@
 package server
 
 import (
+	"DormAppBackend/config"
 	"DormAppBackend/router"
 )
 
 // Init create a server
 func Init() {
+	srvCf := config.GetServerConfig()
 	r := router.NewRouter()
-	r.Run("25.43.134.201:8080")
+	r.Run(srvCf.SrvHost + ":" + srvCf.SrvPort)
 }

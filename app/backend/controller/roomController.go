@@ -61,7 +61,7 @@ func (rCtrl RoomController) GetRoomInfo(c *gin.Context) {
 }
 
 func (rCtrl RoomController) GetAllRoom(c *gin.Context) {
-	listRoom, err := roomMod.GetAllRoom()
+	listRoom, occupied, max, err := roomMod.GetAllRoom()
 	if err != nil {
 		tlog.Info(tlog.Itf{
 			"msg": "Can not get list room",
@@ -77,5 +77,7 @@ func (rCtrl RoomController) GetAllRoom(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
 		"message":    "Get list room OK",
 		"list_rooms": listRoom,
+		"occupied":   occupied,
+		"max":        max,
 	})
 }

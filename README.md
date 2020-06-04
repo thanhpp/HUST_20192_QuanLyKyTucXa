@@ -12,15 +12,13 @@
 
 **Ngôn ngữ sử dụng** :
 - [Golang](https://golang.org/)
-- VueJS :-?
+- Javascript.
 
 **Tài liệu khác** :
 - [Google Drive folder](https://drive.google.com/open?id=1mdFRZLyr1xLBjlqofsPvLP6bdbBcQS_B)
 
   -  [Sprint Planning](https://docs.google.com/spreadsheets/d/1EoV6SjYCSxJXXKl3eWgFJAMr5WD1BUkhHbn7Jj3Wa5A/edit?usp=sharing)
   -  [Q&A](https://docs.google.com/spreadsheets/d/1qhD5vAsDTaZFDzS6ogCaKI8Yk6_AQ2E665HbKgXV0JI/edit?usp=sharing)
-
-- [Tham khảo về VueJS](https://viblo.asia/p/thuc-hanh-vuejs-cho-nguoi-moi-bat-dau-p1-QpmledMVZrd)
 
 ## [Tài liệu về phát triển phần mềm](https://github.com/ThanhPP/HUST_20192_QuanLyKyTucXa/tree/master/TaiLieu)
 
@@ -35,3 +33,38 @@
 #### 2.3. [Biểu đồ lớp](https://github.com/ThanhPP/HUST_20192_QuanLyKyTucXa/tree/master/TaiLieu/PhanTich%26ThietKe/Bieu%20do%20lop)
 
 #### 2.4. [Biểu đồ E-R](https://github.com/ThanhPP/HUST_20192_QuanLyKyTucXa/tree/master/TaiLieu/PhanTich%26ThietKe/Bieu%20do%20ER)
+
+## [Chương trình](https://github.com/ThanhPP/HUST_20192_QuanLyKyTucXa/tree/master/app)
+
+### [1. Backend](https://github.com/ThanhPP/HUST_20192_QuanLyKyTucXa/tree/master/app/backend)
+
+### [2. Frontend](https://github.com/ThanhPP/HUST_20192_QuanLyKyTucXa/tree/master/app/frontend)
+
+## Triển khai hệ thống
+
+### 1. Backend:
+- Chương trình chính
+  - Cách 1: Chạy file binary(Thích hợp với linux/64 bit)
+  - Cách 2: Cài đặt Go compiler và chạy lệnh
+    ```bash
+    # Lưu ý: để biến môi trường GOMODULE111=on
+    go build -v
+    ``` 
+    Sau đó chạy chương trình đã được biên dịch.
+
+- Cài đặt các CSDL liên quan:
+  - MySQL
+  - Redis
+
+- Thay đổi các config trong folder config
+  - Các tham số để khởi tạo CSDL
+
+### 2. Frontend:
+
+### 3. Hamachi:
+- Đăng ký tài khoản tại: https://www.vpn.net/
+- Tải và cài đặt Hamachi trên máy tính tại : https://www.vpn.net/
+- Đăng nhập tài khoản Hamachi.
+- Tạo 1 mạng riêng ảo(dạng: Mesh) - Gói free cho 5 máy tính 1 mạng.
+- Kết nối tới mạng đó và lấy Virtual IP của máy.
+- Chạy chương trình backend trên Virtual IP và cổng tự lựa chọn.
