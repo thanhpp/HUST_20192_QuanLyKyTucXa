@@ -50,7 +50,7 @@ fetch("http://25.43.134.201:8080/lv0/dormmoney", roomMoneyRequestOptions)
         console.log(money_history[Object.keys(money_history).length - 1]);
         if (
           money_history[Object.keys(money_history).length - 1].status ==
-          "unpaid"
+          "Unpaid"
         ) {
           $("#fee-status").text("Chưa thanh toán");
         } else {
@@ -58,6 +58,21 @@ fetch("http://25.43.134.201:8080/lv0/dormmoney", roomMoneyRequestOptions)
         }
       } else {
         alert("Có lỗi xảy ra");
+      }
+
+      for (var i = 0; i < Object.keys(tabledata).length; i++) {
+        tabledata[i].stt = i + 1;
+        if (typeof tabledata[i] == "undefined") {
+          tabledata[i].status = "";
+        } else {
+          if (tabledata[i].status == "Unpaid") {
+            tabledata[i].status = "Chưa thanh toán";
+          } else if (tabledata[i].status == "Paid") {
+            tabledata[i].status = "Đã thanh toán";
+          } else {
+            tabledata[i].status = "";
+          }
+        }
       }
       handleTable(tabledata);
     }
