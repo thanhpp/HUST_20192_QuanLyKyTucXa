@@ -101,3 +101,20 @@ func (facManage FacilitiesManage) NewFacilityManage(newFacMngForm forms.NewFacil
 
 	return facMng, nil
 }
+
+func (facManage FacilitiesManage) UpdateFacilityManage(facMngID int, quantity int) (*FacilitiesManage, error) {
+	var facMng FacilitiesManage
+	err := db.GetDB().Debug().Table("facilities_manage").Where("id = ?", facMngID).Find(&facMng).Error
+	if err != nil {
+		return nil, err
+	}
+
+	facMng.Quantity = quantity
+
+	err = db.GetDB().Table("facilities_manage").Save(&facMng).Error
+	if err != nil {
+		return nil, err
+	}
+
+	return &facMng, nil
+}

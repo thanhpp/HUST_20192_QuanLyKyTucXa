@@ -13,8 +13,8 @@ func TestGetFacInfo(t *testing.T) {
 	db.Init()
 	tlog.Init()
 	newFac := &Facility{
-		Name:        "test",
-		Description: "test",
+		Name:        "O khoa phong",
+		Description: "",
 	}
 
 	if check := db.GetDB().Table("facility").Select("name").Where("name = ?", newFac.Name).RecordNotFound(); check != true {

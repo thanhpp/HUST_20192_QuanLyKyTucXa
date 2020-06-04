@@ -11,15 +11,15 @@ func TestGetStudentInfo(t *testing.T) {
 	config.Init()
 	db.Init()
 	testStd := &Student{
-		StudentID: 00000003,
-		Name:      "test",
-		DOB:       "test",
-		Contact:   "test",
-		Address:   "test",
+		StudentID: 00000004,
+		Name:      "Nguyen Van A",
+		DOB:       "01/02/1999",
+		Contact:   "0123856789",
+		Address:   "So 1 Dai Co Viet, Trau Quy, Gia Lam, Ha Noi",
 		RoomID:    1,
 		Priority:  1,
 	}
-	if err := db.GetDB().Table("student").Select("student_id").Where("student_id = ?", testStd.StudentID).Error; err != nil {
+	if err := db.GetDB().Table("student").Select("student_id").Where("student_id = ?", testStd.StudentID).Error; err == nil {
 		if err := db.GetDB().Create(testStd).Error; err != nil {
 			t.Errorf("Can not create user %+v", err)
 		}

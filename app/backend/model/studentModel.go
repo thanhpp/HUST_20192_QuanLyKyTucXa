@@ -2,6 +2,7 @@ package model
 
 import (
 	"DormAppBackend/db"
+	"DormAppBackend/forms"
 	"DormAppBackend/tlog"
 	"errors"
 	"time"
@@ -160,7 +161,7 @@ func (mMng MoneyManage) CalculateNewMonth() ([]MoneyManage, error) {
 	year := int(time.Now().Year())
 
 	var checkMonth []int
-	err = db.GetDB().Table("money_manage").Select("MAX(month)").Where("year = ?", year).Pluck("month", &checkMonth).Error
+	err = db.GetDB().Table("money_manage").Select("MAX(month) as max_month").Where("year = ?", year).Pluck("max_month", &checkMonth).Error
 	if err != nil {
 		return nil, err
 	}
@@ -229,4 +230,66 @@ func (mMng MoneyManage) UpdatePaymentStatus(monMngID int, status string) (*Money
 	}
 
 	return &monMng, nil
+}
+
+func (s Student) NewStudentInfto(studentID int, stdInfoForm forms.StudentInfoForm) (*Student, error) {
+	var std = &Student{
+		Name:    stdInfoForm.Name,
+		DOB:     stdInfoForm.DOB,
+		Address: stdInfoForm.Address,
+		Contact: stdInfoForm.Contact,
+	}
+
+	if !db.GetDB().Debug().Table("student").Find(&Student{StudentID: studentID}).RecordNotFound() {
+		err := db.GetDB().Table("student").Where("student_id = ?", studentID).Update(std).Error
+		if err != nil {
+			return nil, err
+		}
+		if db.GetDB().Table("student").Where("student_id = ?", studentID).Find(&std).Error != nil {
+			return nil, err
+		}
+		return std, nil
+	}
+
+	err := db.GetDB().Table("student").Create(std).Error
+	if err != nil {
+		return nil, err
+	}
+
+	return std, nil
+}
+
+func (s Student) GetAllStudent() ([]Student, error) {
+	var listStd []Student
+
+	rows, err := db.GetDB().Table("student").Rows()
+	if err != nil {
+		return nil, err
+	}
+
+	for rows.Next() {
+		var std Student
+
+		db.GetDB().ScanRows(rows, &std)
+		listStd = append(listStd, std)
+	}
+
+	return listStd, nil
+}
+
+func (mMng MoneyManage) GetReportStudentPayment() (paid int, unpaid int, err error) {
+	var paidTemp = make([]int, 1)
+	var unpaidTemp = make([]int, 1)
+
+	err = db.GetDB().Table("money_manage").Select("COUNT(DISTINCT(`student_id`)) as sum_paid").Where("status LIKE \"Paid\"").Pluck("sum_paid", &paidTemp).Error
+	if err != nil {
+		return -1, -1, err
+	}
+
+	err = db.GetDB().Table("money_manage").Select("COUNT(DISTINCT(`student_id`)) as sum_unpaid").Where("status LIKE \"Unpaid\"").Pluck("sum_unpaid", &unpaidTemp).Error
+	if err != nil {
+		return -1, -1, err
+	}
+
+	return paidTemp[0], unpaidTemp[0], nil
 }

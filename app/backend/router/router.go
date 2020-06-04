@@ -54,6 +54,7 @@ func NewRouter() *gin.Engine {
 
 		level1.GET("/check/:usr", userCtrl.GetUserByUsername)
 		level1.GET("/studentinfo", stdCtrl.GetStudentInfoLV1)
+		level1.GET("/allstudent", stdCtrl.GetAllStudent)
 
 		level1.GET("/studentbyroom", stdCtrl.GetStudentByRoomID)
 		level1.GET("/listroom", roomCtrl.GetAllRoom)
@@ -63,10 +64,12 @@ func NewRouter() *gin.Engine {
 		level1.GET("/fac/:id", facCtrl.GetFacilityByFacID)
 		level1.POST("/newfac", facCtrl.NewFacility)
 		level1.POST("/newfacmng", facCtrl.NewFacilityManage)
+		level1.GET("/updatefacmng", facCtrl.UpdateFacilityManageInfo)
 
 		level1.GET("/caldormmoney", stdCtrl.CalNewMonthMoney)
 		level1.GET("/getallmoneymanage", stdCtrl.GetAllMoneyManage)
 		level1.POST("/updatepayment", stdCtrl.UpdatePayment)
+		level1.GET("/paymentreport", stdCtrl.GetPaymentReport)
 
 		level1.GET("/listrequest", rqCtrl.GetAllRequest)
 		level1.POST("/replyrequest", rqCtrl.ReplyRequest)
@@ -81,6 +84,8 @@ func NewRouter() *gin.Engine {
 		level0.Use(authMid.CheckRoleLevelMid(0))
 
 		level0.GET("/usrinfo", stdCtrl.GetStudentInfo)
+		level0.POST("/stdinfo", stdCtrl.NewStudentInfo)
+
 		level0.GET("/friends", stdCtrl.GetFriends)
 		level0.GET("/roominfo", roomCtrl.GetRoomInfo)
 		level0.GET("/dormmoney", stdCtrl.GetDormMoney)

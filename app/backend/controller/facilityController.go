@@ -163,3 +163,48 @@ func (fCtrl FacilityController) NewFacilityManage(c *gin.Context) {
 		"facility_manage": newFacMng,
 	})
 }
+
+func (fCtrl FacilityController) UpdateFacilityManageInfo(c *gin.Context) {
+	facMngID := c.Query("fmngid")
+	quantity := c.Query("quantity")
+
+	if facMngID == "" || quantity == "" {
+		c.JSON(http.StatusNotAcceptable, gin.H{
+			"message": "Not enough arguments",
+		})
+		c.Abort()
+		return
+	}
+
+	facMngIDInt, err := strconv.Atoi(facMngID)
+	if err != nil {
+		c.JSON(http.StatusNotAcceptable, gin.H{
+			"message": "Invalid arguments",
+		})
+		c.Abort()
+		return
+	}
+
+	quantityInt, err := strconv.Atoi(quantity)
+	if err != nil {
+		c.JSON(http.StatusNotAcceptable, gin.H{
+			"message": "Invalid arguments",
+		})
+		c.Abort()
+		return
+	}
+
+	returnFacMng, err := facManMod.UpdateFacilityManage(facMngIDInt, quantityInt)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"message": "Can not update facility manage",
+		})
+		c.Abort()
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"message":         "Update facility manage OK",
+		"facility_manage": returnFacMng,
+	})
+}
