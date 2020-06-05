@@ -28,18 +28,20 @@ fetch("http://25.43.134.201:8080/lv1/listroom", requestOptions)
     alert("Không kết nối được tới máy chủ");
   });
 
-  fetch("25.43.134.201:8080/lv0/listreq", requestOptions)
+  fetch("http://25.43.134.201:8080/lv1/listrequest", requestOptions)
   .then((response) => response.json())
   .then((result) => {
     
-    if (result.message == "Get list request successfully") {
+    if (result.message == "Get list requests OK") {
       var request = 0;
+      console.log(result.list_request);
       for (var i = 0; i < Object.keys(result.list_request).length; i++) {
         if(result.list_request[i].status =="new request"){
           request++;
         }
-        $("#used-beds").text(request);
+        
       }
+      $("#request").text(request);
     } else {
       alert("Có lỗi xảy ra");
     }
