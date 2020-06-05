@@ -27,6 +27,27 @@ fetch("http://25.43.134.201:8080/lv1/listroom", requestOptions)
     console.log("Không kết nối được tới máy chủ", error);
     alert("Không kết nối được tới máy chủ");
   });
+
+  fetch("25.43.134.201:8080/lv0/listreq", requestOptions)
+  .then((response) => response.json())
+  .then((result) => {
+    
+    if (result.message == "Get list request successfully") {
+      var request = 0;
+      for (var i = 0; i < Object.keys(result.list_request).length; i++) {
+        if(result.list_request[i].status =="new request"){
+          request++;
+        }
+        $("#used-beds").text(request);
+      }
+    } else {
+      alert("Có lỗi xảy ra");
+    }
+  })
+  .catch((error) => {
+    console.log("Không kết nối được tới máy chủ", error);
+    alert("Không kết nối được tới máy chủ");
+  });
 //Amount of students
   fetch("http://25.43.134.201:8080/lv1/allstudent", requestOptions)
   .then((response) => response.json())
